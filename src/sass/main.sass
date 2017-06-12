@@ -14,3 +14,44 @@ header
 footer
   background-color: $footer-background-color
   height: $footer-height
+
+.bar
+  fill: $bar-standard-color
+
+  &:hover
+    fill: $bar-selected-color
+
+.axis
+  font-family: $barchart-font
+  font-size: 12px
+
+  path,
+  line
+    fill: none
+    // shape-rendering: crispEdges
+    stroke: $axis-color
+
+.axis--x
+  path
+    display: none
+
+.axis--y
+  text
+    fill: $axis-color
+
+.tooltip
+  background: $tooltip-background-color
+  border: 0
+  border-radius: 8px
+  font-family: $barchart-font
+  font-size: 12px
+  font-weight: bold
+  height: 20px
+  padding: 2px
+  pointer-events: none
+  position: absolute
+  text-align: center
+  width: 120px
+
+  span
+    color: $tooltip-span-color
