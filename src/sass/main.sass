@@ -26,6 +26,10 @@ footer
   stroke: $line-color
   stroke-width: 3px
 
+.circle
+  opacity: .8
+  // stroke: $circle-stroke-color
+
 .axis
   font-family: $barchart-font
   font-size: 12px
@@ -36,9 +40,14 @@ footer
     shape-rendering: auto  // avoid crispEdges
     stroke: $axis-color
 
+.barchart
+  .axis--x
+    path
+      display: none
+
 .axis--x
-  path
-    display: none
+  text
+    fill: $axis-color
 
 .axis--y
   text
@@ -51,7 +60,6 @@ footer
   font-family: $barchart-font
   font-size: 12px
   font-weight: bold
-  height: 20px
   padding: 2px
   pointer-events: none
   position: absolute
