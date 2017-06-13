@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
+    // add font-awesome-sass-loader as an entry point here, or require it in index.js
+    'font-awesome-sass-loader!./font-awesome.config.js',
     path.join(__dirname, 'src', 'js', 'index.js'),
   ],
 
@@ -45,6 +47,17 @@ module.exports = {
           path.join(__dirname, 'src', 'sass'),
         ],
         use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'sass-loader'] }),
+      },
+      // rule for .woff2 font files (font-awesome)
+      {
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        // Limiting the size of the woff fonts breaks font-awesome ONLY for extract text plugin
+        use: 'url-loader',
+      },
+      // rule for .ttf/.eot/.svg files (font-awesome)
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: 'file-loader',
       },
     ],
   },

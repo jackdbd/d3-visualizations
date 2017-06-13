@@ -1,6 +1,8 @@
 import * as d3 from 'd3';
 
 require('../sass/main.sass');
+// require font-awesome-sass-loader here or add it to the entry points in webpack.config.js
+// require('font-awesome-sass-loader');
 
 d3.select('body').insert('p', ':first-child').html(`D3 version: ${d3.version}`);
 
