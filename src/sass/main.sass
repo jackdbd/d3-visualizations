@@ -21,6 +21,11 @@ footer
   &:hover
     fill: $bar-selected-color
 
+.line
+  fill: none
+  stroke: $line-color
+  stroke-width: 3px
+
 .axis
   font-family: $barchart-font
   font-size: 12px
@@ -28,7 +33,7 @@ footer
   path,
   line
     fill: none
-    // shape-rendering: crispEdges
+    shape-rendering: auto  // avoid crispEdges
     stroke: $axis-color
 
 .axis--x
