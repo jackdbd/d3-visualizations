@@ -54,10 +54,15 @@ module.exports = {
         // Limiting the size of the woff fonts breaks font-awesome ONLY for extract text plugin
         use: 'url-loader',
       },
-      // rule for .ttf/.eot/.svg files (font-awesome)
+      // rule for .ttf/.eot/.svg files (font-awesome and fonts)
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: 'file-loader',
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: './fonts/[name].[ext]',
+          },
+        },
       },
     ],
   },
