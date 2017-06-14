@@ -17,7 +17,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].chunk.js',
+    filename: '[name].[chunkhash].bundle.js',
     sourceMapFilename: '[file].map',
   },
 
