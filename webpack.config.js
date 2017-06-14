@@ -5,15 +5,18 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: [
-    // add font-awesome-sass-loader as an entry point here, or require it in index.js
-    'font-awesome-sass-loader!./font-awesome.config.js',
-    path.join(__dirname, 'src', 'js', 'index.js'),
-  ],
+
+  entry: {
+    'font-awesome': './font-awesome.config.js',
+    index: path.join(__dirname, 'src', 'js', 'index.js'),
+    barchart: path.join(__dirname, 'src', 'js', 'barchart.js'),
+    linechart: path.join(__dirname, 'src', 'js', 'linechart.js'),
+    about: path.join(__dirname, 'src', 'js', 'about.js'),
+  },
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].chunk.js',
     sourceMapFilename: '[file].map',
   },
 
@@ -77,13 +80,36 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'templates', 'index.html'),
-      filename: 'index.html',
       hash: true,
+      filename: 'index.html',
+      chunks: ['commons', 'index'],
+      // excludeChunks: ['about'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'templates', 'barchart.html'),
+      hash: true,
+      filename: 'barchart.html',
+      chunks: ['commons', 'barchart'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'templates', 'linechart.html'),
+      hash: true,
+      filename: 'linechart.html',
+      chunks: ['commons', 'linechart'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'templates', 'about.html'),
+      hash: true,
+      filename: 'about.html',
+      chunks: ['commons', 'about'],
     }),
     new CopyWebpackPlugin(
       [
         { from: path.join(__dirname, 'src', 'data'), to: path.join(__dirname, 'dist', 'data') },
       ], { debug: 'warning' }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['commons'],
+    }),
   ],
 
   // include jQuery from a CDN instead of bundling it
@@ -96,6 +122,12 @@ module.exports = {
     port: 8080,
     contentBase: path.join(__dirname, 'dist'),
     inline: true, // live reloading
+    stats: {
+      colors: true,
+      reasons: true,
+      chunks: false,
+      modules: false,
+    },
   },
 
   performance: {
