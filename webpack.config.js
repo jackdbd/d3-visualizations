@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
 
@@ -73,6 +74,9 @@ module.exports = {
   devtool: 'cheap-source-map',
 
   plugins: [
+    new CleanWebpackPlugin(
+      ['dist'],
+      { root: __dirname, exclude: ['favicon.ico'], verbose: true }),
     new ExtractTextPlugin('bundle.css'),
     new webpack.ProvidePlugin({
       $: 'jquery',
