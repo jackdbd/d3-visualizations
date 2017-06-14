@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "d3": "^4.9.1",
+    "d3-scale-chromatic": "^1.1.1",
     "font-awesome-sass-loader": "^2.0.1",
     "topojson": "^3.0.0"
   }
