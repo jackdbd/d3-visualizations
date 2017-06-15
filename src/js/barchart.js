@@ -4,33 +4,37 @@ require('../sass/main.sass');
 require('../sass/barchart.sass');
 
 {
-  const rowFunction = (d) => {
-    const obj = {
-      letter: d.letter,
-      frequency: +d.frequency,
-    };
-    return obj;
-  };
+  const draw = (dataset) => {
+    const gdp = dataset.data.map(x => x[1]);
 
-  const draw = (letterFrequencies) => {
-    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    const margin = { top: 20, right: 20, bottom: 30, left: 100 };
     const width = 960 - margin.left - margin.right;
     const height = 500 - margin.top - margin.bottom;
 
-    const xScale = d3.scaleBand()
-      .range([0, width])
-      .round(true)
-      .paddingInner(0.1); // space between bars (it's a ratio)
+    const parseTime = d3.timeParse('%Y-%m-%d');
+    const dates = dataset.data.map(x => parseTime(x[0]));
+
+    const xScale = d3.scaleTime()
+      .domain(d3.extent(dates))
+      .range([0, width]);
 
     const yScale = d3.scaleLinear()
+      .domain([0, d3.max(gdp, d => d)])
       .range([height, 0]);
 
+    const months = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'];
+
+    const formatCurrency = d3.format('$,.2f');
+
     const xAxis = d3.axisBottom()
-      .scale(xScale);
+      .scale(xScale)
+      .tickValues(d3.timeYears(dates[0], dates[dates.length - 1], 5));
 
     const yAxis = d3.axisLeft()
       .scale(yScale)
-      .ticks(10, '%');
+      .ticks(10, '')
+      .tickFormat(d3.format('.0s'));
 
     const svg = d3.selectAll('.barchart')
       .append('svg')
@@ -42,11 +46,6 @@ require('../sass/barchart.sass');
     const tooltip = d3.selectAll('.barchart').append('div')
       .attr('class', 'tooltip')
       .style('opacity', 0);
-
-    xScale
-      .domain(letterFrequencies.map(d => d.letter));
-    yScale
-      .domain([0, d3.max(letterFrequencies, d => d.frequency)]);
 
     svg.append('g')
       .attr('class', 'axis axis--x')
@@ -61,26 +60,34 @@ require('../sass/barchart.sass');
       .attr('y', 6)
       .attr('dy', '.71em')
       .style('text-anchor', 'end')
-      .text('Frequency');
+      .text('Gross Domestic Product, USA ($ Billion)');
 
-    svg.selectAll('.bar').data(letterFrequencies)
+    svg.selectAll('.bar').data(dataset.data)
       .enter()
       .append('rect')
       .attr('class', 'bar')
-      .attr('x', d => xScale(d.letter))
-      .attr('width', xScale.bandwidth())
-      .attr('y', d => yScale(d.frequency))
-      .attr('height', d => height - yScale(d.frequency))
+      .attr('x', d => xScale(new Date(d[0])))
+      // .attr('x', d => xScale(d[0]))
+      // .attr('width', xScale.bandwidth())
+      .attr('width', (width / dates.length) + 1)
+      .attr('y', d => yScale(d[1]))
+      .attr('height', d => height - yScale(d[1]))
       .on('mouseover', (d) => {
         tooltip.transition().duration(200).style('opacity', 0.9);
-        tooltip.html(`Frequency: <span>${d.frequency}</span>`)
+        const currentDateTime = new Date(d[0]);
+        const year = currentDateTime.getFullYear();
+        const month = currentDateTime.getMonth();
+        const dollars = d[1];
+        const html = `<span>${formatCurrency(dollars)} Billion</span><br>
+          <span>${year} - ${months[month]}</span>`;
+        tooltip.html(html)
           .style('left', `${d3.event.layerX}px`)
           .style('top', `${(d3.event.layerY - 28)}px`);
       })
       .on('mouseout', () => tooltip.transition().duration(500).style('opacity', 0));
   };
 
-  d3.tsv('./data/bardata.tsv', rowFunction, (error, data) => {
+  d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json', (error, data) => {
     if (error) throw error;
     draw(data);
   });
