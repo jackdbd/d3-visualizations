@@ -18,6 +18,26 @@
       <li><a href="/barchart.html">Bar Chart</a></li>
       <li><a href="/linechart.html">Line Chart</a></li>
     </ul>
+    <!-- try out some font-awesome icons -->
+    <p>Note: Font Awesome's icons are not displayed in this page because the font-awesome
+      entry point chunk is not declared in the HtmlWebpackPlugin instance for about.html
+      (see webpack.config.js)
+    </p>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+    </span>
+    fa-twitter on fa-square-o<br>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-facebook fa-stack-1x"></i>
+    </span>
+    fa-facebook on fa-square-o<br>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-hacker-news fa-stack-1x"></i>
+    </span>
+    fa-hacker-news on fa-square-o<br>
     <footer>I am the footer.</footer>
     <!-- bundle.js is injected here by html-webpack-plugin -->
   </body>

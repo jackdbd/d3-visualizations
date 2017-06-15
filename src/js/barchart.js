@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 
 require('../sass/main.sass');
-require('font-awesome-sass-loader');
+require('../sass/barchart.sass');
 
 {
   const rowFunction = (d) => {

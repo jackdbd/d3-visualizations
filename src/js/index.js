@@ -2,7 +2,6 @@ import * as d3 from 'd3';
 
 const d3ScaleChromatic = require('d3-scale-chromatic');
 require('../sass/main.sass');
-require('font-awesome-sass-loader');
 
 d3.select('body').insert('p', ':first-child').html(`D3 version: ${d3.version}`);
 

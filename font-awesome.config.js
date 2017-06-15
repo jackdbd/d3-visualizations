@@ -1,3 +1,5 @@
+require('font-awesome-sass-loader');
+
 module.exports = {
   fontAwesomeCustomizations: './_font-awesome.config.sass',
 

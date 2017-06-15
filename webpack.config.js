@@ -77,7 +77,7 @@ module.exports = {
     new CleanWebpackPlugin(
       ['dist'],
       { root: __dirname, exclude: ['favicon.ico'], verbose: true }),
-    new ExtractTextPlugin('bundle.css'),
+    new ExtractTextPlugin('[name].[chunkhash].bundle.css'),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -86,20 +86,19 @@ module.exports = {
       template: path.join(__dirname, 'src', 'templates', 'index.html'),
       hash: true,
       filename: 'index.html',
-      chunks: ['commons', 'index'],
-      // excludeChunks: ['about'],
+      chunks: ['commons', 'font-awesome', 'index'],
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'templates', 'barchart.html'),
       hash: true,
       filename: 'barchart.html',
-      chunks: ['commons', 'barchart'],
+      chunks: ['commons', 'font-awesome', 'barchart'],
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'templates', 'linechart.html'),
       hash: true,
       filename: 'linechart.html',
-      chunks: ['commons', 'linechart'],
+      chunks: ['commons', 'font-awesome', 'linechart'],
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'templates', 'about.html'),
@@ -112,7 +111,9 @@ module.exports = {
         { from: path.join(__dirname, 'src', 'data'), to: path.join(__dirname, 'dist', 'data') },
       ], { debug: 'warning' }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['commons'],
+      name: 'commons',
+      filename: '[name].[chunkhash].bundle.js',
+      chunks: ['barchart', 'linechart'],
     }),
   ],
 

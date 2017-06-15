@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 
 require('../sass/main.sass');
+require('../sass/linechart.sass');
 
 {
   const rowFunction = (d) => {
