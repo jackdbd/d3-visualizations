@@ -42,7 +42,11 @@ footer
   font-weight: bold
   height: auto
   padding: 2px
-  pointer-events: none
+  // remove next line to capture events in the tooltip
+  // pointer-events: none
   position: absolute
   text-align: center
   width: auto
+
+  &:hover
+    opacity: .8 !important
