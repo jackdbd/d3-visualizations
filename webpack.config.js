@@ -72,6 +72,26 @@ module.exports = {
           },
         },
       },
+      // rule for images (add svg? How to distinguish a svg font from a svg image?)
+      {
+        test: /\.(gif|jpe?g|png)$/i,
+        include: path.join(__dirname, 'src', 'images'),
+        loaders: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              progressive: true,
+              optimizationLevel: 7,
+              interlaced: false,
+              pngquant: {
+                quality: '65-90',
+                speed: 4,
+              },
+            },
+          },
+        ],
+      },
     ],
   },
 
@@ -80,7 +100,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(
       ['dist'],
-      { root: __dirname, exclude: ['favicon.ico'], verbose: true }),
+      { root: __dirname, exclude: ['favicon.ico', 'Transparent.gif'], verbose: true }),
     new ExtractTextPlugin('[name].[chunkhash].bundle.css'),
     new webpack.ProvidePlugin({
       $: 'jquery',

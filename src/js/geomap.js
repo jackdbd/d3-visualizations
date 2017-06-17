@@ -32,7 +32,7 @@ require('../sass/geomap.sass');
     const states = usa.append('g')
       .attr('class', 'states');
 
-    const tooltip = d3.selectAll('.heat-map').append('div')
+    const tooltip = d3.selectAll('.geo-map').append('div')
       .attr('class', 'tooltip')
       .style('opacity', 0);
 
