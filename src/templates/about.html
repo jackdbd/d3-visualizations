@@ -14,9 +14,6 @@
     <p>You can use regular or <strong>bold fonts</strong>.</p>
     <ul>
       <li><a href="/index.html">Home</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/barchart.html">Bar Chart</a></li>
-      <li><a href="/linechart.html">Line Chart</a></li>
     </ul>
     <!-- try out some font-awesome icons -->
     <p>Note: Font Awesome's icons are not displayed in this page because the font-awesome
@@ -40,5 +37,11 @@
     fa-hacker-news on fa-square-o<br>
     <footer>I am the footer.</footer>
     <!-- bundle.js is injected here by html-webpack-plugin -->
+    <!-- jQuery slim is not bundled. See externals in webpack.config.js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+      crossorigin="anonymous">
+    </script>
+
   </body>
 </html>

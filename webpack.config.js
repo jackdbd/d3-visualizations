@@ -9,10 +9,14 @@ module.exports = {
 
   entry: {
     'font-awesome': './font-awesome.config.js',
-    index: path.join(__dirname, 'src', 'js', 'index.js'),
+    home: path.join(__dirname, 'src', 'js', 'index.js'),
+    about: path.join(__dirname, 'src', 'js', 'about.js'),
     barchart: path.join(__dirname, 'src', 'js', 'barchart.js'),
     linechart: path.join(__dirname, 'src', 'js', 'linechart.js'),
-    about: path.join(__dirname, 'src', 'js', 'about.js'),
+    geomap: path.join(__dirname, 'src', 'js', 'geomap.js'),
+    graph: path.join(__dirname, 'src', 'js', 'graph.js'),
+    heatmap: path.join(__dirname, 'src', 'js', 'heatmap.js'),
+    scatterplot: path.join(__dirname, 'src', 'js', 'scatterplot.js'),
   },
 
   output: {
@@ -82,11 +86,21 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
     }),
+    new CopyWebpackPlugin(
+      [
+        { from: path.join(__dirname, 'src', 'data'), to: path.join(__dirname, 'dist', 'data') },
+      ], { debug: 'warning' }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'templates', 'index.html'),
       hash: true,
       filename: 'index.html',
-      chunks: ['commons', 'font-awesome', 'index'],
+      chunks: ['commons', 'font-awesome', 'home'], // the order seems not important
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'templates', 'about.html'),
+      hash: true,
+      filename: 'about.html',
+      chunks: ['commons', 'about'],
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'templates', 'barchart.html'),
@@ -101,19 +115,33 @@ module.exports = {
       chunks: ['commons', 'font-awesome', 'linechart'],
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'templates', 'about.html'),
+      template: path.join(__dirname, 'src', 'templates', 'geomap.html'),
       hash: true,
-      filename: 'about.html',
-      chunks: ['commons', 'about'],
+      filename: 'geomap.html',
+      chunks: ['commons', 'font-awesome', 'geomap'],
     }),
-    new CopyWebpackPlugin(
-      [
-        { from: path.join(__dirname, 'src', 'data'), to: path.join(__dirname, 'dist', 'data') },
-      ], { debug: 'warning' }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'templates', 'graph.html'),
+      hash: true,
+      filename: 'graph.html',
+      chunks: ['commons', 'font-awesome', 'graph'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'templates', 'heatmap.html'),
+      hash: true,
+      filename: 'heatmap.html',
+      chunks: ['commons', 'font-awesome', 'heatmap'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'templates', 'scatterplot.html'),
+      hash: true,
+      filename: 'scatterplot.html',
+      chunks: ['commons', 'font-awesome', 'scatterplot'],
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'commons',
       filename: '[name].[chunkhash].bundle.js',
-      chunks: ['barchart', 'linechart'],
+      chunks: ['home', 'barchart', 'linechart', 'geomap', 'graph', 'heatmap', 'scatterplot'],
     }),
   ],
 
