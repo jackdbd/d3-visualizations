@@ -17,6 +17,7 @@ module.exports = {
     graph: path.join(__dirname, 'src', 'js', 'graph.js'),
     heatmap: path.join(__dirname, 'src', 'js', 'heatmap.js'),
     scatterplot: path.join(__dirname, 'src', 'js', 'scatterplot.js'),
+    challenge: path.join(__dirname, 'src', 'js', 'challenge.js'),
   },
 
   output: {
@@ -158,10 +159,17 @@ module.exports = {
       filename: 'scatterplot.html',
       chunks: ['commons', 'font-awesome', 'scatterplot'],
     }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'templates', 'challenge.html'),
+      hash: true,
+      filename: 'challenge.html',
+      chunks: ['commons', 'font-awesome', 'challenge'],
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'commons',
       filename: '[name].[chunkhash].bundle.js',
-      chunks: ['home', 'barchart', 'linechart', 'geomap', 'graph', 'heatmap', 'scatterplot'],
+      chunks: ['home', 'barchart', 'linechart', 'geomap', 'graph', 'heatmap',
+        'scatterplot', 'challenge'],
     }),
   ],
 
