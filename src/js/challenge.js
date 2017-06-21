@@ -1,59 +1,35 @@
 import * as d3 from 'd3';
 
+// import { createComponent } from './layout_manager';
+const createComponent = require('./layout_manager').createComponent; // better for webpack bundle size?
+
 
 require('../sass/main.sass');
 require('../sass/challenge.sass');
 
 {
-  const doLayout = () => {
-    const margin = { top: 10, right: 20, bottom: 30, left: 250 };
-    const width = 1200 - margin.left - margin.right;
-    const height = 600 - margin.top - margin.bottom;
-    return {
-      width,
-      height,
-      margin,
-    };
-  };
-
   const zScale = d3.scaleOrdinal(d3.schemeCategory20);
 
-  const { width, height, margin } = doLayout();
+  const stackedBarChartViz = createComponent('#dataviz-challenge-stacked-bar-chart');
+  const stackedBarChart = stackedBarChartViz.chart;
+  const coords = stackedBarChartViz.coords;
+  const header = stackedBarChartViz.header;
+  const footer = stackedBarChartViz.footer;
+  const tooltip = stackedBarChartViz.tooltip;
 
-  // Stacked bar chart and tooltip
-
-  const stackedBarChart = d3.select('.dataviz-challenge-stacked-bar-chart')
-    .append('svg')
-    .attr('width', width + margin.left + margin.right)
-    .attr('height', height + margin.top + margin.bottom)
-    .append('g')
-    .attr('transform', `translate(${margin.left}, ${margin.right})`);
-
-  const stackedBarChartTitle = stackedBarChart.append('h1')
+  header.select('.header > h1')
     .text('Data Visualization Challenge');
 
-  const tooltip = d3.select('.dataviz-challenge-stacked-bar-chart').append('div')
-    .attr('class', 'tooltip')
-    .style('opacity', 0);
-
-  // Bar chart 1 and tooltip
-
-  const barChart = d3.selectAll('.dataviz-challenge-bar-chart')
-    .append('svg')
-    .attr('width', width + margin.left + margin.right)
-    .attr('height', height + margin.top + margin.bottom)
-    .append('g')
-    .attr('transform', `translate(${margin.left}, ${margin.right})`);
-
-  const barChartTitle = barChart.append('h1');
-
-  const tooltip1 = d3.select('.dataviz-challenge-bar-chart1').append('div')
-    .attr('class', 'tooltip')
-    .style('opacity', 0);
+  const barChartViz = createComponent('#dataviz-challenge-bar-chart');
+  const barChart = barChartViz.chart;
+  const coords1 = barChartViz.coords;
+  const header1 = barChartViz.header;
+  const footer1 = barChartViz.footer;
+  const tooltip1 = barChartViz.tooltip;
 
   const barChartXAxis = barChart.append('g')
     .attr('class', 'axis axis--x')
-    .attr('transform', `translate(0, ${height})`);
+    .attr('transform', `translate(0, ${coords1.height})`);
 
   const barChartYAxis = barChart.append('g')
     .attr('class', 'axis axis--y');
@@ -61,7 +37,6 @@ require('../sass/challenge.sass');
   let selectedGenre = 'Science fiction'; // it will change dynamically
 
   const updateBarChart = (genreSel, arr) => {
-
     const mouseover = (d) => {
       const html = `<span>${d.genre}</span><br><span>${d.books}</span>`;
       tooltip.html(html)
@@ -70,8 +45,21 @@ require('../sass/challenge.sass');
     };
 
     const dataset = arr.filter(d => d.genre === genreSel)[0];
-    const str = `${dataset.genre} (Tot. ${dataset.total})`;
-    barChartTitle.text(str);
+    const strHeader = `${dataset.genre}`;
+    header1
+      .style('background-color', zScale(dataset.genre))
+      .select('h1')
+      .text(strHeader);
+
+
+    const spanFigure2 = '<span><strong>Figure 2: </strong><span>';
+    const spanGenreTotal = `<span>${dataset[dataset.genre]}<span>`;
+    const spanGenre = `<span>${dataset.genre}</span>`;
+    const spanTotal = `<span>${dataset.total}<span>`;
+    const htmlFooter1 = `${spanFigure2}${spanGenreTotal} <span>customers bought at least 1</span> ${spanGenre}
+    <span>book. These customers bought a total of ${spanTotal} books</span>.`;
+    footer1.select('p').html(htmlFooter1);
+
 
     const entries = Object.entries(dataset).filter(e => e[0] !== 'genre' && e[0] !== 'total');
     const arrData = [];
@@ -89,11 +77,11 @@ require('../sass/challenge.sass');
 
     const xScale1 = d3.scaleLinear()
       .domain([0, d3.max(data.map(d => d.books))])
-      .range([0, width]);
+      .range([0, coords1.width]);
 
     const yScale1 = d3.scaleBand()
       .domain(keys1)
-      .range([height, 0])
+      .range([coords1.height, 0])
       .round(true)
       .paddingInner(0.2); // space between bars (it's a ratio)
 
@@ -153,17 +141,27 @@ require('../sass/challenge.sass');
 
     // sort in descending order
     const data = dataset.sort((a, b) => a.total - b.total);
-    // const keys = data.columns.slice(1); // this is not sorted
     const keys = data.map(d => d.genre); // this is sorted because data is sorted
     const totals = data.map(d => d.total);
+    const overallTotal = d3.sum(totals);
+    // const popularBooksGenres = keys.slice(0, 3);
+    // const popularTotals = totals.slice(0, 3);
+    const spanFigure = '<span><strong>Figure 1: </strong><span>';
+    const popularGenres = `
+    ${keys[keys.length - 1]} (${totals[totals.length - 1]}),
+    ${keys[keys.length - 2]} (${totals[totals.length - 2]}), and 
+    ${keys[keys.length - 3]} (${totals[totals.length - 3]}).`;
+    const htmlFooter = `<p>${spanFigure}A total of ${overallTotal} were bought. 
+    The three most popular genres are: ${popularGenres}</p>`;
+    footer.select('p').html(htmlFooter);
 
     const xScale = d3.scaleLinear()
       .domain([0, d3.max(totals)])
-      .range([0, width]);
+      .range([0, coords.width]);
 
     const yScale = d3.scaleBand()
       .domain(keys)
-      .range([height, 0])
+      .range([coords.height, 0])
       .round(true)
       .paddingInner(0.2); // space between bars (it's a ratio)
 
@@ -199,7 +197,7 @@ require('../sass/challenge.sass');
 
     stackedBarChart.append('g')
       .attr('class', 'axis axis--x')
-      .attr('transform', `translate(0, ${height})`)
+      .attr('transform', `translate(0, ${coords.height})`)
       .call(xAxis);
 
     stackedBarChart.append('g')
@@ -242,13 +240,13 @@ require('../sass/challenge.sass');
       .attr('transform', (d, i) => `translate(0,${(i * 20) + 40})`);
 
     legend.append('rect')
-      .attr('x', width - 19)
+      .attr('x', coords.width - 19)
       .attr('width', 19)
       .attr('height', 19)
       .attr('fill', zScale);
 
     legend.append('text')
-      .attr('x', width - 24)
+      .attr('x', coords.width - 24)
       .attr('y', 9.5)
       .attr('dy', '0.32em')
       .text(d => d)
