@@ -6,9 +6,9 @@ require('../sass/challenge.sass');
 
 {
   const doLayout = () => {
-    const margin = { top: 20, right: 20, bottom: 30, left: 260 };
-    const width = 1024 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    const margin = { top: 10, right: 20, bottom: 30, left: 250 };
+    const width = 1200 - margin.left - margin.right;
+    const height = 600 - margin.top - margin.bottom;
     return {
       width,
       height,
@@ -20,16 +20,23 @@ require('../sass/challenge.sass');
 
   const { width, height, margin } = doLayout();
 
-  const stackedBarChart = d3.selectAll('.dataviz-challenge-stacked-bar-chart')
+  // Stacked bar chart and tooltip
+
+  const stackedBarChart = d3.select('.dataviz-challenge-stacked-bar-chart')
     .append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
     .append('g')
     .attr('transform', `translate(${margin.left}, ${margin.right})`);
 
-  const tooltip = d3.selectAll('.dataviz-challenge-stacked-bar-chart').append('div')
+  const stackedBarChartTitle = stackedBarChart.append('h1')
+    .text('Data Visualization Challenge');
+
+  const tooltip = d3.select('.dataviz-challenge-stacked-bar-chart').append('div')
     .attr('class', 'tooltip')
     .style('opacity', 0);
+
+  // Bar chart 1 and tooltip
 
   const barChart = d3.selectAll('.dataviz-challenge-bar-chart')
     .append('svg')
@@ -38,6 +45,12 @@ require('../sass/challenge.sass');
     .append('g')
     .attr('transform', `translate(${margin.left}, ${margin.right})`);
 
+  const barChartTitle = barChart.append('h1');
+
+  const tooltip1 = d3.select('.dataviz-challenge-bar-chart1').append('div')
+    .attr('class', 'tooltip')
+    .style('opacity', 0);
+
   const barChartXAxis = barChart.append('g')
     .attr('class', 'axis axis--x')
     .attr('transform', `translate(0, ${height})`);
@@ -45,17 +58,20 @@ require('../sass/challenge.sass');
   const barChartYAxis = barChart.append('g')
     .attr('class', 'axis axis--y');
 
-  // the scale of the axis is redefined every time
-  // const xAxis2 = d3.axisBottom();
-
   let selectedGenre = 'Science fiction'; // it will change dynamically
-  const barChartTitle = d3.select('.dataviz-challenge-bar-chart > h1');
 
   const updateBarChart = (genreSel, arr) => {
+
+    const mouseover = (d) => {
+      const html = `<span>${d.genre}</span><br><span>${d.books}</span>`;
+      tooltip.html(html)
+        .style('left', `${d3.event.layerX}px`)
+        .style('top', `${(d3.event.layerY - 10)}px`);
+    };
+
     const dataset = arr.filter(d => d.genre === genreSel)[0];
     const str = `${dataset.genre} (Tot. ${dataset.total})`;
-    barChartTitle
-      .text(str);
+    barChartTitle.text(str);
 
     const entries = Object.entries(dataset).filter(e => e[0] !== 'genre' && e[0] !== 'total');
     const arrData = [];
@@ -69,44 +85,45 @@ require('../sass/challenge.sass');
       arrData.push(obj);
     });
     const data = arrData.sort((a, b) => a.books - b.books);
-    const keys2 = data.map(d => d.genre);
+    const keys1 = data.map(d => d.genre);
 
-    const xScale2 = d3.scaleLinear()
+    const xScale1 = d3.scaleLinear()
       .domain([0, d3.max(data.map(d => d.books))])
       .range([0, width]);
 
-    const yScale2 = d3.scaleBand()
-      .domain(keys2)
+    const yScale1 = d3.scaleBand()
+      .domain(keys1)
       .range([height, 0])
       .round(true)
       .paddingInner(0.2); // space between bars (it's a ratio)
 
-    const xAxis2 = d3.axisBottom()
-      .scale(xScale2);
+    const xAxis1 = d3.axisBottom()
+      .scale(xScale1);
 
-    const yAxis2 = d3.axisLeft()
-      .scale(yScale2);
+    const yAxis1 = d3.axisLeft()
+      .scale(yScale1);
 
     barChartXAxis
-      .call(xAxis2);
+      .call(xAxis1);
 
     barChartYAxis
-      .call(yAxis2);
+      .call(yAxis1);
 
     const rects = barChart.selectAll('rect')
       .data(data);
 
+    // enter + update section (merge is new in D3 v4)
     rects
       .enter()
-      .append('rect');
-
-    rects
-      // .attr('class', (d, i) => `other-genre ${keys[i]}`)
+      .append('rect')
+      .merge(rects)
       .attr('x', 0)
-      .attr('y', d => yScale2(d.genre))
-      .attr('width', d => xScale2(d.books))
-      .attr('height', yScale2.bandwidth())
-      .style('fill', d => zScale(d.genre));
+      .attr('y', d => yScale1(d.genre))
+      .attr('width', d => xScale1(d.books))
+      .attr('height', yScale1.bandwidth())
+      .style('fill', d => zScale(d.genre))
+      .on('mouseover', mouseover)
+      .on('mouseout', () => tooltip1.transition().duration(500).style('opacity', 0));
   };
 
   const rowFunction = (d) => {
@@ -189,13 +206,6 @@ require('../sass/challenge.sass');
       .attr('class', 'axis axis--y')
       .call(yAxis);
 
-    // TODO: create a single word for class names (Science Fiction -> science-fiction)
-    // const mainGenres = chart.selectAll('.main-genre')
-    //   .data(data)
-    //   .enter()
-    //   .append('g')
-    //   .attr('class', d => `main-genre ${d.genre}`);
-
     const stackData = d3.stack().keys(keys)(data);
 
     const stackLayout = stackedBarChart
@@ -223,8 +233,7 @@ require('../sass/challenge.sass');
       .on('mouseout', () => tooltip.transition().duration(500).style('opacity', 0));
 
     const legend = stackedBarChart.append('g')
-      .attr('font-family', 'sans-serif')
-      .attr('font-size', 10)
+      .attr('class', 'legend')
       .attr('text-anchor', 'end')
       .selectAll('g')
       .data(keys.slice().reverse())
@@ -244,14 +253,12 @@ require('../sass/challenge.sass');
       .attr('dy', '0.32em')
       .text(d => d)
       .on('mouseover', (d) => {
-        // console.log(`LEGEND ${d}`);
         selectedGenre = d;
         updateBarChart(selectedGenre, data);
       });
 
     stackedBarChart.select('.axis--y').selectAll('text')
       .on('mouseover', (d) => {
-        // console.log(`TICK ${d}`);
         selectedGenre = d;
         updateBarChart(selectedGenre, data);
       });
