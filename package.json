@@ -34,6 +34,7 @@
     "d3": "^4.9.1",
     "d3-scale-chromatic": "^1.1.1",
     "font-awesome-sass-loader": "^2.0.1",
+    "node-correlation": "^1.0.2",
     "topojson": "^3.0.0"
   }
 }
