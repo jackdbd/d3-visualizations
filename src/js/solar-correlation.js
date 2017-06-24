@@ -93,7 +93,8 @@ require('../sass/solar-correlation.sass');
 
   // ------------------------------------------------------------------------ //
 
-  const solarCorrelationViz = createComponent('#solar-correlation', 1200, 800);
+  const margin = { top: 10, right: 50, bottom: 30, left: 50 };
+  const solarCorrelationViz = createComponent('#solar-correlation', 1200, 800, margin);
   const chart = solarCorrelationViz.chart;
   const coords = solarCorrelationViz.coords;
   const header = solarCorrelationViz.header;
@@ -101,12 +102,18 @@ require('../sass/solar-correlation.sass');
   const tooltip = solarCorrelationViz.tooltip;
 
   const zScale = d3.scaleOrdinal(d3.schemeCategory20);
+  // Note: for threshold scales, pick N values for the input domain, and N + 1
+  // colors for the output range. The colors were chosen with color brewer 2.0
+  // http://colorbrewer2.org/#type=diverging&scheme=RdYlGn&n=8
+  const correlationColorScale = d3.scaleThreshold()
+    .domain([-0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75])
+    .range(['#d73027', '#f46d43', '#fdae61', '#fee08b', '#d9ef8b', '#a6d96a', '#66bd63', '#1a9850']);
 
   const safetyMarginPx = 10;
   const furthestOrbitRadiusPx = (d3.min([coords.width, coords.height]) / 2) - safetyMarginPx;
   const nearestOrbitRadiusPx = furthestOrbitRadiusPx / orbitLevels.length;
-  const sunRadiusPx = nearestOrbitRadiusPx * 0.75;
-  const planetRadiusPx = nearestOrbitRadiusPx * 0.5;
+  const sunRadiusPx = nearestOrbitRadiusPx * 0.5;
+  const planetRadiusPx = nearestOrbitRadiusPx * 0.4;
   const moonRadiusPx = nearestOrbitRadiusPx * 0.2;
 
   const orbitScale = d3.scaleLinear()
@@ -115,29 +122,51 @@ require('../sass/solar-correlation.sass');
 
   const angles = d3.range(0, 330 + 1, 30); // degrees
 
-  const getX = (orbit, i, isMoon) => {
-    const iAngle = i % angles.length;
-    const angleDeg = angles[iAngle];
-    const angleRadians = angleDeg * (Math.PI / 180);
+  const getPlanetPosX = (orbit, i) => {
     const xOriginPx = coords.width / 2;
+    const iAngle = i % angles.length;
+    const angleDeg = -angles[iAngle];
+    const angleRadians = angleDeg * (Math.PI / 180);
     const xPx = orbitScale(orbit) * Math.cos(angleRadians);
-    // TODO: use planetRadiusPx for moons
     return xOriginPx + xPx;
   };
 
-  const getY = (orbit, i, isMoon) => {
-    const iAngle = i % angles.length;
-    const angleDeg = angles[iAngle];
-    const angleRadians = angleDeg * (Math.PI / 180);
+  const getPlanetPosY = (orbit, i) => {
     const yOriginPx = coords.height / 2;
+    const iAngle = i % angles.length;
+    const angleDeg = -angles[iAngle];
+    const angleRadians = angleDeg * (Math.PI / 180);
     const yPx = orbitScale(orbit) * Math.sin(angleRadians);
-    // TODO: use planetRadiusPx for moons
+    return yOriginPx + yPx;
+  };
+
+  const getMoonPosX = (orbit, iOrbit, i) => {
+    const xOriginPx = getPlanetPosX(orbit, iOrbit);
+    const iAngle = i % angles.length;
+    const angleDeg = -angles[iAngle];
+    const angleRadians = angleDeg * (Math.PI / 180);
+    const xPx = (planetRadiusPx + moonRadiusPx) * Math.cos(angleRadians);
+    return xOriginPx + xPx;
+  };
+
+  const getMoonPosY = (orbit, iOrbit, i) => {
+    const yOriginPx = getPlanetPosY(orbit, iOrbit);
+    const iAngle = i % angles.length;
+    const angleDeg = -angles[iAngle];
+    const angleRadians = angleDeg * (Math.PI / 180);
+    const yPx = (planetRadiusPx + moonRadiusPx) * Math.sin(angleRadians);
     return yOriginPx + yPx;
   };
 
   const mouseover = (d) => {
     tooltip.transition().duration(200).style('opacity', 0.9);
-    const html = `<span>${d}</span>`;
+    let html = '';
+    if (d.corrWithTarget) {
+      const style = `"color: ${correlationColorScale(d.corrWithTarget)};"`;
+      html = `<span style=${style}>${d.name} (${d3.format('.2f')(d.corrWithTarget)})</span>`;
+    } else {
+      html = `<span>${d.name}</span>`;
+    }
     tooltip.html(html)
       .style('left', `${d3.event.layerX}px`)
       .style('top', `${(d3.event.layerY - 10)}px`);
@@ -154,33 +183,34 @@ require('../sass/solar-correlation.sass');
   const SolarSystemGroup = chart.append('g')
     .attr('class', 'solar-system');
 
-  const sun = SolarSystemGroup.append('g')
-    .datum('sun')
-    .attr('class', 'sun');
-
   const orbitsGroup = SolarSystemGroup.append('g')
     .attr('class', 'orbits');
 
   const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
+    // TODO: add text label to planet and moons
+    // TODO: the position of the planet should depend on: iOrbit, iSystem
     systemSelection.append('circle')
-      .datum(dSystem)
+      .datum(dSystem.planet)
       .attr('class', 'planet')
-      .attr('cx', d => getX(d.planet.orbit, iOrbit))
-      .attr('cy', d => getY(d.planet.orbit, iOrbit))
+      .attr('cx', d => getPlanetPosX(d.orbit, iOrbit))
+      .attr('cy', d => getPlanetPosY(d.orbit, iOrbit))
       .attr('r', planetRadiusPx)
-      .style('fill', d => zScale(d.planet.name))
-      .on('mouseover', d => console.log(`Planet ${d.planet.name} (moons: ${d.moons})`));
+      .style('fill', d => correlationColorScale(d.corrWithTarget))
+      .on('mouseover', mouseover)
+      .on('mouseout', mouseout);
 
+    // TODO: the position of the moon should depend on: iOrbit, iSystem, iMoon
     systemSelection.selectAll('.moon')
       .data(dSystem.moons)
       .enter()
       .append('circle')
       .attr('class', 'moon')
-      .attr('cx', d => getX(d.orbit, iOrbit, false))
-      .attr('cy', d => getY(d.orbit, iOrbit, false))
+      .attr('cx', (d, i) => getMoonPosX(d.orbit, iOrbit, i))
+      .attr('cy', (d, i) => getMoonPosY(d.orbit, iOrbit, i))
       .attr('r', moonRadiusPx)
       .style('fill', d => zScale(d.name))
-      .on('mouseover', d => console.log(`Moon ${d.name}`));
+      .on('mouseover', mouseover)
+      .on('mouseout', mouseout);
   };
 
   const drawOrbit = (dOrbit, iOrbit, orbitSelection) => {
@@ -208,8 +238,13 @@ require('../sass/solar-correlation.sass');
     });
   };
 
-  // TODO: now data are all the orbits (10)
-  const draw = (data) => {
+  const drawSun = (data, iSun) => {
+    const variables = Object.keys(data[0]);
+    const targetVar = variables[iSun];
+    const sun = SolarSystemGroup.append('g')
+      .datum({ name: targetVar })
+      .attr('class', 'sun');
+
     sun
       .append('circle')
       .attr('cx', coords.width / 2)
@@ -217,7 +252,10 @@ require('../sass/solar-correlation.sass');
       .attr('r', sunRadiusPx)
       .on('mouseover', mouseover)
       .on('mouseout', mouseout);
+  };
 
+  // TODO: now data are all the orbits (10)
+  const draw = (data) => {
     const orbits = orbitsGroup.selectAll('g')
       .data(data)
       .enter()
@@ -233,7 +271,8 @@ require('../sass/solar-correlation.sass');
   d3.csv('../data/jedi.csv', (error, data) => {
     if (error) throw error;
     //  iSun = 0; // sun is the output variable. TODO: replace 0 with input
-    const orbits = defineOrbits(data, 0);
+    drawSun(data, 0);
+    const orbits = defineOrbits(data, 0); //  iSun = 0;
     draw(orbits);
   });
 }

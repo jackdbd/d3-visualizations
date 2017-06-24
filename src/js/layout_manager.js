@@ -1,8 +1,8 @@
 // import * as d3 from 'd3';
 const d3 = require('d3');
 
-const computeLayout = (outerWidth, outerHeight) => {
-  const margin = { top: 10, right: 20, bottom: 30, left: 250 };
+const computeLayout = (outerWidth, outerHeight, margin) => {
+  // const margin = { top: 10, right: 20, bottom: 30, left: 250 };
   const width = outerWidth - margin.left - margin.right;
   const height = outerHeight - margin.top - margin.bottom;
   return {
@@ -12,9 +12,10 @@ const computeLayout = (outerWidth, outerHeight) => {
   };
 };
 
-const createComponent = (nodeId, outerWidth = 1200, outerHeight = 600) => {
+const createComponent = (nodeId, outerWidth = 1200, outerHeight = 600,
+  margin = { top: 10, right: 10, bottom: 20, left: 10 }) => {
   const selection = d3.select(nodeId);
-  const { width, height, margin } = computeLayout(outerWidth, outerHeight);
+  const { width, height } = computeLayout(outerWidth, outerHeight, margin);
 
   const container = selection
     .append('div')
