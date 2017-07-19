@@ -1,4 +1,9 @@
+// inefficient import for webpack
 import * as d3 from 'd3';
+// more efficient imports (but it needs to be done in every file)
+// import * as d3Scale from '../../node_modules/d3-scale';
+// import * as d3Selection from '../../node_modules/d3-selection';
+// import * as d3Axis from '../../node_modules/d3-axis';
 
 require('../sass/main.sass');
 require('../sass/barchart.sass');

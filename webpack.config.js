@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
 
@@ -100,6 +101,7 @@ module.exports = {
   devtool: 'cheap-source-map',
 
   plugins: [
+    new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(
       ['dist'],
       { root: __dirname, exclude: ['favicon.ico', 'Transparent.gif'], verbose: true }),
