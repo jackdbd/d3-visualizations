@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
 
@@ -179,6 +180,27 @@ module.exports = {
       filename: '[name].[chunkhash].bundle.js',
       chunks: ['home', 'barchart', 'linechart', 'geomap', 'graph', 'heatmap',
         'scatterplot', 'challenge', 'solar-correlation'],
+    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   mangle: true,
+    //   compress: {
+    //     warnings: false, // Suppress uglification warnings
+    //     pure_getters: true,
+    //     unsafe: true,
+    //     unsafe_comps: true,
+    //     screw_ie8: true,
+    //   },
+    //   output: {
+    //     comments: false,
+    //   },
+    //   exclude: [/\.min\.js$/gi], // skip pre-minified libs
+    // }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.(js|html)$/,
+      threshold: 10240,
+      minRatio: 0.8,
     }),
   ],
 
