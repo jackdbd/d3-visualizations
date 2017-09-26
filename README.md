@@ -1,4 +1,6 @@
 # d3-visualizations
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/jackdbd/d3-visualizations.svg)](https://greenkeeper.io/)
 Visualizations written with D3 v4
 
 Tested on `node v8.1.4`
