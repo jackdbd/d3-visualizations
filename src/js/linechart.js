@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import * as d3Annotation from 'd3-svg-annotation';
 
 require('../sass/main.sass');
 require('../sass/linechart.sass');
@@ -31,6 +32,46 @@ require('../sass/linechart.sass');
       .range([height, 0])
       .domain([0, d3.max(stocks, d => d.close)]);
 
+    const annotationType = d3Annotation.annotationCalloutCircle;
+    const annotations = [
+      {
+        id: 'my-annotation',
+        note: {
+          label: 'Longer text to show text wrapping',
+          title: 'Annotations!'
+        },
+        //can use x, y directly instead of data
+        data: { date: '18-Sep-09', close: 185.02 },
+        dy: 137,
+        dx: 162,
+        subject: { radius: 50, radiusPadding: 5 },
+      },
+      {
+        note: { label: 'Longer text to show text wrapping' },
+        x: 700, // px
+        y: 225, // px
+        dy: 137,
+        dx: 162,
+        subject: { radius: 50, radiusPadding: 10 },
+        type: d3Annotation.annotationCalloutElbow,
+        connector: { end: 'arrow' },
+      }
+    ]
+
+    const makeAnnotations = d3Annotation.annotation()
+      .editMode(false)  // true seems not to work
+      .type(annotationType)
+      //accessors & accessorsInverse not needed if using x,y in annotations JSON
+      .accessors({
+        x: d => xScale(parseTime(d.date)),
+        y: d => yScale(d.close)
+      })
+      .accessorsInverse({
+        date: d => timeFormat(x.invert(d.x)),
+        close: d => y.invert(d.y)
+      })
+      .annotations(annotations);
+
     const line = d3.line()
       .x(d => xScale(parseTime(d.date)))
       .y(d => yScale(d.close));
@@ -47,6 +88,10 @@ require('../sass/linechart.sass');
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    svg.append('g')
+      .attr('class', 'annotation-group')
+      .call(makeAnnotations);
 
     const linepath = svg.append('g');
 

@@ -1494,9 +1494,20 @@ d3-dispatch@1, d3-dispatch@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/d3-dispatch/-/d3-dispatch-1.0.3.tgz#46e1491eaa9b58c358fce5be4e8bed626e7871f8"
 
+d3-dispatch@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/d3-dispatch/-/d3-dispatch-1.0.2.tgz#5b511e79a46a1f89492841c0a8f656687d5daa0a"
+
 d3-drag@1, d3-drag@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/d3-drag/-/d3-drag-1.1.1.tgz#b5155304433b18ba38726b2184d0098e820dc64b"
+  dependencies:
+    d3-dispatch "1"
+    d3-selection "1"
+
+d3-drag@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/d3-drag/-/d3-drag-1.0.2.tgz#d634cc3f7689f99dd03fd7eb1af2945c0f4339ad"
   dependencies:
     d3-dispatch "1"
     d3-selection "1"
@@ -1610,11 +1621,31 @@ d3-selection@1, d3-selection@1.1.0, d3-selection@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/d3-selection/-/d3-selection-1.1.0.tgz#1998684896488f839ca0372123da34f1d318809c"
 
+d3-selection@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/d3-selection/-/d3-selection-1.0.2.tgz#ae662afd4702ac9c5da039b2107a1764fa1c9070"
+
+d3-shape@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.0.4.tgz#145ee100ccbec42f8e3f1996cd05c786f79fe1c6"
+  dependencies:
+    d3-path "1"
+
 d3-shape@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.2.0.tgz#45d01538f064bafd05ea3d6d2cb748fd8c41f777"
   dependencies:
     d3-path "1"
+
+d3-svg-annotation@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/d3-svg-annotation/-/d3-svg-annotation-2.0.0.tgz#c9bd04779305aeb76207a57246e143ca136c7386"
+  dependencies:
+    d3-dispatch "1.0.2"
+    d3-drag "1.0.2"
+    d3-selection "1.0.2"
+    d3-shape "1.0.4"
+    d3-transition "1.0.3"
 
 d3-time-format@2, d3-time-format@2.0.5:
   version "2.0.5"
@@ -1649,6 +1680,17 @@ d3-transition@1, d3-transition@1.1.0:
     d3-ease "1"
     d3-interpolate "1"
     d3-selection "^1.1.0"
+    d3-timer "1"
+
+d3-transition@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/d3-transition/-/d3-transition-1.0.3.tgz#91dc986bddb30973639320a85db72ce4ab1a27bb"
+  dependencies:
+    d3-color "1"
+    d3-dispatch "1"
+    d3-ease "1"
+    d3-interpolate "1"
+    d3-selection "1"
     d3-timer "1"
 
 d3-voronoi@1.1.2:
