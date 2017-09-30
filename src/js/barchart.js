@@ -1,5 +1,6 @@
 // inefficient import for webpack
 import * as d3 from 'd3';
+// import * as d3Tip from 'd3-tip';
 // more efficient imports (but it needs to be done in every file)
 // import * as d3Scale from '../../node_modules/d3-scale';
 // import * as d3Selection from '../../node_modules/d3-selection';
@@ -32,6 +33,38 @@ require('../sass/barchart.sass');
 
     const formatCurrency = d3.format('$,.2f');
 
+    const tooltip = d3.selectAll('.barchart').append('div')
+      .attr('class', 'tooltip')
+      .style('opacity', 0);
+
+    const mouseover = (d) => {
+      tooltip.transition().duration(200).style('opacity', 0.9);
+      const currentDateTime = new Date(d[0]);
+      const year = currentDateTime.getFullYear();
+      const month = currentDateTime.getMonth();
+      const dollars = d[1];
+      const html = `<span>${formatCurrency(dollars)} Billion</span><br>
+        <span>${year} - ${months[month]}</span>`;
+      tooltip.html(html)
+        .style('left', `${d3.event.layerX}px`)
+        .style('top', `${(d3.event.layerY - 28)}px`);
+    };
+
+    // d3-tip doesn't capture mouse events, so it stays in the upper-left corner
+    // It seems d3-tip is not 100% compatible with D3v4
+    // const tip = d3Tip()
+    // .attr('class', 'd3-tip')
+    // .direction('n')
+    // .html((d) => {
+    //   const currentDateTime = new Date(d[0]);
+    //   const year = currentDateTime.getFullYear();
+    //   const month = currentDateTime.getMonth();
+    //   const dollars = d[1];
+    //   const html = `<span>${formatCurrency(dollars)} Billion</span><br>
+    //     <span>${year} - ${months[month]}</span>`;
+    //   return html;
+    // });
+
     const xAxis = d3.axisBottom()
       .scale(xScale)
       .tickValues(d3.timeYears(dates[0], dates[dates.length - 1], 5));
@@ -48,9 +81,7 @@ require('../sass/barchart.sass');
       .append('g')
       .attr('transform', `translate(${margin.left}, ${margin.right})`);
 
-    const tooltip = d3.selectAll('.barchart').append('div')
-      .attr('class', 'tooltip')
-      .style('opacity', 0);
+    // svg.call(tip);
 
     svg.append('g')
       .attr('class', 'axis axis--x')
@@ -77,18 +108,9 @@ require('../sass/barchart.sass');
       .attr('width', (width / dates.length) + 1)
       .attr('y', d => yScale(d[1]))
       .attr('height', d => height - yScale(d[1]))
-      .on('mouseover', (d) => {
-        tooltip.transition().duration(200).style('opacity', 0.9);
-        const currentDateTime = new Date(d[0]);
-        const year = currentDateTime.getFullYear();
-        const month = currentDateTime.getMonth();
-        const dollars = d[1];
-        const html = `<span>${formatCurrency(dollars)} Billion</span><br>
-          <span>${year} - ${months[month]}</span>`;
-        tooltip.html(html)
-          .style('left', `${d3.event.layerX}px`)
-          .style('top', `${(d3.event.layerY - 28)}px`);
-      })
+      // .on('mouseover', tip.show)
+      // .on('mouseout', tip.hide);
+      .on('mouseover', mouseover)
       .on('mouseout', () => tooltip.transition().duration(500).style('opacity', 0));
   };
 
