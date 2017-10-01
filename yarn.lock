@@ -1461,6 +1461,10 @@ d3-array@1, d3-array@1.2.0, d3-array@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.0.tgz#147d269720e174c4057a7f42be8b0f3f2ba53108"
 
+d3-array@^1.0.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.1.tgz#d1ca33de2f6ac31efadb8e050a021d7e2396d5dc"
+
 d3-axis@1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/d3-axis/-/d3-axis-1.0.8.tgz#31a705a0b535e65759de14173a31933137f18efa"
@@ -1555,11 +1559,28 @@ d3-hierarchy@1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/d3-hierarchy/-/d3-hierarchy-1.1.5.tgz#a1c845c42f84a206bcf1c01c01098ea4ddaa7a26"
 
-d3-interpolate@1, d3-interpolate@1.1.5:
+d3-interpolate-path@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/d3-interpolate-path/-/d3-interpolate-path-1.1.1.tgz#5bc07e94a21eeb16e2d15ff703e74080a6bb701c"
+  dependencies:
+    d3-interpolate "^1.1.1"
+
+d3-interpolate@1, d3-interpolate@1.1.5, d3-interpolate@^1.1.1:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/d3-interpolate/-/d3-interpolate-1.1.5.tgz#69e099ff39214716e563c9aec3ea9d1ea4b8a79f"
   dependencies:
     d3-color "1"
+
+d3-line-chunked@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/d3-line-chunked/-/d3-line-chunked-1.4.1.tgz#bf531da86cb75c09cce76c814ca9d9dfc4de5e90"
+  dependencies:
+    d3-array "^1.0.1"
+    d3-interpolate "^1.1.1"
+    d3-interpolate-path "^1.1.0"
+    d3-selection "^1.0.2"
+    d3-shape "^1.0.3"
+    d3-transition "^1.0.2"
 
 d3-path@1, d3-path@1.0.5:
   version "1.0.5"
@@ -1617,7 +1638,7 @@ d3-scale@1.0.6:
     d3-time "1"
     d3-time-format "2"
 
-d3-selection@1, d3-selection@1.1.0, d3-selection@^1.1.0:
+d3-selection@1, d3-selection@1.1.0, d3-selection@^1.0.2, d3-selection@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/d3-selection/-/d3-selection-1.1.0.tgz#1998684896488f839ca0372123da34f1d318809c"
 
@@ -1631,7 +1652,7 @@ d3-shape@1.0.4:
   dependencies:
     d3-path "1"
 
-d3-shape@1.2.0:
+d3-shape@1.2.0, d3-shape@^1.0.3:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.2.0.tgz#45d01538f064bafd05ea3d6d2cb748fd8c41f777"
   dependencies:
@@ -1671,7 +1692,7 @@ d3-tip@^0.7.1:
   dependencies:
     d3 "^4.2"
 
-d3-transition@1, d3-transition@1.1.0:
+d3-transition@1, d3-transition@1.1.0, d3-transition@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/d3-transition/-/d3-transition-1.1.0.tgz#cfc85c74e5239324290546623572990560c3966f"
   dependencies:

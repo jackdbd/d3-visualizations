@@ -1,5 +1,10 @@
-import * as d3 from 'd3';
+import * as d3Base from 'd3';
 import * as d3Annotation from 'd3-svg-annotation';
+// import * as d3LineChunked from 'd3-line-chunked';
+import { lineChunked } from 'd3-line-chunked';
+
+// create a d3 Object that includes the d3 library and additional plugins
+const d3 = Object.assign(d3Base, { lineChunked });
 
 require('../sass/main.sass');
 require('../sass/linechart.sass');
@@ -72,9 +77,32 @@ require('../sass/linechart.sass');
       })
       .annotations(annotations);
 
-    const line = d3.line()
+    // d3 lineChunked plugin configuration
+    // Note 1: we have to be careful when we load data from csv, json, etc
+    // because the datum d MUST be available (otherwise it would not be loaded
+    // and parsed) BUT the value we are looking for must not be defined. This
+    // is tricky, and probably we'll need to parse the data first, replace
+    // missing/invalid data with some specific value (e.g. 'NA') and the use
+    // that value here to define which datum is defined and which one is not.
+    // Note 2: if you want to use transitions, you need to install another
+    //plugin: d3-interpolate-path
+    // if d3-line-chunked was imported with import * d3LineChunked from 'd3-line-chunked'
+    // const lineChunked = d3LineChunked.lineChunked()
+    // if d3-line-chunked was imported with import { lineChunked } from 'd3-line-chunked'
+    const lineChunked = d3.lineChunked()
       .x(d => xScale(parseTime(d.date)))
-      .y(d => yScale(d.close));
+      .y(d => yScale(d.close))
+      // .curve(d3.curveLinear)
+      .defined(d => d.close !== 0)
+      .lineStyles({
+        stroke: '#0bb',
+      });
+
+      // traditional line with .defined()
+      // const line = d3.line()
+      // .x(d => xScale(parseTime(d.date)))
+      // .y(d => yScale(d.close))
+      // .defined(d => d.close !== 0);
 
     const xAxis = d3.axisBottom()
       .scale(xScale);
@@ -117,9 +145,15 @@ require('../sass/linechart.sass');
       .style('text-anchor', 'end')
       .text('Price ($)');
 
-    linepath.append('path')
-      .attr('class', 'line')
-      .attr('d', line(stocks));
+    // traditional line with the d3 API
+    // linepath.append('path')
+    //   .attr('class', 'line')
+    //   .attr('d', line(stocks));
+
+    // line with the d3 lineChunked plugin
+    linepath
+      .datum(stocks)
+      .call(lineChunked);
 
     focus.append('circle')
       .attr('class', 'y')
@@ -162,7 +196,8 @@ require('../sass/linechart.sass');
       .on('mousemove', mousemove);
   };
 
-  d3.tsv('./data/linedata.tsv', rowFunction, (error, data) => {
+  // d3.tsv('./data/linedata.tsv', rowFunction, (error, data) => {
+  d3.tsv('./data/linedata_missing_samples.tsv', rowFunction, (error, data) => {
     if (error) throw error;
     draw(data);
   });

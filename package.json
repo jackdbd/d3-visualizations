@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "d3": "^4.9.1",
+    "d3-line-chunked": "^1.4.1",
     "d3-scale-chromatic": "^1.1.1",
     "d3-svg-annotation": "^2.0.0",
     "d3-tip": "^0.7.1",
