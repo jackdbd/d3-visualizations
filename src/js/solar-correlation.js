@@ -192,6 +192,11 @@ import '../sass/solar-correlation.sass';
     } else {
       html = `<span>${d.name}</span>`;
     }
+
+    d3.selectAll('.orbit__trajectory, .orbit__label')
+      .filter(traj => traj === d.orbit)
+      .classed('orbit--highlighted', true);
+
     tooltip.html(html)
       .style('left', `${event.layerX}px`)
       .style('top', `${(event.layerY - 10)}px`);
@@ -199,6 +204,11 @@ import '../sass/solar-correlation.sass';
 
   const mouseout = (d) => {
     // console.log(`Leaving ${d.name}`);
+
+    d3.selectAll('.orbit__trajectory, .orbit__label')
+      .filter(traj => traj === d.orbit)
+      .classed('orbit--highlighted', false);
+
     tooltip.transition().duration(500).style('opacity', 0);
   };
 
@@ -287,7 +297,7 @@ import '../sass/solar-correlation.sass';
   };
 
   // TODO: now data are all the orbits (10)
-  const draw = (data) => {
+  const drawAllOrbits = (data) => {
     const orbits = orbitsGroup.selectAll('g')
       .data(data)
       .enter()
@@ -308,7 +318,7 @@ import '../sass/solar-correlation.sass';
     // TODO: clean data before drawing anything: remove all NaN values
     const iSun = 0; // sun is the output variable
     drawSun(data, iSun);
-    const orbits = defineOrbits(data, iSun);
-    draw(orbits);
+    const orbitsData = defineOrbits(data, iSun);
+    drawAllOrbits(orbitsData);
   });
 }
