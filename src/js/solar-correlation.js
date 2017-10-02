@@ -215,22 +215,21 @@ require('../sass/solar-correlation.sass');
 
   const drawOrbit = (dOrbit, iOrbit, orbitSelection) => {
     const orbitGroup = orbitSelection
-      .append('g')
-      .attr('class', 'trajectory');
+      .append('g');
 
     orbitGroup.append('circle')
       .datum(dOrbit.orbit)
       .attr('cx', coords.width / 2)
       .attr('cy', coords.height / 2)
       .attr('r', d => orbitScale(d))
-      .style('stroke', d => zScale(d))
-      .on('mouseover', d => console.log(`Orbit ${d}`));
+      .attr('class', 'orbit__trajectory');
+      // .on('mouseover', d => console.log(`Orbit ${d}`));
 
-    const systems = orbitSelection.selectAll('.planetary-system')
+    const systems = orbitSelection.selectAll('.orbit__planetary-system')
       .data(dOrbit.systems)
       .enter()
       .append('g')
-      .attr('class', 'planetary-system');
+      .attr('class', 'orbit__planetary-system');
 
     systems.each((dSystem, iSystem, gSystems) => {
       const systemSelection = d3.select(gSystems[iSystem]);
