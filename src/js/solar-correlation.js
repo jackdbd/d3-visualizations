@@ -197,9 +197,11 @@ import '../sass/solar-correlation.sass';
     .attr('transform', 'translate(20,20)');
 
   const colorLegend = d3.legendColor()
+    .title('Pearson Correlation')
     .shapeWidth(30)
     .cells(orbitLevels.length)
     .orient('vertical')
+    .ascending(true)
     .scale(correlationLinearColorScale);
 
   chart.select('.legendLinear')
