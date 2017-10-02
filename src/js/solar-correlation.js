@@ -1,15 +1,34 @@
-import * as d3 from 'd3';
+import { select, selectAll } from 'd3-selection';
+// d3.event must be a live binding. See: https://stackoverflow.com/a/40048292
+// I have no idea why, but d3Event works fine with planets and moons, but not with the sun
+// import { event as d3Event } from 'd3-selection';
+import { min, extent, range, descending } from 'd3-array';
+import { format } from 'd3-format';
+import { scaleLinear, scaleOrdinal, scaleThreshold, schemeCategory20 } from 'd3-scale';
+import * as request from 'd3-request'; // submodule (contains d3.csv, d3.json)
 
-const correlation = require('node-correlation');
-const createComponent = require('./layout_manager').createComponent;
-
-
-require('../sass/main.sass');
-require('../sass/solar-correlation.sass');
+// create a d3 object with only the subset of functions that we need
+const d3 = Object.assign({},
+  { select,
+    selectAll,
+    min,
+    extent,
+    range,
+    descending,
+    format,
+    scaleLinear,
+    scaleOrdinal,
+    scaleThreshold,
+    schemeCategory20,
+  }, request);
+import * as correlation from 'node-correlation';
+import { createComponent } from './layout_manager';
+import '../sass/main.sass';
+import '../sass/solar-correlation.sass';
 
 {
   const corrToOrbit = d => Math.floor(Math.abs(d) * 10) / 10;
-  // Nearest and furtherst orbits from the sun.
+  // Nearest and furthest orbits from the sun.
   // Because of double-precision floating point issues, I define these variables
   // as integer, and I'll divide by 10 later.
   // https://github.com/d3/d3-array/blob/master/README.md#range
@@ -158,6 +177,8 @@ require('../sass/solar-correlation.sass');
     return yOriginPx + yPx;
   };
 
+  // TODO: when hovering on a planet, all moons should be listed and the orbit
+  // should be highlighted.
   const mouseover = (d) => {
     tooltip.transition().duration(200).style('opacity', 0.9);
     let html = '';
@@ -168,12 +189,12 @@ require('../sass/solar-correlation.sass');
       html = `<span>${d.name}</span>`;
     }
     tooltip.html(html)
-      .style('left', `${d3.event.layerX}px`)
-      .style('top', `${(d3.event.layerY - 10)}px`);
+      .style('left', `${event.layerX}px`)
+      .style('top', `${(event.layerY - 10)}px`);
   };
 
   const mouseout = (d) => {
-    console.log(`Leaving ${d.name}`);
+    // console.log(`Leaving ${d.name}`);
     tooltip.transition().duration(500).style('opacity', 0);
   };
 
