@@ -249,6 +249,14 @@ import '../sass/solar-correlation.sass';
       .attr('r', d => orbitScale(d))
       .attr('class', 'orbit__trajectory');
       // .on('mouseover', d => console.log(`Orbit ${d}`));
+    
+    orbitGroup.append('text')
+      .datum(dOrbit.orbit)
+      .attr('x', coords.width / 2)
+      // .attr('y', getPlanetPosY(dOrbit.orbit, 0))
+      .attr('y', (coords.height / 2) - orbitScale(dOrbit.orbit))
+      .text(dOrbit.orbit)
+      .attr('class', 'orbit__label');
 
     const systems = orbitSelection.selectAll('.orbit__planetary-system')
       .data(dOrbit.systems)
