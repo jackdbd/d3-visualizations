@@ -6,6 +6,7 @@ import { min, extent, range, descending } from 'd3-array';
 import { format } from 'd3-format';
 import { scaleLinear, scaleOrdinal, scaleThreshold, schemeCategory20 } from 'd3-scale';
 import * as request from 'd3-request'; // submodule (contains d3.csv, d3.json)
+import { legendColor } from 'd3-svg-legend';
 
 // create a d3 object with only the subset of functions that we need
 const d3 = Object.assign({},
@@ -20,6 +21,7 @@ const d3 = Object.assign({},
     scaleOrdinal,
     scaleThreshold,
     schemeCategory20,
+    legendColor,
   }, request);
 import * as correlation from 'node-correlation';
 import { createComponent } from './layout_manager';
@@ -132,6 +134,11 @@ import '../sass/solar-correlation.sass';
     .domain([-0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75])
     .range(['#d73027', '#f46d43', '#fdae61', '#fee08b', '#d9ef8b', '#a6d96a', '#66bd63', '#1a9850']);
 
+    // http://colorbrewer2.org/#type=sequential&scheme=Greys&n=4
+    const correlationLinearColorScale = d3.scaleLinear()
+    .domain([nearest / 10, furthest / 10])
+    .range(['#f7f7f7', '#cccccc', '#969696', '#525252']);
+
   const safetyMarginPx = 10;
   const furthestOrbitRadiusPx = (d3.min([coords.width, coords.height]) / 2) - safetyMarginPx;
   const nearestOrbitRadiusPx = furthestOrbitRadiusPx / orbitLevels.length;
@@ -181,8 +188,23 @@ import '../sass/solar-correlation.sass';
     return yOriginPx + yPx;
   };
 
-  // TODO: when hovering on a planet, all moons should be listed and the orbit
-  // should be highlighted.
+  const linearColorScale = d3.scaleLinear()
+    .domain([furthest / 10, nearest / 10])
+    .range(['rgb(46, 73, 123)', 'rgb(71, 187, 94)']);
+
+  chart.append('g')
+    .attr('class', 'legendLinear')
+    .attr('transform', 'translate(20,20)');
+
+  const colorLegend = d3.legendColor()
+    .shapeWidth(30)
+    .cells(orbitLevels.length)
+    .orient('vertical')
+    .scale(correlationLinearColorScale);
+
+  chart.select('.legendLinear')
+    .call(colorLegend);
+
   const mouseover = (d) => {
     tooltip.transition().duration(200).style('opacity', 0.9);
     let html = '';
@@ -193,9 +215,14 @@ import '../sass/solar-correlation.sass';
       html = `<span>${d.name}</span>`;
     }
 
-    d3.selectAll('.orbit__trajectory, .orbit__label')
+    d3.selectAll('.orbit__trajectory')
       .filter(traj => traj === d.orbit)
-      .classed('orbit--highlighted', true);
+      // .attr('orbit--highlighted', true)
+      .style('stroke', 'black');
+
+    d3.selectAll('.orbit__label')
+      .filter(traj => traj === d.orbit)
+      .style('fill', 'black');
 
     tooltip.html(html)
       .style('left', `${event.layerX}px`)
@@ -205,9 +232,13 @@ import '../sass/solar-correlation.sass';
   const mouseout = (d) => {
     // console.log(`Leaving ${d.name}`);
 
-    d3.selectAll('.orbit__trajectory, .orbit__label')
+    d3.selectAll('.orbit__trajectory')
       .filter(traj => traj === d.orbit)
-      .classed('orbit--highlighted', false);
+      .style('stroke', correlationLinearColorScale(d.orbit));
+    
+    d3.selectAll('.orbit__label')
+      .filter(traj => traj === d.orbit)
+      .style('fill', '#a9a9a9');
 
     tooltip.transition().duration(500).style('opacity', 0);
   };
@@ -257,13 +288,13 @@ import '../sass/solar-correlation.sass';
       .attr('cx', coords.width / 2)
       .attr('cy', coords.height / 2)
       .attr('r', d => orbitScale(d))
-      .attr('class', 'orbit__trajectory');
+      .attr('class', 'orbit__trajectory')
+      .style('stroke', correlationLinearColorScale(dOrbit.orbit));
       // .on('mouseover', d => console.log(`Orbit ${d}`));
     
     orbitGroup.append('text')
       .datum(dOrbit.orbit)
       .attr('x', coords.width / 2)
-      // .attr('y', getPlanetPosY(dOrbit.orbit, 0))
       .attr('y', (coords.height / 2) - orbitScale(dOrbit.orbit))
       .text(dOrbit.orbit)
       .attr('class', 'orbit__label');
