@@ -79,14 +79,18 @@ import '../sass/solar-correlation.sass';
 
   const defineOrbits = (data, iSun) => {
     // The Sun is not returned. I don't think it's needed. I could change my mind though...
-    const variables = Object.keys(data[0]);
+    const variables = data.columns;
     const targetVar = variables[iSun];
     const targetValues = data.map(d => +d[targetVar]); // string -> number
     const inputVars = variables.filter(v => v !== targetVar);
 
     const objects = inputVars.map((variable) => {
-      const values = data.map(d => +d[variable]); // string -> number
-      const corr = correlation.calc(values, targetValues);
+      // string -> number and filter out non-numeric variables
+      const values = data.map(d => +d[variable]).filter(d => !Number.isNaN(d));
+      const valuesCleaned = values.filter(d => !isNaN(d));
+      const targetValuesCleaned = targetValues.filter(d => !isNaN(d));
+      const length = d3.min([valuesCleaned.length, targetValuesCleaned.length]);
+      const corr = correlation.calc(valuesCleaned.slice(0, length), targetValuesCleaned.slice(0, length));
 
       const obj = {
         values,
@@ -259,7 +263,7 @@ import '../sass/solar-correlation.sass';
   };
 
   const drawSun = (data, iSun) => {
-    const variables = Object.keys(data[0]);
+    const variables = data.columns;
     const targetVar = variables[iSun];
     const sun = SolarSystemGroup.append('g')
       .datum({ name: targetVar })
@@ -288,11 +292,15 @@ import '../sass/solar-correlation.sass';
     });
   };
 
+  // jedi.csv found here: https://github.com/Zapf-Consulting/solar-correlation-map/blob/master/jedi.csv
   d3.csv('../data/jedi.csv', (error, data) => {
+  // mpg.csv found here: https://gist.github.com/omarish/5687264
+  // d3.csv('../data/mpg.csv', (error, data) => {
     if (error) throw error;
-    //  iSun = 0; // sun is the output variable. TODO: replace 0 with input
-    drawSun(data, 0);
-    const orbits = defineOrbits(data, 0); //  iSun = 0;
+    // TODO: clean data before drawing anything: remove all NaN values
+    const iSun = 0; // sun is the output variable
+    drawSun(data, iSun);
+    const orbits = defineOrbits(data, iSun);
     draw(orbits);
   });
 }
