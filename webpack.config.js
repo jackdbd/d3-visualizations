@@ -21,6 +21,7 @@ module.exports = {
     scatterplot: path.join(__dirname, 'src', 'js', 'scatterplot.js'),
     challenge: path.join(__dirname, 'src', 'js', 'challenge.js'),
     'solar-correlation': path.join(__dirname, 'src', 'js', 'solar-correlation.js'),
+    'horizon-chart': path.join(__dirname, 'src', 'js', 'horizon-chart.js'),
   },
 
   output: {
@@ -174,6 +175,12 @@ module.exports = {
       hash: true,
       filename: 'solar-correlation.html',
       chunks: ['commons', 'font-awesome', 'solar-correlation'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'templates', 'horizon-chart.html'),
+      hash: true,
+      filename: 'horizon-chart.html',
+      chunks: ['commons', 'font-awesome', 'horizon-chart'],
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'commons',
