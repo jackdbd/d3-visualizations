@@ -42,19 +42,16 @@ import '../sass/solar-correlation.sass';
 
   // ------------------------------------------------------------------------ //
 
-  const definePlanetarySystems = (dOrbit, iOrbit, bodies, absInterCorrThreshold) => {
+    const definePlanetarySystems = (bodies, absInterCorrThreshold, angleGen) => {
     const planetarySystems = [];
     const tmpBodies = bodies.slice(0); // clone bodies
 
     while (tmpBodies.length > 0) {
       // sort in-place
       tmpBodies.sort((a, b) => d3.descending(a.absCorrWithTarget, b.absCorrWithTarget));
-      const planetarySystem = {
-        planet: {},
-        moons: [],
-      };
       const indexes = [0];
       const planet = tmpBodies[0];
+      const radiansFromSun = angleGen.next().value;
       const otherBodies = tmpBodies.filter(ob => ob.name !== planet.name);
       const moons = [];
       otherBodies.forEach((ob, i) => {
@@ -70,8 +67,7 @@ import '../sass/solar-correlation.sass';
           indexes.push(iMoon);
         }
       });
-      Object.assign(planetarySystem.planet, planet);
-      Object.assign(planetarySystem.moons, moons);
+      const planetarySystem = Object.assign({}, { planet, moons, radiansFromSun });
       const decreasingIndexes = indexes.reverse();
       decreasingIndexes.forEach(index => tmpBodies.splice(index, 1));
       planetarySystems.push(planetarySystem);
@@ -80,14 +76,31 @@ import '../sass/solar-correlation.sass';
   };
 
   const defineOrbits = (data, iSun) => {
-    // The Sun is not returned. I don't think it's needed. I could change my mind though...
     const variables = data.columns;
     const targetVar = variables[iSun];
     const targetValues = data.map(d => +d[targetVar]); // string -> number
     const inputVars = variables.filter(v => v !== targetVar);
 
+    // The placement of planetary systems on orbits depends on the planetary
+    // systems on the same orbit AND the ones on previous orbits. A convenient
+    // way to keep track of the angle with the sun is a generator.
+    const degreesFromSun = d3.range(0, -360, -30);
+    const radiansFromSun = degreesFromSun.map(d => d * (Math.PI / 180))
+    function* angleGenerator() {
+      let index = 0;
+      while(true) {
+        yield radiansFromSun[index];
+        index = (index + 1) % radiansFromSun.length;
+      }
+    }
+    const angleGen = angleGenerator(); // spits out an angle in radians
+
+    // place input variables in orbits. After this function we still don't know
+    // if a variable is a planet or a moon.
     const objects = inputVars.map((variable) => {
       // string -> number and filter out non-numeric variables
+      // TODO: data cleaning should be done by the code which invokes this
+      // visualization because it a case-by-case thing.
       const values = data.map(d => +d[variable]).filter(d => !Number.isNaN(d));
       const valuesCleaned = values.filter(d => !isNaN(d));
       const targetValuesCleaned = targetValues.filter(d => !isNaN(d));
@@ -104,9 +117,11 @@ import '../sass/solar-correlation.sass';
       return obj;
     });
 
+    // define the planetary systems for each orbit. Note that a single orbit can
+    // contain 0, 1, or more planetary systems.
     const orbits = orbitLevels.map((dOrbit, iOrbit) => {
       const bodies = objects.filter(obj => obj.orbit === dOrbit);
-      const planetarySystemsOnOrbit = definePlanetarySystems(dOrbit, iOrbit, bodies, 0.5);
+      const planetarySystemsOnOrbit = definePlanetarySystems(bodies, 0.5, angleGen);
       const obj = {
         orbit: dOrbit,
         systems: planetarySystemsOnOrbit,
@@ -150,41 +165,27 @@ import '../sass/solar-correlation.sass';
     .domain(d3.extent(orbitLevels))
     .range([furthestOrbitRadiusPx, nearestOrbitRadiusPx]);
 
-  const angles = d3.range(0, 330 + 1, 30); // degrees
-
-  const getPlanetPosX = (orbit, i) => {
+  const getPlanetPosX = (dOrbit, radiansFromSun) => {
     const xOriginPx = coords.width / 2;
-    const iAngle = i % angles.length;
-    const angleDeg = -angles[iAngle];
-    const angleRadians = angleDeg * (Math.PI / 180);
-    const xPx = orbitScale(orbit) * Math.cos(angleRadians);
+    const xPx = orbitScale(dOrbit) * Math.cos(radiansFromSun);
     return xOriginPx + xPx;
   };
 
-  const getPlanetPosY = (orbit, i) => {
+  const getPlanetPosY = (dOrbit, radiansFromSun) => {
     const yOriginPx = coords.height / 2;
-    const iAngle = i % angles.length;
-    const angleDeg = -angles[iAngle];
-    const angleRadians = angleDeg * (Math.PI / 180);
-    const yPx = orbitScale(orbit) * Math.sin(angleRadians);
+    const yPx = orbitScale(dOrbit) * Math.sin(radiansFromSun);
     return yOriginPx + yPx;
   };
 
-  const getMoonPosX = (orbit, iOrbit, i) => {
-    const xOriginPx = getPlanetPosX(orbit, iOrbit);
-    const iAngle = i % angles.length;
-    const angleDeg = -angles[iAngle];
-    const angleRadians = angleDeg * (Math.PI / 180);
-    const xPx = (planetRadiusPx + moonRadiusPx) * Math.cos(angleRadians);
+  const getMoonPosX = (dOrbit, radiansFromSun, radiansFromPlanet) => {
+    const xOriginPx = getPlanetPosX(dOrbit, radiansFromSun);
+    const xPx = (planetRadiusPx + moonRadiusPx) * Math.cos(radiansFromPlanet);
     return xOriginPx + xPx;
   };
 
-  const getMoonPosY = (orbit, iOrbit, i) => {
-    const yOriginPx = getPlanetPosY(orbit, iOrbit);
-    const iAngle = i % angles.length;
-    const angleDeg = -angles[iAngle];
-    const angleRadians = angleDeg * (Math.PI / 180);
-    const yPx = (planetRadiusPx + moonRadiusPx) * Math.sin(angleRadians);
+  const getMoonPosY = (dOrbit, radiansFromSun, radiansFromPlanet) => {
+    const yOriginPx = getPlanetPosY(dOrbit, radiansFromSun);
+    const yPx = (planetRadiusPx + moonRadiusPx) * Math.sin(radiansFromPlanet);
     return yOriginPx + yPx;
   };
 
@@ -256,25 +257,27 @@ import '../sass/solar-correlation.sass';
 
   const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
     // TODO: add text label to planet and moons
-    // TODO: the position of the planet should depend on: iOrbit, iSystem
     systemSelection.append('circle')
       .datum(dSystem.planet)
       .attr('class', 'planet')
-      .attr('cx', d => getPlanetPosX(d.orbit, iOrbit))
-      .attr('cy', d => getPlanetPosY(d.orbit, iOrbit))
+      .attr('cx', d => getPlanetPosX(d.orbit, dSystem.radiansFromSun))
+      .attr('cy', d => getPlanetPosY(d.orbit, dSystem.radiansFromSun))
       .attr('r', planetRadiusPx)
       .style('fill', d => correlationColorScale(d.corrWithTarget))
       .on('mouseover', mouseover)
       .on('mouseout', mouseout);
 
-    // TODO: the position of the moon should depend on: iOrbit, iSystem, iMoon
+    // No need to use a generator to place the moons. The position of a moon in
+    // a planetary system does NOT depend on other planetary systems.
+    const degreesFromPlanet = d3.range(0, -360, -60);
+    const radiansFromPlanet = degreesFromPlanet.map(d => d * (Math.PI / 180));
     systemSelection.selectAll('.moon')
       .data(dSystem.moons)
       .enter()
       .append('circle')
       .attr('class', 'moon')
-      .attr('cx', (d, i) => getMoonPosX(d.orbit, iOrbit, i))
-      .attr('cy', (d, i) => getMoonPosY(d.orbit, iOrbit, i))
+      .attr('cx', (d, i) => getMoonPosX(d.orbit, dSystem.radiansFromSun, radiansFromPlanet[i]))
+      .attr('cy', (d, i) => getMoonPosY(d.orbit, dSystem.radiansFromSun, radiansFromPlanet[i]))
       .attr('r', moonRadiusPx)
       .style('fill', d => zScale(d.name))
       .on('mouseover', mouseover)
@@ -329,7 +332,6 @@ import '../sass/solar-correlation.sass';
       .on('mouseout', mouseout);
   };
 
-  // TODO: now data are all the orbits (10)
   const drawAllOrbits = (data) => {
     const orbits = orbitsGroup.selectAll('g')
       .data(data)
