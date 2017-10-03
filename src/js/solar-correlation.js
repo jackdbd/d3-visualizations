@@ -98,9 +98,6 @@ import '../sass/solar-correlation.sass';
     // place input variables in orbits. After this function we still don't know
     // if a variable is a planet or a moon.
     const objects = inputVars.map((variable) => {
-      // string -> number and filter out non-numeric variables
-      // TODO: data cleaning should be done by the code which invokes this
-      // visualization because it a case-by-case thing.
       const values = data.map(d => +d[variable]).filter(d => !Number.isNaN(d));
       const valuesCleaned = values.filter(d => !isNaN(d));
       const targetValuesCleaned = targetValues.filter(d => !isNaN(d));
@@ -256,7 +253,6 @@ import '../sass/solar-correlation.sass';
     .attr('class', 'orbits');
 
   const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
-    // TODO: add text label to planet and moons
     systemSelection.append('circle')
       .datum(dSystem.planet)
       .attr('class', 'planet')
@@ -266,6 +262,11 @@ import '../sass/solar-correlation.sass';
       .style('fill', d => correlationColorScale(d.corrWithTarget))
       .on('mouseover', mouseover)
       .on('mouseout', mouseout);
+
+    const thisText = systemSelection.append('text')
+      .datum(dSystem)
+      .attr('x', getPlanetPosX(dSystem.planet.orbit, dSystem.radiansFromSun))
+      .attr('y', getPlanetPosY(dSystem.planet.orbit, dSystem.radiansFromSun));
 
     // No need to use a generator to place the moons. The position of a moon in
     // a planetary system does NOT depend on other planetary systems.
@@ -282,6 +283,17 @@ import '../sass/solar-correlation.sass';
       .style('fill', d => zScale(d.name))
       .on('mouseover', mouseover)
       .on('mouseout', mouseout);
+
+    // It seems that the spread operator is supported out of the box, but not
+    // the rest operator. Maybe I should include it in the .babelrc as a plugin.
+    const bodies = [dSystem.planet, ...dSystem.moons];
+    thisText.selectAll('tspan')
+      .data(bodies)
+      .enter()
+      .append('tspan')
+      .attr('x', getPlanetPosX(dSystem.planet.orbit, dSystem.radiansFromSun))
+      .attr('dy', (d, i) => i === 0 ? '0' : '1em')
+      .text((d, i) => i === 0 ? `${d.name}` : `- ${d.name}`)
   };
 
   const drawOrbit = (dOrbit, iOrbit, orbitSelection) => {
@@ -350,7 +362,6 @@ import '../sass/solar-correlation.sass';
   // mpg.csv found here: https://gist.github.com/omarish/5687264
   // d3.csv('../data/mpg.csv', (error, data) => {
     if (error) throw error;
-    // TODO: clean data before drawing anything: remove all NaN values
     const iSun = 0; // sun is the output variable
     drawSun(data, iSun);
     const orbitsData = defineOrbits(data, iSun);
