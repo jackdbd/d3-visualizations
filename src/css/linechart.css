@@ -1,0 +1,11 @@
+@import "main.css";
+
+.line {
+  fill: none;
+  stroke: var(--colors-line);
+  stroke-width: 3px;
+}
+
+.circle {
+  opacity: 0.8;
+}

@@ -1,0 +1,10 @@
+@import "main.css";
+
+/* https://css-tricks.com/hover-on-everything-but/ */
+.bikers:hover > circle {
+  opacity: 0.3;
+}
+
+.bikers:hover > circle:hover {
+  opacity: 1;
+}

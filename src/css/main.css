@@ -1,0 +1,15 @@
+@import "_colors.css";
+@import "_geometry.css";
+@import "_typography.css";
+
+li {
+  font-family: var(--typography-font-family-primary);
+}
+
+.footer {
+  background-color: var(--primary-bg-color);
+  color: var(--secondary-color);
+  font-family: var(--typography-font-family-secondary);
+  font-size: var(--font-size);
+  padding: 20px;
+}

@@ -1,0 +1,23 @@
+@import "main.css";
+
+.state {
+  opacity: 0.5;
+}
+
+.state:hover {
+  opacity: 0;
+}
+
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+/* https://css-tricks.com/hover-on-everything-but/ */
+.impacts:hover > .meteorite-strike {
+  opacity: 0.3;
+}
+
+.impacts:hover > .meteorite-strike:hover {
+  opacity: 1;
+}

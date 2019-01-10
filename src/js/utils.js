@@ -1,8 +1,24 @@
-// import * as d3 from 'd3';
-const d3 = require('d3');
+import { select, selectAll } from 'd3-selection';
 
-const computeLayout = (outerWidth, outerHeight, margin) => {
-  // const margin = { top: 10, right: 20, bottom: 30, left: 250 };
+const defaultMargin = {
+  bottom: 30,
+  left: 50,
+  right: 50,
+  top: 10,
+};
+
+const displayError = (selector, url, error) => {
+  const div = selectAll(selector).append('div');
+  div.append('h1').text(error.toString());
+  const text = `There was an error fetching the data at ${url}`;
+  div.append('p').text(text);
+};
+
+const computeLayout = (
+  outerWidth = 444,
+  outerHeight = 555,
+  margin = defaultMargin
+) => {
   const width = outerWidth - margin.left - margin.right;
   const height = outerHeight - margin.top - margin.bottom;
   return {
@@ -12,9 +28,13 @@ const computeLayout = (outerWidth, outerHeight, margin) => {
   };
 };
 
-const createComponent = (nodeId, outerWidth = 1200, outerHeight = 600,
-  margin = { top: 10, right: 10, bottom: 20, left: 10 }) => {
-  const selection = d3.select(nodeId);
+const createComponent = (
+  nodeId,
+  outerWidth = 1200,
+  outerHeight = 600,
+  margin = defaultMargin
+) => {
+  const selection = select(nodeId);
   const { width, height } = computeLayout(outerWidth, outerHeight, margin);
 
   const container = selection
@@ -23,10 +43,10 @@ const createComponent = (nodeId, outerWidth = 1200, outerHeight = 600,
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom);
 
-  const header = container.append('header')
-    .attr('class', 'header');
+  const header = container.append('header').attr('class', 'header');
 
-  header.append('h1')
+  header
+    .append('h1')
     .style('text-align', 'center')
     .text('This is the header');
 
@@ -37,18 +57,17 @@ const createComponent = (nodeId, outerWidth = 1200, outerHeight = 600,
     .append('g')
     .attr('transform', `translate(${margin.left}, ${margin.right})`);
 
-  const footer = container.append('footer')
-    .attr('class', 'footer');
+  const footer = container.append('footer').attr('class', 'footer');
 
-  footer.append('p')
-    .text('This is the footer');
+  footer.append('p').text('This is the footer');
 
   const coords = {
     width,
     height,
   };
 
-  const tooltip = container.append('div')
+  const tooltip = container
+    .append('div')
     .attr('class', 'tooltip')
     .style('opacity', 0);
 
@@ -62,6 +81,4 @@ const createComponent = (nodeId, outerWidth = 1200, outerHeight = 600,
   return viz;
 };
 
-module.exports = {
-  createComponent,
-};
+export { createComponent, displayError };

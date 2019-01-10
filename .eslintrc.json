@@ -1,16 +1,11 @@
 {
-    "extends": "airbnb-base",
-    "plugins": [
-        "import"
-    ],
-    "env": {
-      // so ESlint does not complain about window and document being undefined
-      "browser": true,
-      // so ESlint does not complain about $ and jQuery being undefined
-      "jquery": true
-    },
-    "rules": {
-        // consider console.log a warning, not an error
-        "no-console": 1
-    }
+  "extends": "airbnb-base",
+  "plugins": ["import"],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-console": 1,
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+  }
 }

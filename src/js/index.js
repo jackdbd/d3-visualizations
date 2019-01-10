@@ -1,5 +1,8 @@
-import * as d3 from 'd3';
+import { select } from 'd3-selection';
+import { version } from 'd3/package.json';
+import '../css/main.css';
 
-require('../sass/main.sass');
-
-d3.select('footer').insert('p', ':last-child').html(`D3 version: ${d3.version}`);
+select('footer')
+  .insert('p', ':last-child')
+  .classed('footer', true)
+  .html(`D3 version: ${version}`);

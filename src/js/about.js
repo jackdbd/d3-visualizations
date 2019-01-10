@@ -1,3 +1,5 @@
-require('../sass/about.sass');
+import { extent } from 'd3-array';
+import { feature } from 'topojson';
 
-$('ul').append('<li>Item added by jQuery (external dependency loaded via a CDN)</li>');
+// eslint-disable-next-line
+console.log('Testing...', extent([1, 2, 3, 4, 5]), feature);
