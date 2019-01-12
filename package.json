@@ -9,7 +9,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "yarn lint && yarn format && webpack --config webpack.prod.js --progress",
+    "build": "yarn lint && yarn format && tsc && webpack --config webpack.prod.js --progress",
     "ci": "yarn test:unit && yarn coverage",
     "clean": "rimraf build",
     "coverage": "codecov",
@@ -57,6 +57,7 @@
     "topojson": "^3.0.0"
   },
   "devDependencies": {
+    "@types/d3-array": "^1.2.4",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",

@@ -140,7 +140,7 @@ const config = {
   devtool: 'source-map',
   entry: {
     // "font-awesome": "./font-awesome.config.js",
-    about: path.join(__dirname, 'src', 'js', 'about.js'),
+    about: path.join(__dirname, 'src', 'js', 'about.ts'),
     barchart: path.join(__dirname, 'src', 'js', 'barchart.js'),
     geomap: path.join(__dirname, 'src', 'js', 'geomap.js'),
     home: path.join(__dirname, 'src', 'js', 'index.js'),
