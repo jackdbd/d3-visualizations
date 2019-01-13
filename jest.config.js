@@ -1,5 +1,5 @@
 const config = {
-  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
+  collectCoverageFrom: ['src/js/*.{js,ts}'],
   moduleFileExtensions: [
     'web.js',
     'js',
@@ -16,7 +16,7 @@ const config = {
     '^.+\\.module\\.(css)$': 'identity-obj-proxy',
   },
   modulePathIgnorePatterns: ['/build/', '/node_modules/'],
-  setupTestFrameworkScriptFile: '<rootDir>/setupJest.js',
+  setupTestFrameworkScriptFile: '<rootDir>/src/setupJest.js',
   testEnvironment: 'jsdom',
   testRegex: '/__tests__/.*\\.(js|ts)$',
   testURL: 'http://localhost',

@@ -1,4 +1,4 @@
-import scatterplot from '../src/js/scatterplot';
+import scatterplot from '../js/scatterplot';
 
 const dataUrl =
   'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json';
