@@ -1,12 +1,19 @@
 # d3-visualizations
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/jackdbd/d3-visualizations.svg)](https://greenkeeper.io/)
-Visualizations written with D3 v4
+[![Build Status](https://travis-ci.org/jackdbd/d3-visualizations.svg?branch=master)](https://travis-ci.org/jackdbd/d3-visualizations) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovateapp.com/) [![Code style prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-Tested on `node v8.1.4`
+A few visualizations with D3 v5.
 
-To optimize webpack bundles, see:
+## :warning: Under contruction :construction:
 
-- [Optimising your application bundle size with webpack](https://hackernoon.com/optimising-your-application-bundle-size-with-webpack-e85b00bab579)
-- [A dirty Webpack trick that reduced our gzipped bundle size by 55KB](https://swizec.com/blog/dirty-hack-took-30percent-off-webpack-size/swizec/7657)
-- [Webpack wiki: optimization](https://github.com/webpack/docs/wiki/optimization)
+## Installation
+
+```shell
+yarn
+```
+
+## Tests
+
+```shell
+yarn test
+```
