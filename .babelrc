@@ -1,3 +1,10 @@
 {
-  "plugins": ["universal-import"]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry"
+      }
+    ]
+  ]
 }

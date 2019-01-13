@@ -108,7 +108,7 @@ import '../css/scatterplot.css';
 
 // -------------------------------------------------------------------------- //
 
-const draw = (data) => {
+const draw = (selector, data) => {
   const margin = {
     top: 20,
     right: 20,
@@ -161,7 +161,7 @@ const draw = (data) => {
   const yAxis = d3.axisLeft().scale(yScale);
 
   const svg = d3
-    .selectAll('.scatterplot')
+    .selectAll(selector)
     .append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
@@ -169,7 +169,7 @@ const draw = (data) => {
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
   const tooltip = d3
-    .selectAll('.scatterplot')
+    .selectAll(selector)
     .append('div')
     .attr('class', 'tooltip')
     .style('opacity', 0);
@@ -243,7 +243,7 @@ const draw = (data) => {
       .style('opacity', 0));
 };
 
-const fn = async (url) => {
+export const fn = async (selector, url) => {
   let data;
   let error;
   try {
@@ -252,12 +252,16 @@ const fn = async (url) => {
     error = err;
   }
   if (!data) {
-    displayError('.scatterplot', url, error);
+    displayError(selector, url, error);
   } else {
-    draw(data);
+    draw(selector, data);
   }
 };
 
+const selectorId = '#scatterplot';
 fn(
+  selectorId,
   'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json',
 );
+
+export default fn;
