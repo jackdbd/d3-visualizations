@@ -63,7 +63,7 @@ const draw = (selector, data) => {
 
   const h3 = d3.selectAll(selector).append('h3');
   h3.text(
-    `Variance of the global temperature across ${data.years} years.`
+    `Variance of the global temperature across ${data.years} years.`,
   ).style('text-align', 'center');
 
   const svg = d3
@@ -80,9 +80,8 @@ const draw = (selector, data) => {
     .attr('class', 'tooltip')
     .style('opacity', 0);
 
-  const mouseover = d => {
-    const variance =
-      d.variance < 0 ? `${d.variance.toFixed(3)}` : `+${d.variance.toFixed(3)}`;
+  const mouseover = (d) => {
+    const variance = d.variance < 0 ? `${d.variance.toFixed(3)}` : `+${d.variance.toFixed(3)}`;
     tooltip
       .transition()
       .duration(200)
@@ -115,12 +114,10 @@ const draw = (selector, data) => {
     .attr('height', barHeight)
     .style('fill', d => zScale(d.variance))
     .on('mouseover', mouseover)
-    .on('mouseout', () =>
-      tooltip
-        .transition()
-        .duration(500)
-        .style('opacity', 0)
-    );
+    .on('mouseout', () => tooltip
+      .transition()
+      .duration(500)
+      .style('opacity', 0));
 
   const monthLabels = svg.append('g').attr('class', 'monthLabels');
 
@@ -140,12 +137,11 @@ const draw = (selector, data) => {
 };
 
 const selector = '#heatmap';
-const temperaturesUrl =
-  'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json';
+const temperaturesUrl = 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json';
 
 d3.json(temperaturesUrl)
   .catch(error => displayError(selector, temperaturesUrl, error))
-  .then(data => {
+  .then((data) => {
     const years = 100;
     const reducedDataset = {
       years,

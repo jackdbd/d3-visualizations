@@ -26,7 +26,7 @@ const draw = (error, img, graph) => {
     .attr('class', 'tooltip')
     .style('opacity', 0);
 
-  const dragstarted = d => {
+  const dragstarted = (d) => {
     tooltip
       .transition()
       .duration(200)
@@ -47,7 +47,7 @@ const draw = (error, img, graph) => {
     fy: d3.event.y,
   });
 
-  const dragended = d => {
+  const dragended = (d) => {
     tooltip.style('visibility', 'visible');
     if (!d3.event.active) {
       simulation.alphaTarget(0);
@@ -91,7 +91,7 @@ const draw = (error, img, graph) => {
     // .attr('src', './Transparent.gif') // from /dist (it's not deleted by CleanWebpackPlugin)
     .attr('class', d => `flag flag-${d.code}`)
     .attr('alt', d => d.country)
-    .on('mouseover', d => {
+    .on('mouseover', (d) => {
       // the flags have an absolute position, so we need to use d3.event.pageY
       const coordX = d3.event.pageX;
       const coordY = d3.event.pageY;
@@ -104,18 +104,16 @@ const draw = (error, img, graph) => {
         .style('left', `${coordX}px`)
         .style('top', `${coordY}px`);
     })
-    .on('mouseout', () =>
-      tooltip
-        .transition()
-        .duration(500)
-        .style('opacity', 0)
-    )
+    .on('mouseout', () => tooltip
+      .transition()
+      .duration(500)
+      .style('opacity', 0))
     .call(
       d3
         .drag()
         .on('start', dragstarted)
         .on('drag', dragged)
-        .on('end', dragended)
+        .on('end', dragended),
     );
 
   const ticked = () => {
@@ -144,10 +142,8 @@ d3.imageload = (src, callback) => {
   image.onerror = callback;
 };
 
-const blankImageUrl =
-  'http://res.cloudinary.com/dbntyqfmz/image/upload/v1497704295/Transparent_k52dbx.gif';
-const countriesUrl =
-  'https://raw.githubusercontent.com/DealPete/forceDirected/master/countries.json';
+const blankImageUrl = 'http://res.cloudinary.com/dbntyqfmz/image/upload/v1497704295/Transparent_k52dbx.gif';
+const countriesUrl = 'https://raw.githubusercontent.com/DealPete/forceDirected/master/countries.json';
 
 const urls = [blankImageUrl, countriesUrl];
 const promise = Promise.all(
@@ -159,13 +155,13 @@ const promise = Promise.all(
       fn = url => d3.json(url);
     }
     return fn;
-  })
+  }),
 );
 
 promise
-  .catch(error => {
+  .catch((error) => {
     displayError('#flags', `${blankImageUrl} or ${countriesUrl}`, error);
   })
-  .then(datasets => {
+  .then((datasets) => {
     draw(...datasets);
   });

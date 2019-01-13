@@ -2,7 +2,9 @@ import { select, selectAll } from 'd3-selection';
 // d3.event must be a live binding. See: https://stackoverflow.com/a/40048292
 // I have no idea why, but d3Event works fine with planets and moons, but not with the sun
 // import { event as d3Event } from 'd3-selection';
-import { min, extent, range, descending } from 'd3-array';
+import {
+  min, extent, range, descending,
+} from 'd3-array';
 import { format } from 'd3-format';
 import { scaleLinear, scaleOrdinal, scaleThreshold } from 'd3-scale';
 import { schemeCategory10 } from 'd3-scale-chromatic';
@@ -32,7 +34,7 @@ const d3 = Object.assign(
     schemeCategory10,
     select,
     selectAll,
-  }
+  },
 );
 
 const definePlanetarySystems = (bodies, absInterCorrThreshold, angleGen) => {
@@ -41,9 +43,7 @@ const definePlanetarySystems = (bodies, absInterCorrThreshold, angleGen) => {
 
   while (tmpBodies.length > 0) {
     // sort in-place
-    tmpBodies.sort((a, b) =>
-      d3.descending(a.absCorrWithTarget, b.absCorrWithTarget)
-    );
+    tmpBodies.sort((a, b) => d3.descending(a.absCorrWithTarget, b.absCorrWithTarget));
     const indexes = [0];
     const planet = tmpBodies[0];
     const radiansFromSun = angleGen.next().value;
@@ -66,7 +66,7 @@ const definePlanetarySystems = (bodies, absInterCorrThreshold, angleGen) => {
     });
     const planetarySystem = Object.assign(
       {},
-      { planet, moons, radiansFromSun }
+      { planet, moons, radiansFromSun },
     );
     const decreasingIndexes = indexes.reverse();
     decreasingIndexes.forEach(index => tmpBodies.splice(index, 1));
@@ -109,7 +109,7 @@ const defineOrbits = (data, iSun) => {
 
   // place input variables in orbits. After this function we still don't know
   // if a variable is a planet or a moon.
-  const objects = inputVars.map(variable => {
+  const objects = inputVars.map((variable) => {
     const values = data.map(d => +d[variable]).filter(d => !Number.isNaN(d));
     // eslint-disable-next-line no-restricted-globals
     const valuesCleaned = values.filter(d => !isNaN(d));
@@ -118,7 +118,7 @@ const defineOrbits = (data, iSun) => {
     const length = d3.min([valuesCleaned.length, targetValuesCleaned.length]);
     const corr = correlation.calc(
       valuesCleaned.slice(0, length),
-      targetValuesCleaned.slice(0, length)
+      targetValuesCleaned.slice(0, length),
     );
 
     const obj = {
@@ -133,12 +133,12 @@ const defineOrbits = (data, iSun) => {
 
   // define the planetary systems for each orbit. Note that a single orbit can
   // contain 0, 1, or more planetary systems.
-  const orbits = orbitLevels.map(dOrbit => {
+  const orbits = orbitLevels.map((dOrbit) => {
     const bodies = objects.filter(obj => obj.orbit === dOrbit);
     const planetarySystemsOnOrbit = definePlanetarySystems(
       bodies,
       0.5,
-      angleGen
+      angleGen,
     );
     const obj = {
       orbit: dOrbit,
@@ -159,9 +159,11 @@ const solarCorrelationViz = createComponent(
   '#solar-correlation',
   1200,
   800,
-  margin
+  margin,
 );
-const { chart, coords, header, tooltip } = solarCorrelationViz;
+const {
+  chart, coords, header, tooltip,
+} = solarCorrelationViz;
 
 const zScale = d3.scaleOrdinal(d3.schemeCategory10);
 // Note: for threshold scales, pick N values for the input domain, and N + 1
@@ -188,8 +190,7 @@ const correlationLinearColorScale = d3
   .range(['#f7f7f7', '#cccccc', '#969696', '#525252']);
 
 const safetyMarginPx = 10;
-const furthestOrbitRadiusPx =
-  d3.min([coords.width, coords.height]) / 2 - safetyMarginPx;
+const furthestOrbitRadiusPx = d3.min([coords.width, coords.height]) / 2 - safetyMarginPx;
 const nearestOrbitRadiusPx = furthestOrbitRadiusPx / orbitLevels.length;
 const sunRadiusPx = nearestOrbitRadiusPx * 0.5;
 const planetRadiusPx = nearestOrbitRadiusPx * 0.4;
@@ -245,7 +246,7 @@ d3.legendColor()
 
 // chart.select('.legendLinear').call(colorLegend);
 
-const mouseover = d => {
+const mouseover = (d) => {
   tooltip
     .transition()
     .duration(200)
@@ -254,7 +255,7 @@ const mouseover = d => {
   if (d.corrWithTarget) {
     const style = `"color: ${correlationColorScale(d.corrWithTarget)};"`;
     html = `<span style=${style}>${d.name} (${d3.format('.2f')(
-      d.corrWithTarget
+      d.corrWithTarget,
     )})</span>`;
   } else {
     html = `<span>${d.name}</span>`;
@@ -277,7 +278,7 @@ const mouseover = d => {
     .style('top', `${event.layerY - 10}px`);
 };
 
-const mouseout = d => {
+const mouseout = (d) => {
   // console.log(`Leaving ${d.name}`);
 
   d3.selectAll('.orbit__trajectory')
@@ -306,7 +307,7 @@ const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
     dSystem,
     iSystem,
     systemSelection,
-    iOrbit
+    iOrbit,
   );
   systemSelection
     .append('circle')
@@ -335,12 +336,8 @@ const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
     .enter()
     .append('circle')
     .attr('class', 'moon')
-    .attr('cx', (d, i) =>
-      getMoonPosX(d.orbit, dSystem.radiansFromSun, radiansFromPlanet[i])
-    )
-    .attr('cy', (d, i) =>
-      getMoonPosY(d.orbit, dSystem.radiansFromSun, radiansFromPlanet[i])
-    )
+    .attr('cx', (d, i) => getMoonPosX(d.orbit, dSystem.radiansFromSun, radiansFromPlanet[i]))
+    .attr('cy', (d, i) => getMoonPosY(d.orbit, dSystem.radiansFromSun, radiansFromPlanet[i]))
     .attr('r', moonRadiusPx)
     .style('fill', d => zScale(d.name))
     .on('mouseover', mouseover)
@@ -409,7 +406,7 @@ const drawSun = (data, iSun) => {
     .on('mouseout', mouseout);
 };
 
-const drawAllOrbits = data => {
+const drawAllOrbits = (data) => {
   const orbits = orbitsGroup
     .selectAll('g')
     .data(data)
@@ -424,24 +421,23 @@ const drawAllOrbits = data => {
 };
 
 // jedi.csv found here: https://github.com/Zapf-Consulting/solar-correlation-map/blob/master/jedi.csv
-const jediUrl =
-  'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/jedi.csv';
+const jediUrl = 'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/jedi.csv';
 
 // create unary functions so they can be used in `.fork`
 const displayErrorBounded = displayError.bind(
   this,
   '#solar-correlation',
-  jediUrl
+  jediUrl,
 );
 
-const draw = data => {
+const draw = (data) => {
   const iSun = 0; // sun is the output variable
   drawSun(data, iSun);
   const orbitsData = defineOrbits(data, iSun);
   drawAllOrbits(orbitsData);
 };
 
-const fn = url => {
+const fn = (url) => {
   const promise = d3.csv(url);
   return promise;
 };

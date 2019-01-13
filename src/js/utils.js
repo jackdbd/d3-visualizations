@@ -17,7 +17,7 @@ const displayError = (selector, url, error) => {
 const computeLayout = (
   outerWidth = 444,
   outerHeight = 555,
-  margin = defaultMargin
+  margin = defaultMargin,
 ) => {
   const width = outerWidth - margin.left - margin.right;
   const height = outerHeight - margin.top - margin.bottom;
@@ -32,7 +32,7 @@ const createComponent = (
   nodeId,
   outerWidth = 1200,
   outerHeight = 600,
-  margin = defaultMargin
+  margin = defaultMargin,
 ) => {
   const selection = select(nodeId);
   const { width, height } = computeLayout(outerWidth, outerHeight, margin);

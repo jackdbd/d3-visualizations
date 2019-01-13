@@ -8,7 +8,7 @@ import '../css/linechart.css';
 // create a d3 Object that includes the d3 library and additional plugins
 const d3 = Object.assign(d3Base, { lineChunked });
 
-const rowFunction = d => {
+const rowFunction = (d) => {
   const obj = {
     date: d.date,
     close: +d.close,
@@ -16,7 +16,7 @@ const rowFunction = d => {
   return obj;
 };
 
-const draw = stocks => {
+const draw = (stocks) => {
   const margin = {
     top: 20,
     right: 20,
@@ -211,8 +211,7 @@ const draw = stocks => {
     .on('mousemove', mousemove);
 };
 
-const lineData =
-  'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/linedata_missing_samples.tsv';
+const lineData = 'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/linedata_missing_samples.tsv';
 
 // const promiseData = d3
 //   .tsv(lineData)
@@ -237,7 +236,7 @@ const displayErrorBounded = displayError.bind(this, '.linechart', lineData);
 const fetchf = Future.encaseP(fetch);
 
 fetchf(lineData)
-  .chain(res => {
+  .chain((res) => {
     const promise = d3.tsv(res.url);
     return Future.tryP(_ => promise);
   })

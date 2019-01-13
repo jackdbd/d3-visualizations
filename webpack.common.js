@@ -194,8 +194,9 @@ const config = {
     rules,
   },
   output: {
-    path: path.join(__dirname, 'build'),
     filename: '[name].[chunkhash].bundle.js',
+    path: path.join(__dirname, 'build'),
+    publicPath: '/',
     sourceMapFilename: '[file].map',
   },
   plugins,
