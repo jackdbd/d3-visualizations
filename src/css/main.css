@@ -1,15 +1,64 @@
-@import "_colors.css";
-@import "_geometry.css";
-@import "_typography.css";
+@import '_colors.css';
+@import '_geometry.css';
+@import '_typography.css';
+
+body {
+  background-color: var(--colors-background-primary);
+  font-family: var(--typography-font-family-primary);
+}
+
+header {
+  background-color: var(--colors-header-background);
+  height: var(--geometry-footer-height);
+}
 
 li {
   font-family: var(--typography-font-family-primary);
 }
 
 .footer {
-  background-color: var(--primary-bg-color);
-  color: var(--secondary-color);
+  background-color: var(--colors-footer-background);
+  color: var(--colors-primary);
   font-family: var(--typography-font-family-secondary);
-  font-size: var(--font-size);
+  font-size: var(--typography-font-size);
+  height: var(--geometry-footer-height);
   padding: 20px;
+}
+
+.tooltip {
+  background: var(--colors-tooltip-background);
+  border: 0;
+  border-radius: 8px;
+  font-family: var(--typography-font-family-primary);
+  font-size: 1rem;
+  font-weight: bold;
+  height: auto;
+  padding: 0.5rem;
+  position: absolute;
+  text-align: center;
+  width: auto;
+}
+
+.tooltip:hover {
+  opacity: 0.8 !important;
+}
+
+.axis {
+  font-family: var(--typography-font-family-primary);
+  font-size: 1rem;
+}
+
+.axis path,
+line {
+  fill: none;
+  shape-rendering: auto; /* avoid crispEdges */
+  stroke: var(--colors-axis);
+}
+
+.axis--x text {
+  fill: var(--colors-axis);
+}
+
+.axis--y text {
+  fill: var(--colors-axis);
 }

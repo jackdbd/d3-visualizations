@@ -5,13 +5,15 @@
   --colors-bar-selected: #17bf3c;
   --colors-bar-standard: #4682b4;
   --colors-circle-stroke: #000;
-  --colors-footer-background-color: #e65100;
-  --colors-header-background-color: #ffc107;
+  --colors-footer-background: #e65100;
+  --colors-header-background: #ffc107;
   --colors-line: #3f51b5;
   --colors-link: #789;
   --colors-orbit-highlighted: #f00;
   --colors-orbit-label: #a9a9a9;
   --colors-orbit-trajectory: #a9a9a9;
+  --colors-primary: red;
+  --colors-secondary: green;
   --colors-sun: #ff0;
   --colors-tooltip-background: #b0c4de;
 }

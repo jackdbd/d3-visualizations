@@ -5,12 +5,9 @@ import { format } from 'd3-format';
 import { geoMercator, geoPath as d3GeoPath } from 'd3-geo';
 import { interpolateCubehelix } from 'd3-interpolate';
 import {
-  scaleLinear,
-  scaleOrdinal,
-  scaleSqrt,
-  scaleThreshold,
-  schemeCategory20,
+  scaleLinear, scaleOrdinal, scaleSqrt, scaleThreshold,
 } from 'd3-scale';
+import { schemeCategory10 } from 'd3-scale-chromatic';
 import { event, selectAll } from 'd3-selection';
 import { timeFormat } from 'd3-time-format';
 import { zoom } from 'd3-zoom';
@@ -25,7 +22,7 @@ import '../css/geomap.css';
 //     const width = 960 - margin.left - margin.right;
 //     const height = 650 - margin.top - margin.bottom;
 
-//     const zScale = scaleOrdinal(schemeCategory20);
+//     const zScale = scaleOrdinal(schemeCategory10);
 
 //     const path = geoPath();
 
@@ -117,8 +114,7 @@ import '../css/geomap.css';
 // -------------------------------------------------------------------------- //
 
 const worldMapUrl = 'https://d3js.org/world-50m.v1.json';
-const meteoritesUrl =
-  'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/meteorite-strike-data.json';
+const meteoritesUrl = 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/meteorite-strike-data.json';
 // const worldMapUrl = '../data/world-50m.v1.json';
 // const meteoritesUrl = '../data/meteorite-strike-data.json';
 
@@ -176,11 +172,11 @@ const draw = (topologyWorld, meteorites) => {
     .attr('class', 'tooltip')
     .style('opacity', 0);
 
-  const countryScale = scaleOrdinal(schemeCategory20);
+  const countryScale = scaleOrdinal(schemeCategory10);
 
   const featureCollection = feature(
     topologyWorld,
-    topologyWorld.objects.countries
+    topologyWorld.objects.countries,
   );
   const featuresWorld = featureCollection.features;
 
@@ -200,7 +196,7 @@ const draw = (topologyWorld, meteorites) => {
    * @param {Object} f - Feature.
    * @return {Object} d - The meteorite.
    */
-  const createDataSample = f => {
+  const createDataSample = (f) => {
     const props = f.properties;
     const mass = +props.mass; // string -> number
     const d = {
@@ -258,7 +254,7 @@ const draw = (topologyWorld, meteorites) => {
     .domain(domain)
     .range(range);
 
-  const mouseover = d => {
+  const mouseover = (d) => {
     // more human-readable units of measurements for the mass
     // https://github.com/d3/d3/issues/2241#issuecomment-150099953
     const formatSI = format('.3s');
@@ -304,12 +300,10 @@ const draw = (topologyWorld, meteorites) => {
     .attr('r', d => massSizeScale(d.mass))
     .style('fill', d => massColorScale(d.mass))
     .on('mouseover', mouseover)
-    .on('mouseout', () =>
-      tooltip
-        .transition()
-        .duration(500)
-        .style('opacity', 0)
-    );
+    .on('mouseout', () => tooltip
+      .transition()
+      .duration(500)
+      .style('opacity', 0));
 };
 
 // fetch(worldMapUrl)
@@ -334,9 +328,9 @@ const urls = [worldMapUrl, meteoritesUrl];
 const promise = Promise.all(urls.map(url => d3Json(url)));
 
 promise
-  .catch(error => {
+  .catch((error) => {
     throw error;
   })
-  .then(datasets => {
+  .then((datasets) => {
     draw(...datasets);
   });

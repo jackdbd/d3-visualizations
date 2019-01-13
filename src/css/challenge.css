@@ -1,0 +1,21 @@
+@import 'main.css';
+
+.container {
+  padding-bottom: 2em;
+}
+
+header {
+  background-color: var(--colors-header-background);
+  height: 3em;
+}
+
+footer {
+  background-color: var(--colors-footer-background);
+  font-size: 1.5rem;
+  height: 3em;
+}
+
+.legend {
+  font-family: var(--typography-font-family-primary);
+  font-size: 0.75rem;
+}

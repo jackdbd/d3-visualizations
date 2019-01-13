@@ -1,0 +1,38 @@
+@import 'main.css';
+
+.container {
+  padding-bottom: 2em;
+}
+
+.orbit__trajectory {
+  stroke: var(--colors-orbit-trajectory);
+}
+
+.orbit__label {
+  dominant-baseline: text-before-edge;
+  fill: var(--colors-orbit-label);
+  text-anchor: middle;
+}
+
+.orbit--highlighted {
+  stroke: var(--colors-orbit-highlighted);
+}
+
+header {
+  background-color: var(--colors-header-background);
+  height: 3em;
+}
+
+footer {
+  font-size: 1.5rem;
+  height: 3em;
+}
+
+.orbit circle {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.sun {
+  fill: var(--colors-sun);
+}

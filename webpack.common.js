@@ -89,15 +89,6 @@ const plugins = [
     orderWarning: true,
     reloadAll: true,
   }),
-  // new CopyWebpackPlugin(
-  //   [
-  //     {
-  //       from: path.join(__dirname, "src", "data"),
-  //       to: path.join(__dirname, "build", "data"),
-  //     },
-  //   ],
-  //   { debug: "warning" }
-  // ),
   new HtmlWebpackPlugin({
     chunks: ['about'],
     filename: 'about.html',
@@ -111,10 +102,40 @@ const plugins = [
     template: path.join(__dirname, 'src', 'templates', 'barchart.html'),
   }),
   new HtmlWebpackPlugin({
+    chunks: ['challenge'],
+    filename: 'challenge.html',
+    hash: true,
+    template: path.join(__dirname, 'src', 'templates', 'challenge.html'),
+  }),
+  new HtmlWebpackPlugin({
+    chunks: ['dolphins'],
+    filename: 'dolphins.html',
+    hash: true,
+    template: path.join(__dirname, 'src', 'templates', 'dolphins.html'),
+  }),
+  new HtmlWebpackPlugin({
+    chunks: ['flags'],
+    filename: 'flags.html',
+    hash: true,
+    template: path.join(__dirname, 'src', 'templates', 'flags.html'),
+  }),
+  new HtmlWebpackPlugin({
     chunks: ['geomap'],
     filename: 'geomap.html',
     hash: true,
     template: path.join(__dirname, 'src', 'templates', 'geomap.html'),
+  }),
+  new HtmlWebpackPlugin({
+    chunks: ['heatmap'],
+    filename: 'heatmap.html',
+    hash: true,
+    template: path.join(__dirname, 'src', 'templates', 'heatmap.html'),
+  }),
+  new HtmlWebpackPlugin({
+    chunks: ['horizon-chart'],
+    filename: 'horizon-chart.html',
+    hash: true,
+    template: path.join(__dirname, 'src', 'templates', 'horizon-chart.html'),
   }),
   new HtmlWebpackPlugin({
     chunks: ['home'],
@@ -134,6 +155,17 @@ const plugins = [
     hash: true,
     template: path.join(__dirname, 'src', 'templates', 'scatterplot.html'),
   }),
+  new HtmlWebpackPlugin({
+    chunks: ['solar-correlation'],
+    filename: 'solar-correlation.html',
+    hash: true,
+    template: path.join(
+      __dirname,
+      'src',
+      'templates',
+      'solar-correlation.html'
+    ),
+  }),
 ];
 
 const config = {
@@ -142,10 +174,21 @@ const config = {
     // "font-awesome": "./font-awesome.config.js",
     about: path.join(__dirname, 'src', 'js', 'about.ts'),
     barchart: path.join(__dirname, 'src', 'js', 'barchart.js'),
+    challenge: path.join(__dirname, 'src', 'js', 'challenge.js'),
+    dolphins: path.join(__dirname, 'src', 'js', 'dolphins.js'),
+    flags: path.join(__dirname, 'src', 'js', 'flags.js'),
     geomap: path.join(__dirname, 'src', 'js', 'geomap.js'),
+    heatmap: path.join(__dirname, 'src', 'js', 'heatmap.js'),
     home: path.join(__dirname, 'src', 'js', 'index.js'),
+    'horizon-chart': path.join(__dirname, 'src', 'js', 'horizon-chart.js'),
     linechart: path.join(__dirname, 'src', 'js', 'linechart.js'),
     scatterplot: path.join(__dirname, 'src', 'js', 'scatterplot.js'),
+    'solar-correlation': path.join(
+      __dirname,
+      'src',
+      'js',
+      'solar-correlation.js'
+    ),
   },
   module: {
     rules,
