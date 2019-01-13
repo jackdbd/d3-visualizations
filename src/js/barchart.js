@@ -55,7 +55,7 @@ function draw(dataset) {
     .attr('class', 'tooltip')
     .style('opacity', 0);
 
-  const mouseover = (d) => {
+  const mouseover = d => {
     tooltip
       .transition()
       .duration(200)
@@ -137,13 +137,16 @@ function draw(dataset) {
     // .on('mouseover', tip.show)
     // .on('mouseout', tip.hide);
     .on('mouseover', mouseover)
-    .on('mouseout', () => tooltip
-      .transition()
-      .duration(500)
-      .style('opacity', 0));
+    .on('mouseout', () =>
+      tooltip
+        .transition()
+        .duration(500)
+        .style('opacity', 0)
+    );
 }
 
-const gdpData = 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json';
+const gdpData =
+  'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json';
 // fetch(gdpData)
 //   .catch(error => {
 //     throw error;
