@@ -1,0 +1,124 @@
+:root {
+  --colors-axis: #000;
+  --colors-backgound-primary: blue;
+  --colors-backgound-secondary: yellow;
+  --colors-bar-selected: #17bf3c;
+  --colors-bar-standard: #4682b4;
+  --colors-circle-stroke: #000;
+  --colors-footer-background: #e65100;
+  --colors-header-background: #ffc107;
+  --colors-line: #3f51b5;
+  --colors-link: #789;
+  --colors-orbit-highlighted: #f00;
+  --colors-orbit-label: #a9a9a9;
+  --colors-orbit-trajectory: #a9a9a9;
+  --colors-primary: red;
+  --colors-secondary: green;
+  --colors-sun: #ff0;
+  --colors-tooltip-background: #b0c4de;
+}
+
+:root {
+  --geometry-footer-height: 150px;
+  --geometry-header-height: 4em;
+}
+
+/* Define font-face rules
+ * If you have multiple font formats, put most modern formats first.
+ * A single font-family can have multiple fonts (e.g. for bold, italic).
+ */
+
+@font-face {
+  font-family: InknutAntiqua;
+  font-style: normal;
+  font-weight: normal;
+  src: url(./fonts/InknutAntiqua-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: InknutAntiqua;
+  font-style: normal;
+  font-weight: bold;
+  src: url(./fonts/InknutAntiqua-ExtraBold.ttf) format('truetype');
+}
+
+/* other cool fonts Syncopate, Quicksand, Aclonica */
+
+:root {
+  --typography-font-family-primary: "InknutAntiqua", sans-serif;
+  --typography-font-family-secondary: "Lobster";
+  --typography-font-size: 20px;
+}
+
+body {
+  background-color: var(--colors-background-primary);
+  font-family: var(--typography-font-family-primary);
+}
+
+header {
+  background-color: var(--colors-header-background);
+  height: var(--geometry-footer-height);
+}
+
+li {
+  font-family: var(--typography-font-family-primary);
+}
+
+.footer {
+  background-color: var(--colors-footer-background);
+  color: var(--colors-primary);
+  font-family: var(--typography-font-family-secondary);
+  font-size: var(--typography-font-size);
+  height: var(--geometry-footer-height);
+  padding: 20px;
+}
+
+.tooltip {
+  background: var(--colors-tooltip-background);
+  border: 0;
+  border-radius: 8px;
+  font-family: var(--typography-font-family-primary);
+  font-size: 1rem;
+  font-weight: bold;
+  height: auto;
+  padding: 0.5rem;
+  position: absolute;
+  text-align: center;
+  width: auto;
+}
+
+.tooltip:hover {
+  opacity: 0.8 !important;
+}
+
+.axis {
+  font-family: var(--typography-font-family-primary);
+  font-size: 1rem;
+}
+
+.axis path,
+line {
+  fill: none;
+  shape-rendering: auto; /* avoid crispEdges */
+  stroke: var(--colors-axis);
+}
+
+.axis--x text {
+  fill: var(--colors-axis);
+}
+
+.axis--y text {
+  fill: var(--colors-axis);
+}
+
+/* https://css-tricks.com/hover-on-everything-but/ */
+.bikers:hover > circle {
+  opacity: 0.3;
+}
+
+.bikers:hover > circle:hover {
+  opacity: 1;
+}
+
+
+/*# sourceMappingURL=scatterplot.css.map*/
