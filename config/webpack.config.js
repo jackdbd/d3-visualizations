@@ -55,8 +55,8 @@ module.exports = function(webpackEnv) {
   const shouldUseRelativeAssetPaths = publicPath === './';
 
   // `publicUrl` is just like `publicPath`, but we will provide it to our app
-  // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
-  // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
+  // as  in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
+  // Omit trailing slash as /xyz looks better than xyz.
   const publicUrl = isEnvProduction
     ? publicPath.slice(0, -1)
     : isEnvDevelopment && '';
@@ -498,8 +498,8 @@ module.exports = function(webpackEnv) {
         shouldInlineRuntimeChunk &&
         new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
       // Makes some environment variables available in index.html.
-      // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
-      // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+      // The public URL is available as  in index.html, e.g.:
+      // <link rel="shortcut icon" href="/favicon.ico">
       // In production, it will be an empty string unless you specify "homepage"
       // in `package.json`, in which case it will be the pathname of that URL.
       // In development, this will be an empty string.
