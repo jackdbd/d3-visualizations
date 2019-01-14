@@ -5,16 +5,16 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 
 const devServer = {
-  host: 'localhost',
-  port: 8080,
   compress: true,
   contentBase: path.join(__dirname, 'build'),
+  host: 'localhost',
   inline: true,
+  port: 8080,
   stats: {
-    colors: true,
-    reasons: true,
     chunks: false,
+    colors: true,
     modules: false,
+    reasons: true,
   },
 };
 

@@ -1,7 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const paths = require('./paths');
 
 const rules = [
   // rule for .js/.jsx files
@@ -19,13 +21,12 @@ const rules = [
     include: path.join(__dirname, 'src', 'css'),
     use: [ExtractCssChunks.loader, 'css-loader'],
   },
-  // rule for .woff2 font files (font-awesome)
+  // rule for .woff2 font files
   {
     test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-    // Limiting the size of the woff fonts breaks font-awesome ONLY for extract text plugin
     use: 'url-loader',
   },
-  // rule for .ttf/.eot/.svg files (font-awesome and fonts)
+  // rule for .ttf/.eot/.svg files
   {
     test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     use: {
@@ -43,38 +44,31 @@ const rules = [
       'file-loader',
       {
         loader: 'image-webpack-loader',
-        query: {
-          progressive: true,
-          optimizationLevel: 7,
-          interlaced: false,
+        options: {
+          mozjpeg: {
+            progressive: true,
+            quality: 65,
+          },
+          // optipng.enabled: false will disable optipng
+          optipng: {
+            enabled: false,
+          },
           pngquant: {
             quality: '65-90',
             speed: 4,
+          },
+          gifsicle: {
+            interlaced: false,
+          },
+          // the webp option will enable WEBP
+          webp: {
+            quality: 75,
           },
         },
       },
     ],
   },
 ];
-
-// const optimization = {
-//   splitChunks: {
-//     cacheGroups: {
-//       js: {
-//         test: /\.js$/,
-//         name: "commons",
-//         chunks: "all",
-//         minChunks: 7,
-//       },
-//       css: {
-//         test: /\.css$/,
-//         name: "commons",
-//         chunks: "all",
-//         minChunks: 2,
-//       },
-//     },
-//   },
-// };
 
 const plugins = [
   new CleanWebpackPlugin(['build'], {
@@ -171,7 +165,6 @@ const plugins = [
 const config = {
   devtool: 'source-map',
   entry: {
-    // "font-awesome": "./font-awesome.config.js",
     about: path.join(__dirname, 'src', 'js', 'about.ts'),
     barchart: path.join(__dirname, 'src', 'js', 'barchart.js'),
     challenge: path.join(__dirname, 'src', 'js', 'challenge.js'),
@@ -194,14 +187,13 @@ const config = {
     rules,
   },
   output: {
-    filename: '[name].[chunkhash].bundle.js',
-    path: path.join(__dirname, 'build'),
+    filename: '[name].[chunkhash].js',
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/',
     sourceMapFilename: '[file].map',
   },
   plugins,
   target: 'web',
-  // optimization,
 };
 
 module.exports = config;
