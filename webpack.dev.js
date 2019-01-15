@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
@@ -6,9 +7,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 
 const devServer = {
   compress: true,
-  contentBase: path.join(__dirname, 'build'),
+  contentBase: path.join(__dirname, 'src'),
   host: 'localhost',
+  // hot: true,
   inline: true,
+  open: true,
   port: 8080,
   stats: {
     chunks: false,
@@ -18,7 +21,7 @@ const devServer = {
   },
 };
 
-const bundleAnalyzePlugin = new BundleAnalyzerPlugin({
+const bundleAnalyzerPlugin = new BundleAnalyzerPlugin({
   analyzerPort: 8888,
   openAnalyzer: false,
 });
@@ -29,7 +32,7 @@ const config = merge(common, {
   performance: {
     hints: 'warning',
   },
-  plugins: [bundleAnalyzePlugin],
+  plugins: [bundleAnalyzerPlugin],
 });
 
 module.exports = config;

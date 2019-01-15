@@ -7,11 +7,11 @@ import { timeYears } from 'd3-time';
 import { timeParse } from 'd3-time-format';
 // eslint-disable-next-line no-unused-vars
 import { transition } from 'd3-transition';
-import * as Future from 'fluture';
-import { displayError } from './utils';
-import '../css/barchart.css';
+// import * as Future from 'fluture';
+import { displayError } from '../utils';
+import '../../css/barchart.css';
 
-function draw(dataset) {
+function draw(selector, dataset) {
   const gdp = dataset.data.map(x => x[1]);
   const margin = {
     top: 20,
@@ -50,7 +50,7 @@ function draw(dataset) {
 
   const formatCurrency = format('$,.2f');
 
-  const tooltip = selectAll('.barchart')
+  const tooltip = selectAll(selector)
     .append('div')
     .attr('class', 'tooltip')
     .style('opacity', 0);
@@ -72,21 +72,6 @@ function draw(dataset) {
       .style('top', `${event.layerY - 28}px`);
   };
 
-  // d3-tip doesn't capture mouse events, so it stays in the upper-left corner
-  // It seems d3-tip is not 100% compatible with D3v4
-  // const tip = d3Tip()
-  // .attr('class', 'd3-tip')
-  // .direction('n')
-  // .html((d) => {
-  //   const currentDateTime = new Date(d[0]);
-  //   const year = currentDateTime.getFullYear();
-  //   const month = currentDateTime.getMonth();
-  //   const dollars = d[1];
-  //   const html = `<span>${formatCurrency(dollars)} Billion</span><br>
-  //     <span>${year} - ${months[month]}</span>`;
-  //   return html;
-  // });
-
   const xAxis = axisBottom()
     .scale(xScale)
     .tickValues(timeYears(dates[0], dates[dates.length - 1], 5));
@@ -96,14 +81,12 @@ function draw(dataset) {
     .ticks(10, '')
     .tickFormat(format('.0s'));
 
-  const svg = selectAll('.barchart')
+  const svg = selectAll(selector)
     .append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
     .append('g')
     .attr('transform', `translate(${margin.left}, ${margin.right})`);
-
-  // svg.call(tip);
 
   svg
     .append('g')
@@ -129,13 +112,10 @@ function draw(dataset) {
     .append('rect')
     .attr('class', 'bar')
     .attr('x', d => xScale(new Date(d[0])))
-    // .attr('x', d => xScale(d[0]))
     // .attr('width', xScale.bandwidth())
     .attr('width', width / dates.length + 1)
     .attr('y', d => yScale(d[1]))
     .attr('height', d => height - yScale(d[1]))
-    // .on('mouseover', tip.show)
-    // .on('mouseout', tip.hide);
     .on('mouseover', mouseover)
     .on('mouseout', () =>
       tooltip
@@ -145,23 +125,33 @@ function draw(dataset) {
     );
 }
 
-const gdpData =
-  'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json';
-// fetch(gdpData)
-//   .catch(error => {
-//     throw error;
-//   })
-//   .then(async res => {
-//     const data = await res.json();
-//     draw(data);
-//   });
+const fn = async (selector, url) => {
+  // convert fetch (which returns a Promise) into a function that returns a Future
+  // const fetchf = Future.encaseP(fetch);
 
-// create a unary function so it can be used in `.fork`
-const displayErrorBounded = displayError.bind(this, '.barchart', gdpData);
+  // create unary functions so they can be used in `.fork`
+  const displayErrorBounded = displayError.bind(this, selector, url);
+  const drawBounded = draw.bind(this, selector);
 
-// convert fetch (which returns a Promise) into a function that returns a Future
-const fetchf = Future.encaseP(fetch);
+  // fetchf(url)
+  //   .chain(res => Future.tryP(_ => res.json()))
+  //   .fork(console.error, console.log);
 
-fetchf(gdpData)
-  .chain(res => Future.tryP(_ => res.json()))
-  .fork(displayErrorBounded, draw);
+  let res;
+  try {
+    res = await fetch(url);
+  } catch (err) {
+    displayErrorBounded(err);
+    return;
+  }
+  let data;
+  try {
+    data = await res.json();
+  } catch (err) {
+    displayErrorBounded(err);
+    return;
+  }
+  drawBounded(data);
+};
+
+export default fn;

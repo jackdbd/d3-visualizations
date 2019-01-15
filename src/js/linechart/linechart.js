@@ -1,9 +1,9 @@
 import * as d3Base from 'd3';
 import * as d3Annotation from 'd3-svg-annotation';
 import { lineChunked } from 'd3-line-chunked';
-import * as Future from 'fluture';
-import { displayError } from './utils';
-import '../css/linechart.css';
+// import * as Future from 'fluture';
+import { displayError } from '../utils';
+import '../../css/linechart.css';
 
 // create a d3 Object that includes the d3 library and additional plugins
 const d3 = Object.assign(d3Base, { lineChunked });
@@ -16,7 +16,7 @@ const rowFunction = d => {
   return obj;
 };
 
-const draw = stocks => {
+const draw = (selector, stocks) => {
   const margin = {
     top: 20,
     right: 20,
@@ -116,7 +116,7 @@ const draw = stocks => {
   const yAxis = d3.axisLeft().scale(yScale);
 
   const svg = d3
-    .selectAll('.linechart')
+    .selectAll(selector)
     .append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
@@ -131,7 +131,7 @@ const draw = stocks => {
   const linepath = svg.append('g');
 
   const tooltip = d3
-    .selectAll('.linechart')
+    .selectAll(selector)
     .append('div')
     .attr('class', 'tooltip')
     .style('opacity', 0);
@@ -211,35 +211,33 @@ const draw = stocks => {
     .on('mousemove', mousemove);
 };
 
-const lineData =
-  'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/linedata_missing_samples.tsv';
+const fn = async (selector, url) => {
+  // create a unary function so it can be used in `.fork`
+  const displayErrorBounded = displayError.bind(this, selector, url);
+  const drawBounded = draw.bind(this, selector);
 
-// const promiseData = d3
-//   .tsv(lineData)
-//   .catch(error => {
-//     throw error;
-//   })
-//   .then(res => {
-//     return res;
-//   });
-// promiseData
-//   .catch(error => {
-//     throw error;
-//   })
-//   .then(raw => {
-//     const data = raw.map(rowFunction);
-//     draw(data);
-//   });
+  // fetchf(url)
+  //   .chain(res => {
+  //     const promise = d3.tsv(res.url);
+  //     return Future.tryP(_ => promise);
+  //   })
+  //   .map(rawData => rawData.map(rowFunction))
+  //   .fork(displayErrorBounded, drawBounded);
 
-// create a unary function so it can be used in `.fork`
-const displayErrorBounded = displayError.bind(this, '.linechart', lineData);
+  let rawData;
+  try {
+    rawData = await d3.tsv(url);
+  } catch (error) {
+    displayErrorBounded(error);
+    return;
+  }
+  let data;
+  try {
+    data = await rawData.map(rowFunction);
+  } catch (error) {
+    displayErrorBounded(error);
+  }
+  drawBounded(data);
+};
 
-const fetchf = Future.encaseP(fetch);
-
-fetchf(lineData)
-  .chain(res => {
-    const promise = d3.tsv(res.url);
-    return Future.tryP(_ => promise);
-  })
-  .map(rawData => rawData.map(rowFunction))
-  .fork(displayErrorBounded, draw);
+export default fn;

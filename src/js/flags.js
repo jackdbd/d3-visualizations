@@ -4,7 +4,7 @@ import '../css/graph.css';
 import '../css/vendor/flags.min.css';
 
 const draw = (error, img, graph) => {
-  console.warn('error, img, graph', error, img, graph);
+  // console.warn('error, img, graph', error, img, graph);
   const margin = {
     top: 20,
     right: 20,

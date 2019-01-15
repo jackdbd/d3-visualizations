@@ -1,9 +1,10 @@
+const fs = require('fs');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const paths = require('./paths');
+// const paths = require('./paths');
 
 const rules = [
   // rule for .js/.jsx files
@@ -70,6 +71,10 @@ const rules = [
   },
 ];
 
+const pages = fs
+  .readdirSync(path.resolve(__dirname, 'src', 'templates'))
+  .filter(fileName => fileName.endsWith('.html'));
+
 const plugins = [
   new CleanWebpackPlugin(['build'], {
     root: __dirname,
@@ -83,82 +88,15 @@ const plugins = [
     orderWarning: true,
     reloadAll: true,
   }),
-  new HtmlWebpackPlugin({
-    chunks: ['about'],
-    filename: 'about.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'about.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['barchart'],
-    filename: 'barchart.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'barchart.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['challenge'],
-    filename: 'challenge.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'challenge.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['dolphins'],
-    filename: 'dolphins.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'dolphins.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['flags'],
-    filename: 'flags.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'flags.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['geomap'],
-    filename: 'geomap.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'geomap.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['heatmap'],
-    filename: 'heatmap.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'heatmap.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['horizon-chart'],
-    filename: 'horizon-chart.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'horizon-chart.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['home'],
-    filename: 'index.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'index.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['linechart'],
-    filename: 'linechart.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'linechart.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['scatterplot'],
-    filename: 'scatterplot.html',
-    hash: true,
-    template: path.join(__dirname, 'src', 'templates', 'scatterplot.html'),
-  }),
-  new HtmlWebpackPlugin({
-    chunks: ['solar-correlation'],
-    filename: 'solar-correlation.html',
-    hash: true,
-    template: path.join(
-      __dirname,
-      'src',
-      'templates',
-      'solar-correlation.html'
-    ),
+  ...pages.map(filename => {
+    const name = filename.split('.')[0];
+    const htmlPlugin = new HtmlWebpackPlugin({
+      chunks: [name],
+      filename,
+      hash: true,
+      template: path.join(__dirname, 'src', 'templates', filename),
+    });
+    return htmlPlugin;
   }),
 ];
 
@@ -166,16 +104,16 @@ const config = {
   devtool: 'source-map',
   entry: {
     about: path.join(__dirname, 'src', 'js', 'about.ts'),
-    barchart: path.join(__dirname, 'src', 'js', 'barchart.js'),
+    barchart: path.join(__dirname, 'src', 'js', 'barchart', 'index.js'),
     challenge: path.join(__dirname, 'src', 'js', 'challenge.js'),
     dolphins: path.join(__dirname, 'src', 'js', 'dolphins.js'),
     flags: path.join(__dirname, 'src', 'js', 'flags.js'),
     geomap: path.join(__dirname, 'src', 'js', 'geomap.js'),
     heatmap: path.join(__dirname, 'src', 'js', 'heatmap.js'),
-    home: path.join(__dirname, 'src', 'js', 'index.js'),
+    index: path.join(__dirname, 'src', 'js', 'index.js'),
     'horizon-chart': path.join(__dirname, 'src', 'js', 'horizon-chart.js'),
-    linechart: path.join(__dirname, 'src', 'js', 'linechart.js'),
-    scatterplot: path.join(__dirname, 'src', 'js', 'scatterplot.js'),
+    linechart: path.join(__dirname, 'src', 'js', 'linechart', 'index.js'),
+    scatterplot: path.join(__dirname, 'src', 'js', 'scatterplot', 'index.js'),
     'solar-correlation': path.join(
       __dirname,
       'src',
