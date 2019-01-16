@@ -24,7 +24,7 @@ import '../css/geomap.css';
 
 //     const path = geoPath();
 
-//     const svg = selectAll(".geo-map")
+//     const svg = selectAll("#geo-map")
 //       .append("svg")
 //       .attr("width", width + margin.left + margin.right)
 //       .attr("height", height + margin.top + margin.bottom)
@@ -37,7 +37,7 @@ import '../css/geomap.css';
 
 //     const states = usa.append("g").attr("class", "states");
 
-//     const tooltip = selectAll(".geo-map")
+//     const tooltip = selectAll("#geo-map")
 //       .append("div")
 //       .attr("class", "tooltip")
 //       .style("opacity", 0);
@@ -127,7 +127,7 @@ const draw = (topologyWorld, meteorites) => {
   const width = 960 - margin.left - margin.right;
   const height = 650 - margin.top - margin.bottom;
 
-  const svg = selectAll('.geo-map')
+  const svg = selectAll('#geo-map')
     .append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
@@ -166,7 +166,7 @@ const draw = (topologyWorld, meteorites) => {
 
   svg.call(zoomBehavior);
 
-  const tooltip = selectAll('.geo-map')
+  const tooltip = selectAll('#geo-map')
     .append('div')
     .attr('class', 'tooltip')
     .style('opacity', 0);

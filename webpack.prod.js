@@ -41,10 +41,14 @@ const optimization = {
   },
 };
 
-const config = merge(common, {
-  mode: 'production',
-  optimization,
-  plugins: [compressionPlugin],
-});
+const config = (env, argv) => {
+  const mode = 'production';
+  const commonConfig = common(mode);
+  return merge(commonConfig, {
+    mode,
+    optimization,
+    plugins: [compressionPlugin],
+  });
+};
 
 module.exports = config;
