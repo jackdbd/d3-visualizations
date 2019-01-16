@@ -95,7 +95,7 @@ module.exports = mode => {
       const htmlPlugin = new HtmlWebpackPlugin({
         chunks: [name],
         filename,
-        hash: true,
+        hash: false,
         template: path.join(__dirname, 'src', 'templates', filename),
         templateParameters: {
           PUBLIC_URL,
@@ -130,7 +130,7 @@ module.exports = mode => {
       rules,
     },
     output: {
-      filename: '[name].[chunkhash].js',
+      filename: '[name].[contenthash].js',
       path: path.resolve(__dirname, 'build'),
       publicPath: '/',
       sourceMapFilename: '[file].map',
