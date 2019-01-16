@@ -1,0 +1,39 @@
+@import '../../css/main.css';
+
+.bar {
+  fill: var(--colors-bar-standard);
+}
+
+.bar:hover {
+  fill: var(--colors-bar-selected);
+}
+
+.axisX > path {
+  display: none;
+}
+
+.axisX text {
+  fill: var(--colors-axis);
+}
+
+.axisY text {
+  fill: var(--colors-axis);
+}
+
+.tooltip {
+  background: var(--colors-tooltip-background);
+  border: 0;
+  border-radius: 8px;
+  font-family: var(--typography-font-family-primary);
+  font-size: 1rem;
+  font-weight: bold;
+  height: auto;
+  padding: 0.5rem;
+  position: absolute;
+  text-align: center;
+  width: auto;
+}
+
+.tooltip:hover {
+  opacity: 0.8;
+}

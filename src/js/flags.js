@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import { displayError } from './utils';
-import '../css/graph.css';
+// import '../css/graph.css';
 import '../css/vendor/flags.min.css';
 
 const draw = (error, img, graph) => {

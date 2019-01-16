@@ -9,7 +9,7 @@ import { timeParse } from 'd3-time-format';
 import { transition } from 'd3-transition';
 // import * as Future from 'fluture';
 import { displayError } from '../utils';
-import '../../css/barchart.css';
+import styles from './barchart.module.css';
 
 function draw(selector, dataset) {
   const gdp = dataset.data.map(x => x[1]);
@@ -52,7 +52,7 @@ function draw(selector, dataset) {
 
   const tooltip = selectAll(selector)
     .append('div')
-    .attr('class', 'tooltip')
+    .attr('class', styles.tooltip)
     .style('opacity', 0);
 
   const mouseover = d => {
@@ -90,13 +90,13 @@ function draw(selector, dataset) {
 
   svg
     .append('g')
-    .attr('class', 'axis axis--x')
+    .attr('class', styles.axisX)
     .attr('transform', `translate(0, ${height})`)
     .call(xAxis);
 
   svg
     .append('g')
-    .attr('class', 'axis axis--y')
+    .attr('class', styles.axisY)
     .call(yAxis)
     .append('text')
     .attr('transform', 'rotate(-90)')
@@ -110,7 +110,7 @@ function draw(selector, dataset) {
     .data(dataset.data)
     .enter()
     .append('rect')
-    .attr('class', 'bar')
+    .classed(styles.bar, true)
     .attr('x', d => xScale(new Date(d[0])))
     // .attr('width', xScale.bandwidth())
     .attr('width', width / dates.length + 1)

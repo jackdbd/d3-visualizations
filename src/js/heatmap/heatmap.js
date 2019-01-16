@@ -1,10 +1,9 @@
 import * as d3 from 'd3';
-import { displayError } from './utils';
-// import * as aaa from 'd3-scale-chromatic';
-// import '../css/heatmap.css';
+import { displayError } from '../utils';
+import styles from './heatmap.module.css';
 
 const d3ScaleChromatic = require('d3-scale-chromatic');
-// console.warn(aaa, d3ScaleChromatic);
+// console.warn('d3ScaleChromatic', d3ScaleChromatic);
 
 const draw = (selector, data) => {
   const margin = {
@@ -77,7 +76,7 @@ const draw = (selector, data) => {
   const tooltip = d3
     .selectAll(selector)
     .append('div')
-    .attr('class', 'tooltip')
+    .attr('class', styles.tooltip)
     .style('opacity', 0);
 
   const mouseover = d => {
@@ -95,20 +94,20 @@ const draw = (selector, data) => {
 
   svg
     .append('g')
-    .attr('class', 'axis axis--x')
+    .attr('class', styles.axisX)
     .attr('transform', `translate(0, ${height})`)
     .call(xAxis);
 
-  svg.append('g').attr('class', 'axis axis--y');
+  svg.append('g').attr('class', styles.axisY);
 
-  const heatBars = svg.append('g').attr('class', 'heatBars');
+  const heatBars = svg.append('g').attr('class', styles.heatBars);
 
   heatBars
-    .selectAll('.heatBar')
+    .selectAll(styles.heatBar)
     .data(data.monthlyVariance)
     .enter()
     .append('rect')
-    .attr('class', 'heatBar')
+    .attr('class', styles.heatBar)
     .attr('x', d => xScale(new Date(d.year, 0)))
     .attr('width', barWidth)
     .attr('y', d => yScale(d.month))
@@ -122,7 +121,7 @@ const draw = (selector, data) => {
         .style('opacity', 0)
     );
 
-  const monthLabels = svg.append('g').attr('class', 'monthLabels');
+  const monthLabels = svg.append('g').attr('class', styles.monthLabels);
 
   const monthLabelXOffset = -5; // does not depend on font-size
   const monthLabelYOffset = 6; // depends on font-size
@@ -132,25 +131,35 @@ const draw = (selector, data) => {
     .data(months)
     .enter()
     .append('text')
-    .attr('class', 'month')
+    .attr('class', styles.month)
     .attr('x', monthLabelXOffset)
     .attr('y', (d, i) => barHeight / 2 + barHeight * i + monthLabelYOffset)
     .attr('text-anchor', 'end')
     .text(d => `${d}`);
 };
 
-const selector = '#heatmap';
-const temperaturesUrl =
-  'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json';
+const fn = async (selector, url) => {
+  let res;
+  try {
+    res = await fetch(url);
+  } catch (err) {
+    displayError(selector, url, err);
+    return;
+  }
+  let data;
+  try {
+    data = await res.json();
+  } catch (err) {
+    displayError(selector, url, err);
+    return;
+  }
+  const years = 100;
+  const reducedDataset = {
+    years,
+    baseTemperature: data.baseTemperature,
+    monthlyVariance: data.monthlyVariance.slice(0, years * 12),
+  };
+  draw(selector, reducedDataset);
+};
 
-d3.json(temperaturesUrl)
-  .catch(error => displayError(selector, temperaturesUrl, error))
-  .then(data => {
-    const years = 100;
-    const reducedDataset = {
-      years,
-      baseTemperature: data.baseTemperature,
-      monthlyVariance: data.monthlyVariance.slice(0, years * 12),
-    };
-    draw(selector, reducedDataset);
-  });
+export default fn;

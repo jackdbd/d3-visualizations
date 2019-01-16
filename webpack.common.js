@@ -19,11 +19,26 @@ module.exports = mode => {
         loader: 'babel-loader',
       },
     },
-    // rule for .css files
+    // rule for standard (global) CSS files
     {
       test: /\.css$/,
-      include: path.join(__dirname, 'src', 'css'),
+      include: [path.join(__dirname, 'src', 'css')],
       use: [ExtractCssChunks.loader, 'css-loader'],
+    },
+    // rule for CSS modules
+    {
+      test: /\.module\.css$/,
+      include: [path.join(__dirname, 'src', 'js')],
+      loaders: [
+        ExtractCssChunks.loader,
+        {
+          loader: 'css-loader',
+          options: {
+            localIdentName: '[path]__[name]__[local]--[hash:base64:5]',
+            modules: true,
+          },
+        },
+      ],
     },
     // rule for .woff2 font files
     {
@@ -116,13 +131,13 @@ module.exports = mode => {
     entry: {
       about: path.join(__dirname, 'src', 'js', 'about.ts'),
       barchart: path.join(__dirname, 'src', 'js', 'barchart', 'index.js'),
-      challenge: path.join(__dirname, 'src', 'js', 'challenge.js'),
-      dolphins: path.join(__dirname, 'src', 'js', 'dolphins.js'),
-      flags: path.join(__dirname, 'src', 'js', 'flags.js'),
-      geomap: path.join(__dirname, 'src', 'js', 'geomap.js'),
-      heatmap: path.join(__dirname, 'src', 'js', 'heatmap.js'),
+      challenge: path.join(__dirname, 'src', 'js', 'challenge.js'), // TODO
+      dolphins: path.join(__dirname, 'src', 'js', 'dolphins', 'index.js'),
+      flags: path.join(__dirname, 'src', 'js', 'flags.js'), // TODO
+      geomap: path.join(__dirname, 'src', 'js', 'geomap', 'index.js'),
+      heatmap: path.join(__dirname, 'src', 'js', 'heatmap', 'index.js'),
       index: path.join(__dirname, 'src', 'js', 'index.js'),
-      'horizon-chart': path.join(__dirname, 'src', 'js', 'horizon-chart.js'),
+      horizon: path.join(__dirname, 'src', 'js', 'horizon', 'index.js'),
       linechart: path.join(__dirname, 'src', 'js', 'linechart', 'index.js'),
       scatterplot: path.join(__dirname, 'src', 'js', 'scatterplot', 'index.js'),
       'solar-correlation': path.join(
@@ -130,7 +145,7 @@ module.exports = mode => {
         'src',
         'js',
         'solar-correlation.js'
-      ),
+      ), // TODO
     },
     module: {
       rules,

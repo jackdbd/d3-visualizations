@@ -6,118 +6,14 @@ import { geoMercator, geoPath as d3GeoPath } from 'd3-geo';
 import { interpolateCubehelix } from 'd3-interpolate';
 import { scaleLinear, scaleOrdinal, scaleSqrt, scaleThreshold } from 'd3-scale';
 import { schemeCategory10 } from 'd3-scale-chromatic';
-import { event, selectAll } from 'd3-selection';
+import { event, select, selectAll } from 'd3-selection';
 import { timeFormat } from 'd3-time-format';
 import { zoom } from 'd3-zoom';
 import { feature } from 'topojson';
-import '../css/geomap.css';
+import { displayError } from '../utils';
+import styles from './geomap.module.css';
 
-// const d3RequestType = require('../../node_modules/d3-request/src/type');
-
-// {
-//   const draw = (error, fipsStateCodes, topology) => {
-//     const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-//     const width = 960 - margin.left - margin.right;
-//     const height = 650 - margin.top - margin.bottom;
-
-//     const zScale = scaleOrdinal(schemeCategory10);
-
-//     const path = geoPath();
-
-//     const svg = selectAll("#geo-map")
-//       .append("svg")
-//       .attr("width", width + margin.left + margin.right)
-//       .attr("height", height + margin.top + margin.bottom)
-//       .append("g")
-//       .attr("transform", `translate(${margin.left},${margin.top})`);
-
-//     const usa = svg.append("g").attr("class", "usa");
-
-//     const counties = usa.append("g").attr("class", "counties");
-
-//     const states = usa.append("g").attr("class", "states");
-
-//     const tooltip = selectAll("#geo-map")
-//       .append("div")
-//       .attr("class", "tooltip")
-//       .style("opacity", 0);
-
-//     const mouseover = d => {
-//       tooltip
-//         .transition()
-//         .duration(200)
-//         .style("opacity", 0.9);
-//       const obj = fipsStateCodes.filter(x => x.STATE === d.id)[0];
-//       tooltip
-//         .html(`${d.id}: ${obj.STATE_NAME}`)
-//         .style("left", `${event.layerX}px`)
-//         .style("top", `${event.layerY - 28}px`);
-//     };
-
-//     counties
-//       .selectAll("path")
-//       .data(feature(topology, topology.objects.counties).features)
-//       .enter()
-//       .append("path")
-//       .attr("class", "county")
-//       .attr("d", path)
-//       .style("fill", "white")
-//       .style("stroke", "black");
-//     // .on('mouseover', () => console.log('county'));
-
-//     states
-//       .selectAll("path")
-//       .data(feature(topology, topology.objects.states).features)
-//       .enter()
-//       .append("path")
-//       .attr("class", "state")
-//       .attr("d", path)
-//       .style("fill", d => zScale(d.id))
-//       // .on('mouseover', () => console.log('state'));
-//       .on("mouseover", mouseover)
-//       .on("mouseout", () =>
-//         tooltip
-//           .transition()
-//           .duration(500)
-//           .style("opacity", 0)
-//       );
-
-//     svg
-//       .append("path")
-//       .attr("class", "state-border")
-//       .attr(
-//         "d",
-//         path(mesh(topology, topology.objects.states, (a, b) => a !== b))
-//       )
-//       .style("fill", "none")
-//       .style("opacity", 0.2)
-//       .style("stroke", "black");
-//   };
-
-//   const d3Psv = d3RequestType.default("text/plain", xhr => {
-//     const psv = dsv("|");
-//     return psv.parse(xhr.responseText);
-//   });
-
-//   // National FIPS and GNIS Codes File can be downloaded here:
-//   // https://www.census.gov/geo/reference/ansi_statetables.html
-
-//   const queue = queue();
-//   queue
-//     .defer(d3Psv, "../data/us_states_fips_codes.txt")
-//     .defer(d3Json, "https://d3js.org/us-10m.v1.json")
-//     .await(draw);
-// }
-
-// -------------------------------------------------------------------------- //
-
-const worldMapUrl = 'https://d3js.org/world-50m.v1.json';
-const meteoritesUrl =
-  'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/meteorite-strike-data.json';
-// const worldMapUrl = '../data/world-50m.v1.json';
-// const meteoritesUrl = '../data/meteorite-strike-data.json';
-
-const draw = (topologyWorld, meteorites) => {
+const draw = (selector, topologyWorld, meteorites) => {
   const margin = {
     top: 20,
     right: 20,
@@ -127,7 +23,7 @@ const draw = (topologyWorld, meteorites) => {
   const width = 960 - margin.left - margin.right;
   const height = 650 - margin.top - margin.bottom;
 
-  const svg = selectAll('#geo-map')
+  const svg = selectAll(selector)
     .append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
@@ -137,15 +33,15 @@ const draw = (topologyWorld, meteorites) => {
   // append a background as big as the svg to handle zoom & pan behavior
   svg
     .append('rect')
-    .attr('class', 'background')
+    .attr('class', styles.background)
     .attr('width', width)
     .attr('height', height);
 
-  const world = svg.append('g').attr('class', 'world');
+  const world = svg.append('g').attr('class', styles.world);
 
-  const countries = world.append('g').attr('class', 'countries');
+  const countries = world.append('g').attr('class', styles.countries);
 
-  const impacts = world.append('g').attr('class', 'impacts');
+  const impacts = world.append('g').attr('class', styles.impacts);
 
   const projection = geoMercator();
   // const projection = d3.geoAzimuthalEqualArea();
@@ -166,9 +62,9 @@ const draw = (topologyWorld, meteorites) => {
 
   svg.call(zoomBehavior);
 
-  const tooltip = selectAll('#geo-map')
+  const tooltip = selectAll(selector)
     .append('div')
-    .attr('class', 'tooltip')
+    .attr('class', styles.tooltip)
     .style('opacity', 0);
 
   const countryScale = scaleOrdinal(schemeCategory10);
@@ -184,7 +80,7 @@ const draw = (topologyWorld, meteorites) => {
     .data(featuresWorld)
     .enter()
     .append('path')
-    .attr('class', 'country')
+    .attr('class', styles.country)
     .attr('d', geoPath)
     // .style('fill', 'none')
     // .attr('stroke', '#000000');
@@ -253,7 +149,9 @@ const draw = (topologyWorld, meteorites) => {
     .domain(domain)
     .range(range);
 
-  const mouseover = d => {
+  const mouseover = (d, i, group) => {
+    const selectedImpact = select(group[i]);
+    selectedImpact.style('outline-style', 'dotted');
     // more human-readable units of measurements for the mass
     // https://github.com/d3/d3/issues/2241#issuecomment-150099953
     const formatSI = format('.3s');
@@ -274,6 +172,7 @@ const draw = (topologyWorld, meteorites) => {
       .transition()
       .duration(200)
       .style('opacity', 0.9);
+
     const lat = format('.2f')(d.coords[1]);
     const latitude = lat > 0 ? `${lat}°N` : `${-lat}°S`;
     const long = format('.2f')(d.coords[0]);
@@ -282,56 +181,54 @@ const draw = (topologyWorld, meteorites) => {
     const html = `<span>${d.name}</span> (<span>${date}</span>)<br>
         <span>(${latitude}, ${longitude})</span><br>
         <span>${mass}</span><span> - Class: ${d.recclass}</span>`;
+
     tooltip
       .html(html)
       .style('left', `${event.layerX + 10}px`)
       .style('top', `${event.layerY - 10}px`);
   };
 
-  impacts
+  const mouseout = (d, i, group) => {
+    const selectedImpact = select(group[i]);
+    selectedImpact.style('outline-style', 'unset');
+
+    tooltip
+      .transition()
+      .duration(500)
+      .style('opacity', 0);
+  };
+
+  const meteoriteStrikes = impacts
     .selectAll('circle')
     .data(data)
     .enter()
     .append('circle')
-    .attr('class', 'meteorite-strike')
+    .attr('class', styles.meteoriteStrike);
+
+  meteoriteStrikes
     .attr('cx', d => projection(d.coords)[0])
     .attr('cy', d => projection(d.coords)[1])
     .attr('r', d => massSizeScale(d.mass))
     .style('fill', d => massColorScale(d.mass))
-    .on('mouseover', mouseover)
-    .on('mouseout', () =>
-      tooltip
-        .transition()
-        .duration(500)
-        .style('opacity', 0)
-    );
+    .on('mouseover', (d, i, group) => mouseover(d, i, group))
+    .on('mouseout', (d, i, group) => mouseout(d, i, group));
 };
 
-// fetch(worldMapUrl)
-//   .catch(error => {
-//     throw error;
-//   })
-//   .then(async res => {
-//     const topologyWorld = await res.json();
-//     // console.log("topologyWorld", topologyWorld);
-//     fetch(meteoritesUrl)
-//       .catch(error => {
-//         throw error;
-//       })
-//       .then(async response => {
-//         const meteorites = await response.json();
-//         // console.log("meteorites", meteorites);
-//         draw(topologyWorld, meteorites);
-//       });
-//   });
+const fn = async (selector, urls) => {
+  const promise = Promise.all(urls.map(url => d3Json(url)));
 
-const urls = [worldMapUrl, meteoritesUrl];
-const promise = Promise.all(urls.map(url => d3Json(url)));
+  let datasets;
+  let error;
+  try {
+    datasets = await promise;
+  } catch (err) {
+    error = err;
+  }
+  if (!datasets) {
+    displayError(selector, `${urls[0]} or ${urls[1]}`, error);
+  } else {
+    draw(selector, ...datasets);
+  }
+};
 
-promise
-  .catch(error => {
-    throw error;
-  })
-  .then(datasets => {
-    draw(...datasets);
-  });
+export default fn;

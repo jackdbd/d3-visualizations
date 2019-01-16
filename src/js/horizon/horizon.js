@@ -1,6 +1,7 @@
 import * as d3Base from 'd3';
 import { horizonChart } from 'd3-horizon-chart';
-import '../css/horizon-chart.css';
+import { displayError } from '../utils';
+import './horizon.module.css';
 
 // create a d3 Object that includes the d3 library and additional plugins
 const d3 = Object.assign(d3Base, { horizonChart });
@@ -52,15 +53,17 @@ const loadStockData = async stock => {
   return promise;
 };
 
-const stocks = ['AAPL', 'BIDU', 'SINA', 'GOOG', 'MSFT', 'YHOO'];
-const promises = stocks.map(stock => loadStockData(stock));
-const promise = Promise.all(promises);
+const fn = async (selector, stocks) => {
+  const promises = stocks.map(stock => loadStockData(stock));
+  const promise = Promise.all(promises);
+  let datasets;
+  try {
+    datasets = await promise;
+  } catch (err) {
+    displayError(selector, 'URL', err);
+    return;
+  }
+  draw(selector, datasets);
+};
 
-const selector = '#horizon-chart';
-promise
-  .catch(error => {
-    throw error;
-  })
-  .then(datasets => {
-    draw(selector, datasets);
-  });
+export default fn;

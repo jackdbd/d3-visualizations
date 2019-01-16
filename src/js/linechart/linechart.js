@@ -3,7 +3,7 @@ import * as d3Annotation from 'd3-svg-annotation';
 import { lineChunked } from 'd3-line-chunked';
 // import * as Future from 'fluture';
 import { displayError } from '../utils';
-import '../../css/linechart.css';
+import styles from './linechart.module.css';
 
 // create a d3 Object that includes the d3 library and additional plugins
 const d3 = Object.assign(d3Base, { lineChunked });
@@ -133,20 +133,19 @@ const draw = (selector, stocks) => {
   const tooltip = d3
     .selectAll(selector)
     .append('div')
-    .attr('class', 'tooltip')
-    .style('opacity', 0);
+    .attr('class', styles.tooltip);
 
   const focus = svg.append('g').style('display', 'none');
 
   svg
     .append('g')
-    .attr('class', 'axis axis--x')
+    .attr('class', styles.axisX)
     .attr('transform', `translate(0,${height})`)
     .call(xAxis);
 
   svg
     .append('g')
-    .attr('class', 'axis axis--y')
+    .attr('class', styles.axisY)
     .call(yAxis)
     .append('text')
     .attr('transform', 'rotate(-90)')
@@ -165,7 +164,6 @@ const draw = (selector, stocks) => {
 
   focus
     .append('circle')
-    .attr('class', 'y')
     .style('fill', 'none')
     .style('stroke', 'blue')
     .attr('r', 4);
@@ -195,13 +193,14 @@ const draw = (selector, stocks) => {
     tooltip
       .html(`${d.date}<br/>Close: <span>${formatCurrency(d.close)}</span>`)
       .style('left', `${d3.event.layerX}px`)
-      .style('top', `${d3.event.layerY - 28}px`);
+      .style('top', `${d3.event.layerY - 28}px`)
+      .style('position', 'absolute');
   };
 
   // append a rect element to capture mouse events
   svg
     .append('rect')
-    .attr('class', 'overlay')
+    .attr('class', styles.overlay)
     .attr('width', width)
     .attr('height', height)
     .style('fill', 'none')

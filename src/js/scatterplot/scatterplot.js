@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import { displayError } from '../utils';
-import '../../css/scatterplot.css';
+import styles from './scatterplot.module.css';
 
 const draw = (selector, data) => {
   const margin = {
@@ -65,7 +65,7 @@ const draw = (selector, data) => {
   const tooltip = d3
     .selectAll(selector)
     .append('div')
-    .attr('class', 'tooltip')
+    .attr('class', styles.tooltip)
     .style('opacity', 0);
 
   const htmlStr = d => {
@@ -90,7 +90,7 @@ const draw = (selector, data) => {
 
   svg
     .append('g')
-    .attr('class', 'axis axis--x')
+    .attr('class', styles.axisX)
     .attr('transform', `translate(0, ${height})`)
     .call(xAxis)
     .append('text')
@@ -100,7 +100,7 @@ const draw = (selector, data) => {
 
   svg
     .append('g')
-    .attr('class', 'axis axis--y')
+    .attr('class', styles.axisY)
     .call(yAxis)
     .append('text')
     .attr('transform', 'rotate(-90)')
@@ -109,14 +109,14 @@ const draw = (selector, data) => {
     .style('text-anchor', 'end')
     .text('Ranking');
 
-  const bikers = svg.append('g').attr('class', 'bikers');
+  const bikers = svg.append('g').attr('class', styles.bikers);
 
   bikers
     .selectAll('.circle')
     .data(data)
     .enter()
     .append('circle') // use elements (in defs)
-    .attr('class', 'circle')
+    .attr('class', styles.biker)
     .attr('cx', (d, i) => xScale(dates[i]))
     .attr('cy', d => yScale(d.Place))
     .attr('r', 10)
