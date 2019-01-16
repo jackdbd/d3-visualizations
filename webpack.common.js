@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const paths = require('./paths');
 
 module.exports = mode => {
@@ -82,6 +83,11 @@ module.exports = mode => {
       root: __dirname,
       exclude: ['favicon.ico', 'Transparent.gif'],
       verbose: true,
+    }),
+    new FaviconsWebpackPlugin({
+      inject: true,
+      logo: path.join(__dirname, 'src', 'images', 'logo.png'),
+      title: 'd3-visualizations',
     }),
     new ExtractCssChunks({
       chunkFilename: '[id].css',
