@@ -32,14 +32,14 @@
   font-family: InknutAntiqua;
   font-style: normal;
   font-weight: normal;
-  src: url(/./fonts/InknutAntiqua-Regular.ttf) format('truetype');
+  src: url(./fonts/InknutAntiqua-Regular.ttf) format('truetype');
 }
 
 @font-face {
   font-family: InknutAntiqua;
   font-style: normal;
   font-weight: bold;
-  src: url(/./fonts/InknutAntiqua-ExtraBold.ttf) format('truetype');
+  src: url(./fonts/InknutAntiqua-ExtraBold.ttf) format('truetype');
 }
 
 /* other cool fonts Syncopate, Quicksand, Aclonica */
