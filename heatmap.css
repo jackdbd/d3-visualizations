@@ -1,0 +1,123 @@
+:root {
+  /* COLORS */
+  --colors-axis: #000;
+  --colors-backgound-primary: blue;
+  --colors-backgound-secondary: yellow;
+  --colors-bar-selected: #17bf3c;
+  --colors-bar-standard: #4682b4;
+  --colors-circle-fill: #e65100;
+  --colors-circle-stroke: #000;
+  --colors-footer-background: #e65100;
+  --colors-header-background: #ffc107;
+  --colors-line: #3f51b5;
+  --colors-link: #789;
+  --colors-orbit-highlighted: #f00;
+  --colors-orbit-label: #a9a9a9;
+  --colors-orbit-trajectory: #a9a9a9;
+  --colors-primary: red;
+  --colors-secondary: green;
+  --colors-sun: #ff0;
+  --colors-tooltip-background: #b0c4de;
+
+  /* TYPOGRAPHY */
+  --typography-font-family-primary: 'InknutAntiqua', sans-serif;
+  --typography-font-family-secondary: 'Lobster';
+  --typography-font-size: 20px;
+
+  /* GEOMETRY */
+  --geometry-footer-height: 150px;
+  --geometry-header-height: 4em;
+}
+
+/* Define font-face rules
+ * If you have multiple font formats, put most modern formats first.
+ * A single font-family can have multiple fonts (e.g. for bold, italic).
+ */
+
+@font-face {
+  font-family: InknutAntiqua;
+  font-style: normal;
+  font-weight: normal;
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-Regular.ttf)
+    format('truetype');
+}
+
+@font-face {
+  font-family: InknutAntiqua;
+  font-style: normal;
+  font-weight: bold;
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-ExtraBold.ttf)
+    format('truetype');
+}
+
+/* other cool fonts Syncopate, Quicksand, Aclonica */
+
+body {
+  background-color: var(--colors-background-primary);
+  font-family: var(--typography-font-family-primary);
+}
+
+header {
+  background-color: var(--colors-header-background);
+  height: var(--geometry-footer-height);
+}
+
+li {
+  font-family: var(--typography-font-family-primary);
+}
+
+footer {
+  background-color: var(--colors-footer-background);
+  color: var(--colors-primary);
+  font-family: var(--typography-font-family-secondary);
+  font-size: var(--typography-font-size);
+  height: var(--geometry-footer-height);
+  padding: 20px;
+}
+
+.src-js-heatmap-__heatmap-module__axisX--2xM8f > path {
+  display: none;
+}
+
+.src-js-heatmap-__heatmap-module__axisX--2xM8f text {
+  fill: var(--colors-axis);
+}
+
+.src-js-heatmap-__heatmap-module__axisY--3nMJt text {
+  fill: var(--colors-axis);
+}
+
+.src-js-heatmap-__heatmap-module__heatBars--2idw2 {
+  stroke: var(--colors-link);
+}
+
+.src-js-heatmap-__heatmap-module__heatBar--1pHQj {
+  fill: var(--colors-bar-standard);
+}
+
+.src-js-heatmap-__heatmap-module__heatBar--1pHQj:hover {
+  fill: var(--colors-bar-selected);
+}
+
+.src-js-heatmap-__heatmap-module__tooltip--3vLwI {
+  background: var(--colors-tooltip-background);
+  border: 0;
+  border-radius: 8px;
+  font-family: var(--typography-font-family-primary);
+  font-size: 1rem;
+  font-weight: bold;
+  height: auto;
+  padding: 0.5rem;
+  position: absolute;
+  text-align: center;
+  width: auto;
+}
+
+.src-js-heatmap-__heatmap-module__tooltip--3vLwI:hover {
+  opacity: 0.8;
+}
+
+
+/*# sourceMappingURL=heatmap.css.map*/

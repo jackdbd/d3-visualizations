@@ -1,9 +1,11 @@
 :root {
+  /* COLORS */
   --colors-axis: #000;
   --colors-backgound-primary: blue;
   --colors-backgound-secondary: yellow;
   --colors-bar-selected: #17bf3c;
   --colors-bar-standard: #4682b4;
+  --colors-circle-fill: #e65100;
   --colors-circle-stroke: #000;
   --colors-footer-background: #e65100;
   --colors-header-background: #ffc107;
@@ -16,9 +18,13 @@
   --colors-secondary: green;
   --colors-sun: #ff0;
   --colors-tooltip-background: #b0c4de;
-}
 
-:root {
+  /* TYPOGRAPHY */
+  --typography-font-family-primary: 'InknutAntiqua', sans-serif;
+  --typography-font-family-secondary: 'Lobster';
+  --typography-font-size: 20px;
+
+  /* GEOMETRY */
   --geometry-footer-height: 150px;
   --geometry-header-height: 4em;
 }
@@ -32,23 +38,21 @@
   font-family: InknutAntiqua;
   font-style: normal;
   font-weight: normal;
-  src: url(./fonts/InknutAntiqua-Regular.ttf) format('truetype');
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-Regular.ttf)
+    format('truetype');
 }
 
 @font-face {
   font-family: InknutAntiqua;
   font-style: normal;
   font-weight: bold;
-  src: url(./fonts/InknutAntiqua-ExtraBold.ttf) format('truetype');
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-ExtraBold.ttf)
+    format('truetype');
 }
 
 /* other cool fonts Syncopate, Quicksand, Aclonica */
-
-:root {
-  --typography-font-family-primary: "InknutAntiqua", sans-serif;
-  --typography-font-family-secondary: "Lobster";
-  --typography-font-size: 20px;
-}
 
 body {
   background-color: var(--colors-background-primary);
@@ -64,7 +68,7 @@ li {
   font-family: var(--typography-font-family-primary);
 }
 
-.footer {
+footer {
   background-color: var(--colors-footer-background);
   color: var(--colors-primary);
   font-family: var(--typography-font-family-secondary);
@@ -73,7 +77,27 @@ li {
   padding: 20px;
 }
 
-.tooltip {
+.src-js-barchart-__barchart-module__bar--3wQKp {
+  fill: var(--colors-bar-standard);
+}
+
+.src-js-barchart-__barchart-module__bar--3wQKp:hover {
+  fill: var(--colors-bar-selected);
+}
+
+.src-js-barchart-__barchart-module__axisX--F2aQ4 > path {
+  display: none;
+}
+
+.src-js-barchart-__barchart-module__axisX--F2aQ4 text {
+  fill: var(--colors-axis);
+}
+
+.src-js-barchart-__barchart-module__axisY--1CkTF text {
+  fill: var(--colors-axis);
+}
+
+.src-js-barchart-__barchart-module__tooltip--K4dUE {
   background: var(--colors-tooltip-background);
   border: 0;
   border-radius: 8px;
@@ -87,48 +111,8 @@ li {
   width: auto;
 }
 
-.tooltip:hover {
-  opacity: 0.8 !important;
-}
-
-.axis {
-  font-family: var(--typography-font-family-primary);
-  font-size: 1rem;
-}
-
-.axis path,
-line {
-  fill: none;
-  shape-rendering: auto; /* avoid crispEdges */
-  stroke: var(--colors-axis);
-}
-
-.axis--x text {
-  fill: var(--colors-axis);
-}
-
-.axis--y text {
-  fill: var(--colors-axis);
-}
-
-.bar {
-  fill: var(--colors-bar-standard);
-}
-
-.bar:hover {
-  fill: var(--colors-bar-selected);
-}
-
-.barchart .axis--x > path {
-  display: none;
-}
-
-.barchart .axis--x > text {
-  fill: var(--colors-axis);
-}
-
-.barchart .axis--y > text {
-  fill: var(--colors-axis);
+.src-js-barchart-__barchart-module__tooltip--K4dUE:hover {
+  opacity: 0.8;
 }
 
 

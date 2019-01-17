@@ -1,9 +1,11 @@
 :root {
+  /* COLORS */
   --colors-axis: #000;
   --colors-backgound-primary: blue;
   --colors-backgound-secondary: yellow;
   --colors-bar-selected: #17bf3c;
   --colors-bar-standard: #4682b4;
+  --colors-circle-fill: #e65100;
   --colors-circle-stroke: #000;
   --colors-footer-background: #e65100;
   --colors-header-background: #ffc107;
@@ -16,9 +18,13 @@
   --colors-secondary: green;
   --colors-sun: #ff0;
   --colors-tooltip-background: #b0c4de;
-}
 
-:root {
+  /* TYPOGRAPHY */
+  --typography-font-family-primary: 'InknutAntiqua', sans-serif;
+  --typography-font-family-secondary: 'Lobster';
+  --typography-font-size: 20px;
+
+  /* GEOMETRY */
   --geometry-footer-height: 150px;
   --geometry-header-height: 4em;
 }
@@ -32,23 +38,21 @@
   font-family: InknutAntiqua;
   font-style: normal;
   font-weight: normal;
-  src: url(./fonts/InknutAntiqua-Regular.ttf) format('truetype');
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-Regular.ttf)
+    format('truetype');
 }
 
 @font-face {
   font-family: InknutAntiqua;
   font-style: normal;
   font-weight: bold;
-  src: url(./fonts/InknutAntiqua-ExtraBold.ttf) format('truetype');
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-ExtraBold.ttf)
+    format('truetype');
 }
 
 /* other cool fonts Syncopate, Quicksand, Aclonica */
-
-:root {
-  --typography-font-family-primary: "InknutAntiqua", sans-serif;
-  --typography-font-family-secondary: "Lobster";
-  --typography-font-size: 20px;
-}
 
 body {
   background-color: var(--colors-background-primary);
@@ -64,7 +68,7 @@ li {
   font-family: var(--typography-font-family-primary);
 }
 
-.footer {
+footer {
   background-color: var(--colors-footer-background);
   color: var(--colors-primary);
   font-family: var(--typography-font-family-secondary);
@@ -73,63 +77,25 @@ li {
   padding: 20px;
 }
 
-.tooltip {
-  background: var(--colors-tooltip-background);
-  border: 0;
-  border-radius: 8px;
-  font-family: var(--typography-font-family-primary);
-  font-size: 1rem;
-  font-weight: bold;
-  height: auto;
-  padding: 0.5rem;
-  position: absolute;
-  text-align: center;
-  width: auto;
-}
-
-.tooltip:hover {
-  opacity: 0.8 !important;
-}
-
-.axis {
-  font-family: var(--typography-font-family-primary);
-  font-size: 1rem;
-}
-
-.axis path,
-line {
-  fill: none;
-  shape-rendering: auto; /* avoid crispEdges */
-  stroke: var(--colors-axis);
-}
-
-.axis--x text {
-  fill: var(--colors-axis);
-}
-
-.axis--y text {
-  fill: var(--colors-axis);
-}
-
-.state {
+.src-js-geomap-__geomap-module__country--1-wyC {
   opacity: 0.5;
 }
 
-.state:hover {
-  opacity: 0;
+.src-js-geomap-__geomap-module__country--1-wyC:hover {
+  opacity: 0.75;
 }
 
-.background {
+.src-js-geomap-__geomap-module__background--J3zbu {
   fill: none;
   pointer-events: all;
 }
 
 /* https://css-tricks.com/hover-on-everything-but/ */
-.impacts:hover > .meteorite-strike {
+.src-js-geomap-__geomap-module__meteoriteStrike--32Fj8 {
   opacity: 0.3;
 }
 
-.impacts:hover > .meteorite-strike:hover {
+.src-js-geomap-__geomap-module__meteoriteStrike--32Fj8:hover {
   opacity: 1;
 }
 
