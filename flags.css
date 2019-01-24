@@ -1,5 +1,1664 @@
 /*!
  * Generated with CSS Flag Sprite generator (https://www.flag-sprites.com/)
- */.flag{display:inline-block;width:16px;height:11px;background:url(3b1edb2c524a192d27721ec6c459a2db.png) no-repeat}.flag.flag-scotland{background-position:-176px -121px}.flag.flag-la{background-position:-160px -77px}.flag.flag-vi{background-position:-112px -154px}.flag.flag-ck{background-position:-128px -22px}.flag.flag-mu{background-position:-48px -99px}.flag.flag-mm{background-position:-192px -88px}.flag.flag-im{background-position:-48px -66px}.flag.flag-ca{background-position:-16px -22px}.flag.flag-nf{background-position:-192px -99px}.flag.flag-cr{background-position:-208px -22px}.flag.flag-xk{background-position:-208px -154px}.flag.flag-om{background-position:-64px -110px}.flag.flag-hm{background-position:-160px -55px}.flag.flag-zm{background-position:-16px -165px}.flag.flag-mh{background-position:-144px -88px}.flag.flag-ye{background-position:-224px -154px}.flag.flag-is{background-position:-128px -66px}.flag.flag-th{background-position:-16px -143px}.flag.flag-sn{background-position:-64px -132px}.flag.flag-ht{background-position:-208px -55px}.flag.flag-sb{background-position:-144px -121px}.flag.flag-gy{background-position:-128px -55px}.flag.flag-gb{background-position:-112px -44px}.flag.flag-br{background-position:-176px -11px}.flag.flag-ve{background-position:-80px -154px}.flag.flag-ph{background-position:-144px -110px}.flag.flag-io{background-position:-80px -66px}.flag.flag-er{background-position:-208px -33px}.flag.flag-au{background-position:-192px 0}.flag.flag-tj{background-position:-48px -143px}.flag.flag-vc{background-position:-64px -154px}.flag.flag-vn{background-position:-128px -154px}.flag.flag-fk{background-position:-32px -44px}.flag.flag-mv{background-position:-64px -99px}.flag.flag-bj{background-position:-112px -11px}.flag.flag-bn{background-position:-144px -11px}.flag.flag-jm{background-position:-192px -66px}.flag.flag-na{background-position:-144px -99px}.flag.flag-cf{background-position:-64px -22px}.flag.flag-cl{background-position:-144px -22px}.flag.flag-hu{background-position:-224px -55px}.flag.flag-ke{background-position:-240px -66px}.flag.flag-kr{background-position:-80px -77px}.flag.flag-bg{background-position:-64px -11px}.flag.flag-gw{background-position:-112px -55px}.flag.flag-ru{background-position:-96px -121px}.flag.flag-ma{background-position:-64px -88px}.flag.flag-hn{background-position:-176px -55px}.flag.flag-ni{background-position:-224px -99px}.flag.flag-ws{background-position:-192px -154px}.flag.flag-at{background-position:-176px 0}.flag.flag-pf{background-position:-112px -110px}.flag.flag-cw{background-position:-256px -22px}.flag.flag-nl{background-position:-240px -99px}.flag.flag-kp{background-position:-64px -77px}.flag.flag-sx{background-position:-176px -132px}.flag.flag-mg{background-position:-128px -88px}.flag.flag-sl{background-position:-32px -132px}.flag.flag-lb{background-position:-176px -77px}.flag.flag-mk{background-position:-160px -88px}.flag.flag-ga{background-position:-96px -44px}.flag.flag-as{background-position:-160px 0}.flag.flag-mc{background-position:-80px -88px}.flag.flag-cn{background-position:-176px -22px}.flag.flag-ua{background-position:-224px -143px}.flag.flag-lt{background-position:0 -88px}.flag.flag-in{background-position:-64px -66px}.flag.flag-tl{background-position:-80px -143px}.flag.flag-eh{background-position:-176px -33px}.flag.flag-mz{background-position:-128px -99px}.flag.flag-af{background-position:-32px 0}.flag.flag-gm{background-position:-256px -44px}.flag.flag-lv{background-position:-32px -88px}.flag.flag-eu{background-position:-256px -33px}.flag.flag-eg{background-position:-160px -33px}.flag.flag-fi{background-position:0 -44px}.flag.flag-ec{background-position:-128px -33px}.flag.flag-bo{background-position:-160px -11px}.flag.flag-pl{background-position:-176px -110px}.flag.flag-ly{background-position:-48px -88px}.flag.flag-sa{background-position:-128px -121px}.flag.flag-si{background-position:-256px -121px}.flag.flag-se{background-position:-208px -121px}.flag.flag-bw{background-position:-240px -11px}.flag.flag-sy{background-position:-192px -132px}.flag.flag-za{background-position:-256px -154px}.flag.flag-ax{background-position:-224px 0}.flag.flag-pa{background-position:-80px -110px}.flag.flag-gn{background-position:0 -55px}.flag.flag-lu{background-position:-16px -88px}.flag.flag-sc{background-position:-160px -121px}.flag.flag-sk{background-position:-16px -132px}.flag.flag-sd{background-position:-192px -121px}.flag.flag-ag{background-position:-48px 0}.flag.flag-bf{background-position:-48px -11px}.flag.flag-ne{background-position:-176px -99px}.flag.flag-bv{background-position:-224px -11px}.flag.flag-bs{background-position:-192px -11px}.flag.flag-kh{background-position:0 -77px}.flag.flag-il{background-position:-16px -66px}.flag.flag-pk{background-position:-160px -110px}.flag.flag-hr{background-position:-192px -55px}.flag.flag-bt{background-position:-208px -11px}.flag.flag-ar{background-position:-144px 0}.flag.flag-sj{background-position:0 -132px}.flag.flag-fj{background-position:-16px -44px}.flag.flag-an{background-position:-112px 0}.flag.flag-it{background-position:-144px -66px}.flag.flag-mr{background-position:0 -99px}.flag.flag-et{background-position:-240px -33px}.flag.flag-cv{background-position:-240px -22px}.flag.flag-nu{background-position:-32px -110px}.flag.flag-mp{background-position:-240px -88px}.flag.flag-id{background-position:-256px -55px}.flag.flag-mn{background-position:-208px -88px}.flag.flag-de{background-position:-32px -33px}.flag.flag-ls{background-position:-256px -77px}.flag.flag-ee{background-position:-144px -33px}.flag.flag-uy{background-position:-16px -154px}.flag.flag-bb{background-position:0 -11px}.flag.flag-gl{background-position:-240px -44px}.flag.flag-ir{background-position:-112px -66px}.flag.flag-kg{background-position:-256px -66px}.flag.flag-ba{background-position:-256px 0}.flag.flag-ao{background-position:-128px 0}.flag.flag-aw{background-position:-208px 0}.flag.flag-va{background-position:-48px -154px}.flag.flag-np{background-position:0 -110px}.flag.flag-tt{background-position:-160px -143px}.flag.flag-no{background-position:-256px -99px}.flag.flag-gu{background-position:-96px -55px}.flag.flag-ng{background-position:-208px -99px}.flag.flag-ki{background-position:-16px -77px}.flag.flag-tc{background-position:-224px -132px}.flag.flag-catalonia{background-position:-32px -22px}.flag.flag-pt{background-position:-256px -110px}.flag.flag-co{background-position:-192px -22px}.flag.flag-es{background-position:-224px -33px}.flag.flag-gs{background-position:-64px -55px}.flag.flag-cy{background-position:0 -33px}.flag.flag-fm{background-position:-48px -44px}.flag.flag-gp{background-position:-16px -55px}.flag.flag-pg{background-position:-128px -110px}.flag.flag-qa{background-position:-32px -121px}.flag.flag-dz{background-position:-112px -33px}.flag.flag-hk{background-position:-144px -55px}.flag.flag-wales{background-position:-160px -154px}.flag.flag-zw{background-position:-32px -165px}.flag.flag-mt{background-position:-32px -99px}.flag.flag-dj{background-position:-48px -33px}.flag.flag-jo{background-position:-208px -66px}.flag.flag-tg{background-position:0 -143px}.flag.flag-rw{background-position:-112px -121px}.flag.flag-st{background-position:-144px -132px}.flag.flag-je{background-position:-176px -66px}.flag.flag-sh{background-position:-240px -121px}.flag.flag-somaliland{background-position:-96px -132px}.flag.flag-td{background-position:-240px -132px}.flag.flag-kw{background-position:-112px -77px}.flag.flag-ky{background-position:-128px -77px}.flag.flag-gg{background-position:-192px -44px}.flag.flag-mq{background-position:-256px -88px}.flag.flag-fo{background-position:-64px -44px}.flag.flag-km{background-position:-32px -77px}.flag.flag-vg{background-position:-96px -154px}.flag.flag-tr{background-position:-144px -143px}.flag.flag-yt{background-position:-240px -154px}.flag.flag-me{background-position:-112px -88px}.flag.flag-my{background-position:-112px -99px}.flag.flag-dm{background-position:-80px -33px}.flag.flag-fr{background-position:-80px -44px}.flag.flag-uz{background-position:-32px -154px}.flag.flag-ic{background-position:-240px -55px}.flag.flag-al{background-position:-80px 0}.flag.flag-li{background-position:-208px -77px}.flag.flag-to{background-position:-128px -143px}.flag.flag-am{background-position:-96px 0}.flag.flag-sr{background-position:-112px -132px}.flag.flag-vu{background-position:-144px -154px}.flag.flag-ai{background-position:-64px 0}.flag.flag-bh{background-position:-80px -11px}.flag.flag-ie{background-position:0 -66px}.flag.flag-ad{background-position:0 0}.flag.flag-sv{background-position:-160px -132px}.flag.flag-so{background-position:-80px -132px}.flag.flag-pe{background-position:-96px -110px}.flag.flag-ci{background-position:-112px -22px}.flag.flag-ge{background-position:-144px -44px}.flag.flag-pr{background-position:-224px -110px}.flag.flag-nz{background-position:-48px -110px}.flag.flag-py{background-position:-16px -121px}.flag.flag-mx{background-position:-96px -99px}.flag.flag-ss{background-position:-128px -132px}.flag.flag-lc{background-position:-192px -77px}.flag.flag-cu{background-position:-224px -22px}.flag.flag-zanzibar{background-position:0 -165px}.flag.flag-bz{background-position:0 -22px}.flag.flag-ms{background-position:-16px -99px}.flag.flag-re{background-position:-48px -121px}.flag.flag-us{background-position:0 -154px}.flag.flag-sz{background-position:-208px -132px}.flag.flag-kn{background-position:-48px -77px}.flag.flag-pw{background-position:0 -121px}.flag.flag-bd{background-position:-16px -11px}.flag.flag-tm{background-position:-96px -143px}.flag.flag-nr{background-position:-16px -110px}.flag.flag-wf{background-position:-176px -154px}.flag.flag-nc{background-position:-160px -99px}.flag.flag-gh{background-position:-208px -44px}.flag.flag-gt{background-position:-80px -55px}.flag.flag-tv{background-position:-176px -143px}.flag.flag-rs{background-position:-80px -121px}.flag.flag-cz{background-position:-16px -33px}.flag.flag-az{background-position:-240px 0}.flag.flag-ps{background-position:-240px -110px}.flag.flag-bm{background-position:-128px -11px}.flag.flag-um{background-position:-256px -143px}.flag.flag-gf{background-position:-160px -44px}.flag.flag-tz{background-position:-208px -143px}.flag.flag-tibet{background-position:-32px -143px}.flag.flag-pn{background-position:-208px -110px}.flag.flag-lr{background-position:-240px -77px}.flag.flag-tw{background-position:-192px -143px}.flag.flag-kz{background-position:-144px -77px}.flag.flag-mw{background-position:-80px -99px}.flag.flag-bi{background-position:-96px -11px}.flag.flag-cg{background-position:-80px -22px}.flag.flag-pm{background-position:-192px -110px}.flag.flag-sm{background-position:-48px -132px}.flag.flag-md{background-position:-96px -88px}.flag.flag-ch{background-position:-96px -22px}.flag.flag-gq{background-position:-32px -55px}.flag.flag-tf{background-position:-256px -132px}.flag.flag-kurdistan{background-position:-96px -77px}.flag.flag-gr{background-position:-48px -55px}.flag.flag-gd{background-position:-128px -44px}.flag.flag-ug{background-position:-240px -143px}.flag.flag-iq{background-position:-96px -66px}.flag.flag-by{background-position:-256px -11px}.flag.flag-gi{background-position:-224px -44px}.flag.flag-tk{background-position:-64px -143px}.flag.flag-cm{background-position:-160px -22px}.flag.flag-mo{background-position:-224px -88px}.flag.flag-sg{background-position:-224px -121px}.flag.flag-tn{background-position:-112px -143px}.flag.flag-ae{background-position:-16px 0}.flag.flag-ml{background-position:-176px -88px}.flag.flag-dk{background-position:-64px -33px}.flag.flag-be{background-position:-32px -11px}.flag.flag-cd{background-position:-48px -22px}.flag.flag-england{background-position:-192px -33px}.flag.flag-ro{background-position:-64px -121px}.flag.flag-lk{background-position:-224px -77px}.flag.flag-jp{background-position:-224px -66px}.flag.flag-do{background-position:-96px -33px}
+ */
+.flag {
+  background: url(3b1edb2c524a192d27721ec6c459a2db.png) no-repeat;
+  display: inline-block;
+  height: 11px;
+  position: absolute;
+  width: 16px;
+}
+.flag.flag-scotland {
+  background-position: -176px -121px;
+}
+.flag.flag-la {
+  background-position: -160px -77px;
+}
+.flag.flag-vi {
+  background-position: -112px -154px;
+}
+.flag.flag-ck {
+  background-position: -128px -22px;
+}
+.flag.flag-mu {
+  background-position: -48px -99px;
+}
+.flag.flag-mm {
+  background-position: -192px -88px;
+}
+.flag.flag-im {
+  background-position: -48px -66px;
+}
+.flag.flag-ca {
+  background-position: -16px -22px;
+}
+.flag.flag-nf {
+  background-position: -192px -99px;
+}
+.flag.flag-cr {
+  background-position: -208px -22px;
+}
+.flag.flag-xk {
+  background-position: -208px -154px;
+}
+.flag.flag-om {
+  background-position: -64px -110px;
+}
+.flag.flag-hm {
+  background-position: -160px -55px;
+}
+.flag.flag-zm {
+  background-position: -16px -165px;
+}
+.flag.flag-mh {
+  background-position: -144px -88px;
+}
+.flag.flag-ye {
+  background-position: -224px -154px;
+}
+.flag.flag-is {
+  background-position: -128px -66px;
+}
+.flag.flag-th {
+  background-position: -16px -143px;
+}
+.flag.flag-sn {
+  background-position: -64px -132px;
+}
+.flag.flag-ht {
+  background-position: -208px -55px;
+}
+.flag.flag-sb {
+  background-position: -144px -121px;
+}
+.flag.flag-gy {
+  background-position: -128px -55px;
+}
+.flag.flag-gb {
+  background-position: -112px -44px;
+}
+.flag.flag-br {
+  background-position: -176px -11px;
+}
+.flag.flag-ve {
+  background-position: -80px -154px;
+}
+.flag.flag-ph {
+  background-position: -144px -110px;
+}
+.flag.flag-io {
+  background-position: -80px -66px;
+}
+.flag.flag-er {
+  background-position: -208px -33px;
+}
+.flag.flag-au {
+  background-position: -192px 0;
+}
+.flag.flag-tj {
+  background-position: -48px -143px;
+}
+.flag.flag-vc {
+  background-position: -64px -154px;
+}
+.flag.flag-vn {
+  background-position: -128px -154px;
+}
+.flag.flag-fk {
+  background-position: -32px -44px;
+}
+.flag.flag-mv {
+  background-position: -64px -99px;
+}
+.flag.flag-bj {
+  background-position: -112px -11px;
+}
+.flag.flag-bn {
+  background-position: -144px -11px;
+}
+.flag.flag-jm {
+  background-position: -192px -66px;
+}
+.flag.flag-na {
+  background-position: -144px -99px;
+}
+.flag.flag-cf {
+  background-position: -64px -22px;
+}
+.flag.flag-cl {
+  background-position: -144px -22px;
+}
+.flag.flag-hu {
+  background-position: -224px -55px;
+}
+.flag.flag-ke {
+  background-position: -240px -66px;
+}
+.flag.flag-kr {
+  background-position: -80px -77px;
+}
+.flag.flag-bg {
+  background-position: -64px -11px;
+}
+.flag.flag-gw {
+  background-position: -112px -55px;
+}
+.flag.flag-ru {
+  background-position: -96px -121px;
+}
+.flag.flag-ma {
+  background-position: -64px -88px;
+}
+.flag.flag-hn {
+  background-position: -176px -55px;
+}
+.flag.flag-ni {
+  background-position: -224px -99px;
+}
+.flag.flag-ws {
+  background-position: -192px -154px;
+}
+.flag.flag-at {
+  background-position: -176px 0;
+}
+.flag.flag-pf {
+  background-position: -112px -110px;
+}
+.flag.flag-cw {
+  background-position: -256px -22px;
+}
+.flag.flag-nl {
+  background-position: -240px -99px;
+}
+.flag.flag-kp {
+  background-position: -64px -77px;
+}
+.flag.flag-sx {
+  background-position: -176px -132px;
+}
+.flag.flag-mg {
+  background-position: -128px -88px;
+}
+.flag.flag-sl {
+  background-position: -32px -132px;
+}
+.flag.flag-lb {
+  background-position: -176px -77px;
+}
+.flag.flag-mk {
+  background-position: -160px -88px;
+}
+.flag.flag-ga {
+  background-position: -96px -44px;
+}
+.flag.flag-as {
+  background-position: -160px 0;
+}
+.flag.flag-mc {
+  background-position: -80px -88px;
+}
+.flag.flag-cn {
+  background-position: -176px -22px;
+}
+.flag.flag-ua {
+  background-position: -224px -143px;
+}
+.flag.flag-lt {
+  background-position: 0 -88px;
+}
+.flag.flag-in {
+  background-position: -64px -66px;
+}
+.flag.flag-tl {
+  background-position: -80px -143px;
+}
+.flag.flag-eh {
+  background-position: -176px -33px;
+}
+.flag.flag-mz {
+  background-position: -128px -99px;
+}
+.flag.flag-af {
+  background-position: -32px 0;
+}
+.flag.flag-gm {
+  background-position: -256px -44px;
+}
+.flag.flag-lv {
+  background-position: -32px -88px;
+}
+.flag.flag-eu {
+  background-position: -256px -33px;
+}
+.flag.flag-eg {
+  background-position: -160px -33px;
+}
+.flag.flag-fi {
+  background-position: 0 -44px;
+}
+.flag.flag-ec {
+  background-position: -128px -33px;
+}
+.flag.flag-bo {
+  background-position: -160px -11px;
+}
+.flag.flag-pl {
+  background-position: -176px -110px;
+}
+.flag.flag-ly {
+  background-position: -48px -88px;
+}
+.flag.flag-sa {
+  background-position: -128px -121px;
+}
+.flag.flag-si {
+  background-position: -256px -121px;
+}
+.flag.flag-se {
+  background-position: -208px -121px;
+}
+.flag.flag-bw {
+  background-position: -240px -11px;
+}
+.flag.flag-sy {
+  background-position: -192px -132px;
+}
+.flag.flag-za {
+  background-position: -256px -154px;
+}
+.flag.flag-ax {
+  background-position: -224px 0;
+}
+.flag.flag-pa {
+  background-position: -80px -110px;
+}
+.flag.flag-gn {
+  background-position: 0 -55px;
+}
+.flag.flag-lu {
+  background-position: -16px -88px;
+}
+.flag.flag-sc {
+  background-position: -160px -121px;
+}
+.flag.flag-sk {
+  background-position: -16px -132px;
+}
+.flag.flag-sd {
+  background-position: -192px -121px;
+}
+.flag.flag-ag {
+  background-position: -48px 0;
+}
+.flag.flag-bf {
+  background-position: -48px -11px;
+}
+.flag.flag-ne {
+  background-position: -176px -99px;
+}
+.flag.flag-bv {
+  background-position: -224px -11px;
+}
+.flag.flag-bs {
+  background-position: -192px -11px;
+}
+.flag.flag-kh {
+  background-position: 0 -77px;
+}
+.flag.flag-il {
+  background-position: -16px -66px;
+}
+.flag.flag-pk {
+  background-position: -160px -110px;
+}
+.flag.flag-hr {
+  background-position: -192px -55px;
+}
+.flag.flag-bt {
+  background-position: -208px -11px;
+}
+.flag.flag-ar {
+  background-position: -144px 0;
+}
+.flag.flag-sj {
+  background-position: 0 -132px;
+}
+.flag.flag-fj {
+  background-position: -16px -44px;
+}
+.flag.flag-an {
+  background-position: -112px 0;
+}
+.flag.flag-it {
+  background-position: -144px -66px;
+}
+.flag.flag-mr {
+  background-position: 0 -99px;
+}
+.flag.flag-et {
+  background-position: -240px -33px;
+}
+.flag.flag-cv {
+  background-position: -240px -22px;
+}
+.flag.flag-nu {
+  background-position: -32px -110px;
+}
+.flag.flag-mp {
+  background-position: -240px -88px;
+}
+.flag.flag-id {
+  background-position: -256px -55px;
+}
+.flag.flag-mn {
+  background-position: -208px -88px;
+}
+.flag.flag-de {
+  background-position: -32px -33px;
+}
+.flag.flag-ls {
+  background-position: -256px -77px;
+}
+.flag.flag-ee {
+  background-position: -144px -33px;
+}
+.flag.flag-uy {
+  background-position: -16px -154px;
+}
+.flag.flag-bb {
+  background-position: 0 -11px;
+}
+.flag.flag-gl {
+  background-position: -240px -44px;
+}
+.flag.flag-ir {
+  background-position: -112px -66px;
+}
+.flag.flag-kg {
+  background-position: -256px -66px;
+}
+.flag.flag-ba {
+  background-position: -256px 0;
+}
+.flag.flag-ao {
+  background-position: -128px 0;
+}
+.flag.flag-aw {
+  background-position: -208px 0;
+}
+.flag.flag-va {
+  background-position: -48px -154px;
+}
+.flag.flag-np {
+  background-position: 0 -110px;
+}
+.flag.flag-tt {
+  background-position: -160px -143px;
+}
+.flag.flag-no {
+  background-position: -256px -99px;
+}
+.flag.flag-gu {
+  background-position: -96px -55px;
+}
+.flag.flag-ng {
+  background-position: -208px -99px;
+}
+.flag.flag-ki {
+  background-position: -16px -77px;
+}
+.flag.flag-tc {
+  background-position: -224px -132px;
+}
+.flag.flag-catalonia {
+  background-position: -32px -22px;
+}
+.flag.flag-pt {
+  background-position: -256px -110px;
+}
+.flag.flag-co {
+  background-position: -192px -22px;
+}
+.flag.flag-es {
+  background-position: -224px -33px;
+}
+.flag.flag-gs {
+  background-position: -64px -55px;
+}
+.flag.flag-cy {
+  background-position: 0 -33px;
+}
+.flag.flag-fm {
+  background-position: -48px -44px;
+}
+.flag.flag-gp {
+  background-position: -16px -55px;
+}
+.flag.flag-pg {
+  background-position: -128px -110px;
+}
+.flag.flag-qa {
+  background-position: -32px -121px;
+}
+.flag.flag-dz {
+  background-position: -112px -33px;
+}
+.flag.flag-hk {
+  background-position: -144px -55px;
+}
+.flag.flag-wales {
+  background-position: -160px -154px;
+}
+.flag.flag-zw {
+  background-position: -32px -165px;
+}
+.flag.flag-mt {
+  background-position: -32px -99px;
+}
+.flag.flag-dj {
+  background-position: -48px -33px;
+}
+.flag.flag-jo {
+  background-position: -208px -66px;
+}
+.flag.flag-tg {
+  background-position: 0 -143px;
+}
+.flag.flag-rw {
+  background-position: -112px -121px;
+}
+.flag.flag-st {
+  background-position: -144px -132px;
+}
+.flag.flag-je {
+  background-position: -176px -66px;
+}
+.flag.flag-sh {
+  background-position: -240px -121px;
+}
+.flag.flag-somaliland {
+  background-position: -96px -132px;
+}
+.flag.flag-td {
+  background-position: -240px -132px;
+}
+.flag.flag-kw {
+  background-position: -112px -77px;
+}
+.flag.flag-ky {
+  background-position: -128px -77px;
+}
+.flag.flag-gg {
+  background-position: -192px -44px;
+}
+.flag.flag-mq {
+  background-position: -256px -88px;
+}
+.flag.flag-fo {
+  background-position: -64px -44px;
+}
+.flag.flag-km {
+  background-position: -32px -77px;
+}
+.flag.flag-vg {
+  background-position: -96px -154px;
+}
+.flag.flag-tr {
+  background-position: -144px -143px;
+}
+.flag.flag-yt {
+  background-position: -240px -154px;
+}
+.flag.flag-me {
+  background-position: -112px -88px;
+}
+.flag.flag-my {
+  background-position: -112px -99px;
+}
+.flag.flag-dm {
+  background-position: -80px -33px;
+}
+.flag.flag-fr {
+  background-position: -80px -44px;
+}
+.flag.flag-uz {
+  background-position: -32px -154px;
+}
+.flag.flag-ic {
+  background-position: -240px -55px;
+}
+.flag.flag-al {
+  background-position: -80px 0;
+}
+.flag.flag-li {
+  background-position: -208px -77px;
+}
+.flag.flag-to {
+  background-position: -128px -143px;
+}
+.flag.flag-am {
+  background-position: -96px 0;
+}
+.flag.flag-sr {
+  background-position: -112px -132px;
+}
+.flag.flag-vu {
+  background-position: -144px -154px;
+}
+.flag.flag-ai {
+  background-position: -64px 0;
+}
+.flag.flag-bh {
+  background-position: -80px -11px;
+}
+.flag.flag-ie {
+  background-position: 0 -66px;
+}
+.flag.flag-ad {
+  background-position: 0 0;
+}
+.flag.flag-sv {
+  background-position: -160px -132px;
+}
+.flag.flag-so {
+  background-position: -80px -132px;
+}
+.flag.flag-pe {
+  background-position: -96px -110px;
+}
+.flag.flag-ci {
+  background-position: -112px -22px;
+}
+.flag.flag-ge {
+  background-position: -144px -44px;
+}
+.flag.flag-pr {
+  background-position: -224px -110px;
+}
+.flag.flag-nz {
+  background-position: -48px -110px;
+}
+.flag.flag-py {
+  background-position: -16px -121px;
+}
+.flag.flag-mx {
+  background-position: -96px -99px;
+}
+.flag.flag-ss {
+  background-position: -128px -132px;
+}
+.flag.flag-lc {
+  background-position: -192px -77px;
+}
+.flag.flag-cu {
+  background-position: -224px -22px;
+}
+.flag.flag-zanzibar {
+  background-position: 0 -165px;
+}
+.flag.flag-bz {
+  background-position: 0 -22px;
+}
+.flag.flag-ms {
+  background-position: -16px -99px;
+}
+.flag.flag-re {
+  background-position: -48px -121px;
+}
+.flag.flag-us {
+  background-position: 0 -154px;
+}
+.flag.flag-sz {
+  background-position: -208px -132px;
+}
+.flag.flag-kn {
+  background-position: -48px -77px;
+}
+.flag.flag-pw {
+  background-position: 0 -121px;
+}
+.flag.flag-bd {
+  background-position: -16px -11px;
+}
+.flag.flag-tm {
+  background-position: -96px -143px;
+}
+.flag.flag-nr {
+  background-position: -16px -110px;
+}
+.flag.flag-wf {
+  background-position: -176px -154px;
+}
+.flag.flag-nc {
+  background-position: -160px -99px;
+}
+.flag.flag-gh {
+  background-position: -208px -44px;
+}
+.flag.flag-gt {
+  background-position: -80px -55px;
+}
+.flag.flag-tv {
+  background-position: -176px -143px;
+}
+.flag.flag-rs {
+  background-position: -80px -121px;
+}
+.flag.flag-cz {
+  background-position: -16px -33px;
+}
+.flag.flag-az {
+  background-position: -240px 0;
+}
+.flag.flag-ps {
+  background-position: -240px -110px;
+}
+.flag.flag-bm {
+  background-position: -128px -11px;
+}
+.flag.flag-um {
+  background-position: -256px -143px;
+}
+.flag.flag-gf {
+  background-position: -160px -44px;
+}
+.flag.flag-tz {
+  background-position: -208px -143px;
+}
+.flag.flag-tibet {
+  background-position: -32px -143px;
+}
+.flag.flag-pn {
+  background-position: -208px -110px;
+}
+.flag.flag-lr {
+  background-position: -240px -77px;
+}
+.flag.flag-tw {
+  background-position: -192px -143px;
+}
+.flag.flag-kz {
+  background-position: -144px -77px;
+}
+.flag.flag-mw {
+  background-position: -80px -99px;
+}
+.flag.flag-bi {
+  background-position: -96px -11px;
+}
+.flag.flag-cg {
+  background-position: -80px -22px;
+}
+.flag.flag-pm {
+  background-position: -192px -110px;
+}
+.flag.flag-sm {
+  background-position: -48px -132px;
+}
+.flag.flag-md {
+  background-position: -96px -88px;
+}
+.flag.flag-ch {
+  background-position: -96px -22px;
+}
+.flag.flag-gq {
+  background-position: -32px -55px;
+}
+.flag.flag-tf {
+  background-position: -256px -132px;
+}
+.flag.flag-kurdistan {
+  background-position: -96px -77px;
+}
+.flag.flag-gr {
+  background-position: -48px -55px;
+}
+.flag.flag-gd {
+  background-position: -128px -44px;
+}
+.flag.flag-ug {
+  background-position: -240px -143px;
+}
+.flag.flag-iq {
+  background-position: -96px -66px;
+}
+.flag.flag-by {
+  background-position: -256px -11px;
+}
+.flag.flag-gi {
+  background-position: -224px -44px;
+}
+.flag.flag-tk {
+  background-position: -64px -143px;
+}
+.flag.flag-cm {
+  background-position: -160px -22px;
+}
+.flag.flag-mo {
+  background-position: -224px -88px;
+}
+.flag.flag-sg {
+  background-position: -224px -121px;
+}
+.flag.flag-tn {
+  background-position: -112px -143px;
+}
+.flag.flag-ae {
+  background-position: -16px 0;
+}
+.flag.flag-ml {
+  background-position: -176px -88px;
+}
+.flag.flag-dk {
+  background-position: -64px -33px;
+}
+.flag.flag-be {
+  background-position: -32px -11px;
+}
+.flag.flag-cd {
+  background-position: -48px -22px;
+}
+.flag.flag-england {
+  background-position: -192px -33px;
+}
+.flag.flag-ro {
+  background-position: -64px -121px;
+}
+.flag.flag-lk {
+  background-position: -224px -77px;
+}
+.flag.flag-jp {
+  background-position: -224px -66px;
+}
+.flag.flag-do {
+  background-position: -96px -33px;
+}
+
+:root {
+  /* COLORS */
+  --colors-axis: #000;
+  --colors-backgound-primary: blue;
+  --colors-backgound-secondary: yellow;
+  --colors-bar-selected: #17bf3c;
+  --colors-bar-standard: #4682b4;
+  --colors-circle-fill: #e65100;
+  --colors-circle-stroke: #000;
+  --colors-footer-background: #e65100;
+  --colors-header-background: #ffc107;
+  --colors-line: #3f51b5;
+  --colors-link: #789;
+  --colors-orbit-highlighted: #f00;
+  --colors-orbit-label: #a9a9a9;
+  --colors-orbit-trajectory: #a9a9a9;
+  --colors-primary: red;
+  --colors-secondary: green;
+  --colors-sun: #ff0;
+  --colors-tooltip-background: #b0c4de;
+
+  /* TYPOGRAPHY */
+  --typography-font-family-primary: 'InknutAntiqua', sans-serif;
+  --typography-font-family-secondary: 'Lobster';
+  --typography-font-size: 20px;
+
+  /* GEOMETRY */
+  --geometry-footer-height: 150px;
+  --geometry-header-height: 4em;
+}
+
+/* Define font-face rules
+ * If you have multiple font formats, put most modern formats first.
+ * A single font-family can have multiple fonts (e.g. for bold, italic).
+ */
+
+@font-face {
+  font-family: InknutAntiqua;
+  font-style: normal;
+  font-weight: normal;
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-Regular.ttf)
+    format('truetype');
+}
+
+@font-face {
+  font-family: InknutAntiqua;
+  font-style: normal;
+  font-weight: bold;
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-ExtraBold.ttf)
+    format('truetype');
+}
+
+/* other cool fonts Syncopate, Quicksand, Aclonica */
+
+body {
+  background-color: var(--colors-background-primary);
+  font-family: var(--typography-font-family-primary);
+}
+
+header {
+  background-color: var(--colors-header-background);
+  height: var(--geometry-footer-height);
+}
+
+li {
+  font-family: var(--typography-font-family-primary);
+}
+
+footer {
+  background-color: var(--colors-footer-background);
+  color: var(--colors-primary);
+  font-family: var(--typography-font-family-secondary);
+  font-size: var(--typography-font-size);
+  height: var(--geometry-footer-height);
+  padding: 20px;
+}
+
+/*!
+ * Generated with CSS Flag Sprite generator (https://www.flag-sprites.com/)
+ */
+.src-css-vendor-__flags-min__flag--14G40 {
+  background: url(3b1edb2c524a192d27721ec6c459a2db.png) no-repeat;
+  display: inline-block;
+  height: 11px;
+  position: absolute;
+  width: 16px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-scotland--dNGCa {
+  background-position: -176px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-la--15Ox3 {
+  background-position: -160px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-vi--ptr7J {
+  background-position: -112px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ck--1n0Fi {
+  background-position: -128px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mu--2fryb {
+  background-position: -48px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mm--bpLKh {
+  background-position: -192px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-im--3wGFj {
+  background-position: -48px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ca--2gzu8 {
+  background-position: -16px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-nf--3l0jb {
+  background-position: -192px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cr--3piYp {
+  background-position: -208px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-xk--3diV6 {
+  background-position: -208px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-om--1x5nH {
+  background-position: -64px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-hm--4WuKL {
+  background-position: -160px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-zm--D9FUZ {
+  background-position: -16px -165px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mh--2C26S {
+  background-position: -144px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ye--3tume {
+  background-position: -224px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-is--2bG4V {
+  background-position: -128px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-th--2hxA- {
+  background-position: -16px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sn--21obN {
+  background-position: -64px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ht--2Y0js {
+  background-position: -208px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sb--2WfL1 {
+  background-position: -144px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gy--1ShHQ {
+  background-position: -128px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gb--1xGjr {
+  background-position: -112px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-br--21R_i {
+  background-position: -176px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ve--3By8N {
+  background-position: -80px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ph--2XAoT {
+  background-position: -144px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-io--30QyR {
+  background-position: -80px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-er--3E8wp {
+  background-position: -208px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-au--OCpGb {
+  background-position: -192px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tj--2oHZ5 {
+  background-position: -48px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-vc--1ZYyZ {
+  background-position: -64px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-vn--3mtvz {
+  background-position: -128px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-fk--2lXst {
+  background-position: -32px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mv--1QpMb {
+  background-position: -64px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bj--k9jTE {
+  background-position: -112px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bn--3rpIZ {
+  background-position: -144px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-jm--2s7Pf {
+  background-position: -192px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-na--2OLbK {
+  background-position: -144px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cf--sCfnN {
+  background-position: -64px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cl--2MwuR {
+  background-position: -144px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-hu--CWhnL {
+  background-position: -224px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ke--217RM {
+  background-position: -240px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-kr--2LcYc {
+  background-position: -80px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bg--27070 {
+  background-position: -64px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gw--2XCir {
+  background-position: -112px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ru--1Vi5S {
+  background-position: -96px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ma--2y9Cj {
+  background-position: -64px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-hn--DE8K2 {
+  background-position: -176px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ni--3_r3r {
+  background-position: -224px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ws--1J4JF {
+  background-position: -192px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-at--Fi3xz {
+  background-position: -176px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pf--1dIGE {
+  background-position: -112px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cw--1LiNC {
+  background-position: -256px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-nl--23ES- {
+  background-position: -240px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-kp--3l6VD {
+  background-position: -64px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sx--y3jEa {
+  background-position: -176px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mg--CFU3u {
+  background-position: -128px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sl--3mmCD {
+  background-position: -32px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-lb--2niF- {
+  background-position: -176px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mk--ttltw {
+  background-position: -160px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ga--2xIT8 {
+  background-position: -96px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-as--23IBG {
+  background-position: -160px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mc--1I3CP {
+  background-position: -80px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cn--1GAtn {
+  background-position: -176px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ua--2oWtv {
+  background-position: -224px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-lt--3Edrr {
+  background-position: 0 -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-in--2Zj0q {
+  background-position: -64px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tl--cH6gl {
+  background-position: -80px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-eh--3axjR {
+  background-position: -176px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mz--3r6S- {
+  background-position: -128px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-af--G16iH {
+  background-position: -32px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gm--3it0A {
+  background-position: -256px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-lv--3CN-W {
+  background-position: -32px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-eu--1P23L {
+  background-position: -256px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-eg--2NAYf {
+  background-position: -160px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-fi--2c8gk {
+  background-position: 0 -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ec--wy91x {
+  background-position: -128px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bo--2evxB {
+  background-position: -160px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pl--2WebR {
+  background-position: -176px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ly--pX4U- {
+  background-position: -48px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sa--1lOB6 {
+  background-position: -128px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-si--1NHmj {
+  background-position: -256px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-se--15Ze9 {
+  background-position: -208px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bw--1sn2l {
+  background-position: -240px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sy--2CVqM {
+  background-position: -192px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-za--S092o {
+  background-position: -256px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ax--g8yhf {
+  background-position: -224px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pa--31hGu {
+  background-position: -80px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gn--3EFvo {
+  background-position: 0 -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-lu--32G82 {
+  background-position: -16px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sc--LiDqy {
+  background-position: -160px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sk--gEETo {
+  background-position: -16px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sd--wooOn {
+  background-position: -192px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ag--3X7J9 {
+  background-position: -48px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bf--2mzf1 {
+  background-position: -48px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ne--2S34y {
+  background-position: -176px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bv--3rQBS {
+  background-position: -224px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bs--3kwES {
+  background-position: -192px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-kh--1qnvW {
+  background-position: 0 -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-il--2v2dK {
+  background-position: -16px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pk--1ZVWx {
+  background-position: -160px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-hr--1eGsm {
+  background-position: -192px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bt--1r3HZ {
+  background-position: -208px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ar--2sIxW {
+  background-position: -144px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sj--3pe99 {
+  background-position: 0 -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-fj--35xmK {
+  background-position: -16px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-an--1WFGU {
+  background-position: -112px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-it--2oOyM {
+  background-position: -144px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mr--29SCd {
+  background-position: 0 -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-et--29RCf {
+  background-position: -240px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cv--Mmlto {
+  background-position: -240px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-nu--2-r9h {
+  background-position: -32px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mp--1BLdu {
+  background-position: -240px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-id--2Xr8t {
+  background-position: -256px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mn--2S_6O {
+  background-position: -208px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-de--4BHUE {
+  background-position: -32px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ls--3i547 {
+  background-position: -256px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ee--2dtmh {
+  background-position: -144px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-uy--2rxIH {
+  background-position: -16px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bb--1BVoe {
+  background-position: 0 -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gl--bHmw4 {
+  background-position: -240px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ir--ee0vh {
+  background-position: -112px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-kg--MpAdJ {
+  background-position: -256px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ba--3c27o {
+  background-position: -256px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ao--23WLF {
+  background-position: -128px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-aw--2nLR3 {
+  background-position: -208px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-va--3DUU- {
+  background-position: -48px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-np--2cf-r {
+  background-position: 0 -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tt--2dFOo {
+  background-position: -160px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-no--36WAe {
+  background-position: -256px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gu--2b_gm {
+  background-position: -96px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ng--1YL5F {
+  background-position: -208px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ki--1Vt1d {
+  background-position: -16px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tc--i2nIJ {
+  background-position: -224px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-catalonia--1NPL7 {
+  background-position: -32px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pt--2mV_D {
+  background-position: -256px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-co--1o3ZL {
+  background-position: -192px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-es--6pUUo {
+  background-position: -224px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gs--1EyUk {
+  background-position: -64px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cy--3lm6i {
+  background-position: 0 -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-fm--3Qnvy {
+  background-position: -48px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gp--3XeO- {
+  background-position: -16px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pg--1-OJA {
+  background-position: -128px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-qa--3inw0 {
+  background-position: -32px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-dz--1lpfs {
+  background-position: -112px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-hk--3RO_A {
+  background-position: -144px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-wales--3xILP {
+  background-position: -160px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-zw--2Ivyq {
+  background-position: -32px -165px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mt--3oyML {
+  background-position: -32px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-dj--3Ufvq {
+  background-position: -48px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-jo--3L7Wk {
+  background-position: -208px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tg--2jHee {
+  background-position: 0 -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-rw--j1Sh1 {
+  background-position: -112px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-st--19Y3S {
+  background-position: -144px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-je--2iRjH {
+  background-position: -176px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sh--AoHRm {
+  background-position: -240px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-somaliland--J39Eh {
+  background-position: -96px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-td--1TNbT {
+  background-position: -240px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-kw--1hdHM {
+  background-position: -112px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ky--Txcvh {
+  background-position: -128px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gg--Iev-A {
+  background-position: -192px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mq--14Y52 {
+  background-position: -256px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-fo--sEtct {
+  background-position: -64px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-km--98Sfm {
+  background-position: -32px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-vg--2cGSp {
+  background-position: -96px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tr--2FAZv {
+  background-position: -144px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-yt--14wCL {
+  background-position: -240px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-me--1FAMU {
+  background-position: -112px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-my--2skMm {
+  background-position: -112px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-dm--3eASt {
+  background-position: -80px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-fr--XgLXD {
+  background-position: -80px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-uz--2K6oF {
+  background-position: -32px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ic--1x4gR {
+  background-position: -240px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-al--zIQgJ {
+  background-position: -80px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-li--3YPDx {
+  background-position: -208px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-to--1oy9E {
+  background-position: -128px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-am--1vLhQ {
+  background-position: -96px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sr--3Er1F {
+  background-position: -112px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-vu--2VBTn {
+  background-position: -144px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ai--2Zpxi {
+  background-position: -64px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bh--2ZhbT {
+  background-position: -80px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ie--1Em7k {
+  background-position: 0 -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ad--8XAcf {
+  background-position: 0 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sv--1qA_z {
+  background-position: -160px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-so--1fnEg {
+  background-position: -80px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pe--3AU3j {
+  background-position: -96px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ci--2Xn1y {
+  background-position: -112px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ge--3pPzt {
+  background-position: -144px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pr--2SD4e {
+  background-position: -224px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-nz--2GEyh {
+  background-position: -48px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-py--3KXDB {
+  background-position: -16px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mx--Wl-C3 {
+  background-position: -96px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ss--LheDE {
+  background-position: -128px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-lc--1lKfu {
+  background-position: -192px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cu--3TMNd {
+  background-position: -224px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-zanzibar--1KrOD {
+  background-position: 0 -165px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bz--YjLug {
+  background-position: 0 -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ms--1ySeP {
+  background-position: -16px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-re--3L9nj {
+  background-position: -48px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-us--3QoLC {
+  background-position: 0 -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sz--3CsTs {
+  background-position: -208px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-kn--36Vuc {
+  background-position: -48px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pw--3rCiL {
+  background-position: 0 -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bd--30E2g {
+  background-position: -16px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tm--1357a {
+  background-position: -96px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-nr--3TbkZ {
+  background-position: -16px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-wf--3F6xr {
+  background-position: -176px -154px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-nc--1CLjD {
+  background-position: -160px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gh--3MJpU {
+  background-position: -208px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gt--hviZz {
+  background-position: -80px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tv--3xuNC {
+  background-position: -176px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-rs--1qddq {
+  background-position: -80px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cz--1t5mq {
+  background-position: -16px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-az--1iB-q {
+  background-position: -240px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ps--3Kg-4 {
+  background-position: -240px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bm--2E1Fo {
+  background-position: -128px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-um--1F460 {
+  background-position: -256px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gf--2Tf2K {
+  background-position: -160px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tz--1dm4S {
+  background-position: -208px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tibet--2HxV3 {
+  background-position: -32px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pn--1bdLB {
+  background-position: -208px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-lr--36dPH {
+  background-position: -240px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tw--2eamt {
+  background-position: -192px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-kz--14PhY {
+  background-position: -144px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mw---JPcd {
+  background-position: -80px -99px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-bi--25V0- {
+  background-position: -96px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cg--1edLK {
+  background-position: -80px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-pm--1KvX9 {
+  background-position: -192px -110px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sm--2U9V2 {
+  background-position: -48px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-md--1eTN3 {
+  background-position: -96px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ch--2GxKf {
+  background-position: -96px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gq--3RQ_J {
+  background-position: -32px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tf--DpEZN {
+  background-position: -256px -132px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-kurdistan--2kX4t {
+  background-position: -96px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gr--3QBMl {
+  background-position: -48px -55px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gd--2q923 {
+  background-position: -128px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ug--12x7_ {
+  background-position: -240px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-iq--3J4Ur {
+  background-position: -96px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-by---Ts58 {
+  background-position: -256px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-gi--2SUUp {
+  background-position: -224px -44px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tk--3XLqB {
+  background-position: -64px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cm--2FVxq {
+  background-position: -160px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-mo--1_bFB {
+  background-position: -224px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-sg--ifRUt {
+  background-position: -224px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-tn--2SEBU {
+  background-position: -112px -143px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ae--1YtJq {
+  background-position: -16px 0;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ml--wPxxW {
+  background-position: -176px -88px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-dk--12PM7 {
+  background-position: -64px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-be--2lLj6 {
+  background-position: -32px -11px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-cd--2khAB {
+  background-position: -48px -22px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-england--3Btp5 {
+  background-position: -192px -33px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-ro--vWk5g {
+  background-position: -64px -121px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-lk--PoEjA {
+  background-position: -224px -77px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-jp--3ct8S {
+  background-position: -224px -66px;
+}
+.src-css-vendor-__flags-min__flag--14G40.src-css-vendor-__flags-min__flag-do--15w5o {
+  background-position: -96px -33px;
+}
+
+.src-js-flags-__flags-module__flagsContainer--1vs6X {
+  position: absolute;
+}
+
+.src-js-flags-__flags-module__graphLink--Vjn8M {
+  stroke: var(--colors-link);
+  stroke-opacity: 0.6;
+}
+
+.src-js-flags-__flags-module__graphNode--2akXX {
+  stroke-width: 1.5px;
+}
+
+.src-js-flags-__flags-module__tooltip--DB5y1 {
+  background: var(--colors-tooltip-background);
+  border: 0;
+  border-radius: 8px;
+  font-family: var(--typography-font-family-primary);
+  font-size: 1rem;
+  font-weight: bold;
+  height: auto;
+  padding: 0.5rem;
+  position: absolute;
+  text-align: center;
+  width: auto;
+}
+
+.src-js-flags-__flags-module__tooltip--DB5y1:hover {
+  opacity: 0.8;
+}
+
 
 /*# sourceMappingURL=flags.css.map*/
