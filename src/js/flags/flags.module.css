@@ -1,0 +1,33 @@
+@import '../../css/main.css';
+@import '../../css/vendor/flags.min.css';
+
+.flagsContainer {
+  position: absolute;
+}
+
+.graphLink {
+  stroke: var(--colors-link);
+  stroke-opacity: 0.6;
+}
+
+.graphNode {
+  stroke-width: 1.5px;
+}
+
+.tooltip {
+  background: var(--colors-tooltip-background);
+  border: 0;
+  border-radius: 8px;
+  font-family: var(--typography-font-family-primary);
+  font-size: 1rem;
+  font-weight: bold;
+  height: auto;
+  padding: 0.5rem;
+  position: absolute;
+  text-align: center;
+  width: auto;
+}
+
+.tooltip:hover {
+  opacity: 0.8;
+}

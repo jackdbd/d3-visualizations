@@ -133,7 +133,7 @@ module.exports = mode => {
       barchart: path.join(__dirname, 'src', 'js', 'barchart', 'index.js'),
       challenge: path.join(__dirname, 'src', 'js', 'challenge.js'), // TODO
       dolphins: path.join(__dirname, 'src', 'js', 'dolphins', 'index.js'),
-      flags: path.join(__dirname, 'src', 'js', 'flags.js'), // TODO
+      flags: path.join(__dirname, 'src', 'js', 'flags', 'index.js'),
       geomap: path.join(__dirname, 'src', 'js', 'geomap', 'index.js'),
       heatmap: path.join(__dirname, 'src', 'js', 'heatmap', 'index.js'),
       index: path.join(__dirname, 'src', 'js', 'index.js'),
