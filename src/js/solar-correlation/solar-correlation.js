@@ -303,13 +303,13 @@ const SolarSystemGroup = chart.append('g').attr('class', styles.solarSystem);
 const orbitsGroup = SolarSystemGroup.append('g').attr('class', styles.orbits);
 
 const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
-  // console.warn(
-  //   'drawPlanetarySystem',
-  //   dSystem,
-  //   iSystem,
-  //   systemSelection,
-  //   iOrbit
-  // );
+  console.warn(
+    'drawPlanetarySystem',
+    dSystem,
+    iSystem,
+    systemSelection,
+    iOrbit
+  );
   systemSelection
     .append('circle')
     .datum(dSystem.planet)
