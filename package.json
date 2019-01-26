@@ -29,7 +29,7 @@
     "static": "chromium-browser build/index.html"
   },
   "dependencies": {
-    "cross-fetch": "^3.0.0",
+    "cross-fetch": "3.0.0",
     "d3": "5.7.0",
     "d3-array": "2.0.3",
     "d3-axis": "1.0.12",
@@ -57,9 +57,9 @@
     "topojson": "3.0.2"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/plugin-transform-runtime": "7.2.0",
     "@babel/preset-env": "7.3.1",
-    "@babel/runtime": "^7.3.1",
+    "@babel/runtime": "7.3.1",
     "@types/d3-array": "1.2.4",
     "@types/jest": "23.3.13",
     "@types/node": "10.12.18",
@@ -69,7 +69,7 @@
     "clean-webpack-plugin": "1.0.1",
     "compression-webpack-plugin": "2.0.0",
     "css-loader": "2.1.0",
-    "duplicate-package-checker-webpack-plugin": "^3.0.0",
+    "duplicate-package-checker-webpack-plugin": "3.0.0",
     "eslint": "5.12.1",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.15.0",
@@ -96,7 +96,7 @@
     "webpack": "4.29.0",
     "webpack-bundle-analyzer": "3.0.3",
     "webpack-cli": "3.2.1",
-    "webpack-dashboard": "^2.0.0",
+    "webpack-dashboard": "2.0.0",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
     "webpack-merge": "4.2.1"

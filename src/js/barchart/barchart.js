@@ -127,16 +127,24 @@ function draw(selector, dataset) {
 }
 
 const fn = async (selector, url) => {
-  // convert fetch (which returns a Promise) into a function that returns a Future
-  // const fetchf = Future.encaseP(fetch);
-
-  // create unary functions so they can be used in `.fork`
+  // create unary functions
   const displayErrorBounded = displayError.bind(this, selector, url);
   const drawBounded = draw.bind(this, selector);
 
+  // convert fetch (which returns a Promise) into a function that returns a Future
+  // const fetchf = Future.encaseP(fetch);
+
+  // TODO: Fluture works in the browser but fails in the tests
+
   // fetchf(url)
-  //   .chain(res => Future.tryP(_ => res.json()))
-  //   .fork(console.error, console.log);
+  //   .chain(res => {
+  //     const future = Future.tryP(() => {
+  //       const promise = res.json();
+  //       return promise;
+  //     });
+  //     return future;
+  //   })
+  //   .fork(displayErrorBounded, drawBounded);
 
   let res;
   try {
