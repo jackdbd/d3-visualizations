@@ -18,7 +18,7 @@ const config = {
   modulePathIgnorePatterns: ['/build/', '/node_modules/'],
   setupTestFrameworkScriptFile: '<rootDir>/src/setupJest.js',
   testEnvironment: 'jsdom',
-  testRegex: '/__tests__/.*\\.(js|ts)$',
+  testRegex: 'src/__tests__/.*\\.(js|ts)$',
   testURL: 'http://localhost',
   transform: {
     '^.+\\.(js|ts)$': '<rootDir>/node_modules/babel-jest',

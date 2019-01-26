@@ -1,6 +1,6 @@
 # d3-visualizations
 
-[![Build Status](https://travis-ci.org/jackdbd/d3-visualizations.svg?branch=master)](https://travis-ci.org/jackdbd/d3-visualizations) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovateapp.com/) [![Code style prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![Build Status](https://travis-ci.com/jackdbd/d3-visualizations.svg?branch=master)](https://travis-ci.org/jackdbd/d3-visualizations) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovateapp.com/) [![Code style prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 A few visualizations with D3 v5.
 

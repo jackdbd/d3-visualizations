@@ -41,15 +41,12 @@ const draw = (selector, img, graph) => {
     };
   };
 
-  const dragged = d => {
-    // console.warn('dragged', d);
-    return {
-      ...d,
-      fx: d3.event.x,
-      fy: d3.event.y,
-    };
-  };
-
+  // console.warn('dragged', d);
+  const dragged = d => ({
+    ...d,
+    fx: d3.event.x,
+    fy: d3.event.y,
+  });
   const dragended = d => {
     // console.warn('dragended', d);
     tooltip.style('visibility', 'visible');
