@@ -3549,7 +3549,7 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-duplicate-package-checker-webpack-plugin@^3.0.0:
+duplicate-package-checker-webpack-plugin@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/duplicate-package-checker-webpack-plugin/-/duplicate-package-checker-webpack-plugin-3.0.0.tgz#78bb89e625fa7cf8c2a59c53f62b495fda9ba287"
   integrity sha512-aO50/qPC7X2ChjRFniRiscxBLT/K01bALqfcDaf8Ih5OqQ1N4iT/Abx9Ofu3/ms446vHTm46FACIuJUmgUQcDQ==
@@ -11819,7 +11819,7 @@ webpack-cli@3.2.1:
     v8-compile-cache "^2.0.2"
     yargs "^12.0.4"
 
-webpack-dashboard@^2.0.0:
+webpack-dashboard@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/webpack-dashboard/-/webpack-dashboard-2.0.0.tgz#70db22e7bb5b12b4a7fde82de87ce01eed8d921c"
   integrity sha512-JxbGYU13+Np6NUT6nXIc3x1fMWAQIwT0evjV6MatXdol8TEsrNIFiSLmT1D0ofoObZssglqq5OGQ8yxQ6LAdgw==
