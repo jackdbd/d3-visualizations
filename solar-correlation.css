@@ -11,6 +11,7 @@
   --colors-header-background: #ffc107;
   --colors-line: #3f51b5;
   --colors-link: #789;
+  --colors-orbit: #000;
   --colors-orbit-highlighted: #f00;
   --colors-orbit-label: #a9a9a9;
   --colors-orbit-trajectory: #a9a9a9;
@@ -77,40 +78,58 @@ footer {
   padding: 20px;
 }
 
-.container {
+.src-js-solar-correlation-__solar-correlation-module__container--FJ61H {
   padding-bottom: 2em;
 }
 
-.orbit__trajectory {
-  stroke: var(--colors-orbit-trajectory);
+.src-js-solar-correlation-__solar-correlation-module__legendLinear--1eTN1 {
+  fill: violet;
 }
 
-.orbit__label {
-  dominant-baseline: text-before-edge;
-  fill: var(--colors-orbit-label);
-  text-anchor: middle;
+.src-js-solar-correlation-__solar-correlation-module__moon--T8dG- {
+  opacity: 0.75;
 }
 
-.orbit--highlighted {
+.src-js-solar-correlation-__solar-correlation-module__orbit--10ieC {
+  stroke: var(--colors-orbit);
+}
+
+.src-js-solar-correlation-__solar-correlation-module__orbit--highlighted--etpgS {
   stroke: var(--colors-orbit-highlighted);
 }
 
-header {
-  background-color: var(--colors-header-background);
-  height: 3em;
-}
-
-footer {
-  font-size: 1.5rem;
-  height: 3em;
-}
-
-.orbit circle {
+.src-js-solar-correlation-__solar-correlation-module__orbitCircle--1RNxY {
   fill: none;
   stroke-width: 2px;
 }
 
-.sun {
+.src-js-solar-correlation-__solar-correlation-module__orbitLabel--2JMiO {
+  fill: var(--colors-orbit-label);
+  text-anchor: middle;
+}
+
+.src-js-solar-correlation-__solar-correlation-module__orbitPlanetarySystem--vD3Dp {
+  opacity: 1;
+}
+
+.src-js-solar-correlation-__solar-correlation-module__orbitTrajectory--1xul8 {
+  stroke: var(--colors-orbit-trajectory);
+}
+
+.src-js-solar-correlation-__solar-correlation-module__planet--w9vUS {
+  opacity: 1;
+  stroke: none;
+}
+
+.src-js-solar-correlation-__solar-correlation-module__planetLabel--1LhbS {
+  fill: black;
+}
+
+.src-js-solar-correlation-__solar-correlation-module__solarSystem--123s7 {
+  fill: transparent;
+}
+
+.src-js-solar-correlation-__solar-correlation-module__sun--_yTvD {
   fill: var(--colors-sun);
 }
 
