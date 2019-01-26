@@ -152,7 +152,7 @@ module.exports = mode => {
       rules,
     },
     output: {
-      filename: '[name].[contenthash].js',
+      filename: '[name].[hash].js',
       path: path.resolve(__dirname, 'build'),
       sourceMapFilename: '[file].map',
     },

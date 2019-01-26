@@ -53,7 +53,9 @@ const definePlanetarySystems = (bodies, absInterCorrThreshold, angleGen) => {
       const interCorr = correlation.calc(ob.values, planet.values);
       const absInterCorr = Math.abs(interCorr);
       // console.log(`Intercorr between ${ob.name} and ${planet.name}: ${interCorr}`);
-      // console.log(`Abs intercorr between ${ob.name} and ${planet.name}: ${absInterCorr}`);
+      console.log(
+        `Abs intercorr between ${ob.name} and ${planet.name}: ${absInterCorr}`
+      );
       if (absInterCorr > absInterCorrThreshold) {
         // add the absolute intercorrelation from this moon and its planet
         moons.push({
@@ -301,13 +303,13 @@ const SolarSystemGroup = chart.append('g').attr('class', styles.solarSystem);
 const orbitsGroup = SolarSystemGroup.append('g').attr('class', styles.orbits);
 
 const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
-  console.warn(
-    'drawPlanetarySystem',
-    dSystem,
-    iSystem,
-    systemSelection,
-    iOrbit
-  );
+  // console.warn(
+  //   'drawPlanetarySystem',
+  //   dSystem,
+  //   iSystem,
+  //   systemSelection,
+  //   iOrbit
+  // );
   systemSelection
     .append('circle')
     .datum(dSystem.planet)

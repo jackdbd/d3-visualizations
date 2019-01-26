@@ -14,6 +14,7 @@
     "clean": "rimraf build",
     "coverage": "codecov",
     "deploy": "gh-pages -d build",
+    "dash": "webpack-dashboard -- webpack-dev-server --config webpack.dev.js",
     "dev": "webpack-dev-server --config webpack.dev.js",
     "format": "prettier --write '{,!(node_modules)/}**/*.{js,jsx,ts,tsx}'",
     "lint": "yarn lint:css && yarn lint:js && yarn lint:ts",
@@ -65,6 +66,7 @@
     "clean-webpack-plugin": "1.0.1",
     "compression-webpack-plugin": "2.0.0",
     "css-loader": "2.1.0",
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "eslint": "5.12.1",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.15.0",
@@ -91,6 +93,7 @@
     "webpack": "4.29.0",
     "webpack-bundle-analyzer": "3.0.3",
     "webpack-cli": "3.2.1",
+    "webpack-dashboard": "^2.0.0",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
     "webpack-merge": "4.2.1"
