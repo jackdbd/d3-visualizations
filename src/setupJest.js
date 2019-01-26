@@ -2,6 +2,8 @@ import {
   toBeEmpty,
   toBeInTheDocument,
   toBeVisible,
+  toContainElement,
+  toHaveAttribute,
   toHaveClass,
   toHaveTextContent,
 } from 'jest-dom';
@@ -14,6 +16,8 @@ expect.extend({
   toBeEmpty,
   toBeInTheDocument,
   toBeVisible,
+  toContainElement,
+  toHaveAttribute,
   toHaveClass,
   toHaveTextContent,
 });

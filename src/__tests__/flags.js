@@ -20,16 +20,4 @@ describe('flags', () => {
     expect(div).toBeInTheDocument();
     expect(div).toBeVisible();
   });
-  it.skip('shows an error in #flags (fetch not available)', async () => {
-    const div = document.querySelector(selector).firstChild;
-    try {
-      await flags(selector, url);
-    } catch (err) {
-      throw err;
-    }
-    const h1Text = 'ReferenceError: fetch is not defined';
-    expect(div.firstChild).toHaveTextContent(h1Text);
-    // const pText = `There was an error fetching the data at ${url}`;
-    // expect(div.lastChild).toHaveTextContent(pText);
-  });
 });

@@ -7,7 +7,7 @@ const defaultMargin = {
   top: 10,
 };
 
-const displayError = (selector, url, error) => {
+export const displayError = (selector, url, error) => {
   const div = selectAll(selector).append('div');
   div.append('h1').text(error.toString());
   const text = `There was an error fetching the data at ${url}`;
@@ -28,7 +28,7 @@ const computeLayout = (
   };
 };
 
-const createComponent = (
+export const createComponent = (
   nodeId,
   outerWidth = 1200,
   outerHeight = 600,
@@ -80,5 +80,3 @@ const createComponent = (
   };
   return viz;
 };
-
-export { createComponent, displayError };
