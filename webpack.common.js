@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
 
 module.exports = mode => {
