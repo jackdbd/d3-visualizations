@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import * as Future from 'fluture';
-import { createComponent, displayError } from './utils';
-import '../css/challenge.css';
+import { createComponent, displayError } from '../utils';
+import styles from './challenge.module.css';
 
 const rowFunction = d => {
   /* there is no releationship between the number of books of a given genre,
@@ -25,32 +25,20 @@ const rowFunction = d => {
 
 const zScale = d3.scaleOrdinal(d3.schemeCategory10);
 
-const stackedBarChartViz = createComponent(
-  '#dataviz-challenge-stacked-bar-chart'
-);
-const stackedBarChart = stackedBarChartViz.chart;
-const { coords, footer, header, tooltip } = stackedBarChartViz;
-
-header.select('.header > h1').text('Data Visualization Challenge');
-
-const barChartViz = createComponent('#dataviz-challenge-bar-chart');
-const barChart = barChartViz.chart;
-// const { [barChart]: chart, [coord1]: coord } = barChartViz;
-const coords1 = barChartViz.coords;
-const header1 = barChartViz.header;
-const footer1 = barChartViz.footer;
-const tooltip1 = barChartViz.tooltip;
-
-const barChartXAxis = barChart
-  .append('g')
-  .attr('class', 'axis axis--x')
-  .attr('transform', `translate(0, ${coords1.height})`);
-
-const barChartYAxis = barChart.append('g').attr('class', 'axis axis--y');
-
 let selectedGenre = 'Science fiction'; // it will change dynamically
 
-const updateBarChart = (genreSel, arr) => {
+const updateBarChart = (
+  genreSel,
+  arr,
+  barChart,
+  barChartXAxis,
+  barChartYAxis,
+  coords1,
+  header1,
+  footer1,
+  tooltip,
+  tooltip1
+) => {
   const mouseover = d => {
     const html = `<span>${d.genre}</span><br><span>${d.books}</span>`;
     tooltip
@@ -131,10 +119,29 @@ const updateBarChart = (genreSel, arr) => {
     );
 };
 
-const draw = dataset => {
+const draw = (selectorStackedChart, selectorBarChart, dataset) => {
   // const numBooks = data.map(arr => arr.map(obj => obj.books));
   // const sums = numBooks.map(arr => arr.reduce((acc, n) => acc + n, 0)); // or
   // const sums = numBooks.map(arr => d3.sum(arr)); // less mind bending :-)
+
+  const stackedBarChartViz = createComponent(selectorStackedChart);
+  const stackedBarChart = stackedBarChartViz.chart;
+  const { coords, footer, header, tooltip } = stackedBarChartViz;
+  header.select('.header > h1').text('Data Visualization Challenge');
+
+  const barChartViz = createComponent(selectorBarChart);
+  const barChart = barChartViz.chart;
+  const coords1 = barChartViz.coords;
+  const header1 = barChartViz.header;
+  const footer1 = barChartViz.footer;
+  const tooltip1 = barChartViz.tooltip;
+
+  const barChartXAxis = barChart
+    .append('g')
+    .attr('class', 'axis axis--x')
+    .attr('transform', `translate(0, ${coords1.height})`);
+
+  const barChartYAxis = barChart.append('g').attr('class', 'axis axis--y');
 
   // sort in descending order
   const data = dataset.sort((a, b) => a.total - b.total);
@@ -193,7 +200,18 @@ const draw = dataset => {
       .style('left', `${d3.event.layerX}px`)
       .style('top', `${d3.event.layerY - 10}px`);
 
-    updateBarChart(genre, data);
+    updateBarChart(
+      genre,
+      data,
+      barChart,
+      barChartXAxis,
+      barChartYAxis,
+      coords1,
+      header1,
+      footer1,
+      tooltip,
+      tooltip1
+    );
   };
 
   stackedBarChart
@@ -239,7 +257,7 @@ const draw = dataset => {
 
   const legend = stackedBarChart
     .append('g')
-    .attr('class', 'legend')
+    .attr('class', styles.legend)
     .attr('text-anchor', 'end')
     .selectAll('g')
     .data(keys.slice().reverse())
@@ -262,7 +280,18 @@ const draw = dataset => {
     .text(d => d)
     .on('mouseover', d => {
       selectedGenre = d;
-      updateBarChart(selectedGenre, data);
+      updateBarChart(
+        selectedGenre,
+        data,
+        barChart,
+        barChartXAxis,
+        barChartYAxis,
+        coords1,
+        header1,
+        footer1,
+        tooltip,
+        tooltip1
+      );
     });
 
   stackedBarChart
@@ -270,28 +299,53 @@ const draw = dataset => {
     .selectAll('text')
     .on('mouseover', d => {
       selectedGenre = d;
-      updateBarChart(selectedGenre, data);
+      updateBarChart(
+        selectedGenre,
+        data,
+        barChart,
+        barChartXAxis,
+        barChartYAxis,
+        coords1,
+        header1,
+        footer1,
+        tooltip,
+        tooltip1
+      );
     });
 
-  updateBarChart(selectedGenre, data);
+  updateBarChart(
+    selectedGenre,
+    data,
+    barChart,
+    barChartXAxis,
+    barChartYAxis,
+    coords1,
+    header1,
+    footer1,
+    tooltip,
+    tooltip1
+  );
 };
 
-const dataUrl =
-  'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/book_genres.tsv';
+const fn = async (selectorStackedBarChart, selectorBarChart, url) => {
+  // create unary functions so they can be used in `.fork`
+  const displayErrorBounded = displayError.bind(this, selectorBarChart, url);
+  const drawBounded = draw.bind(
+    this,
+    selectorStackedBarChart,
+    selectorBarChart
+  );
 
-// create a unary function so it can be used in `.fork`
-const displayErrorBounded = displayError.bind(
-  this,
-  '#dataviz-challenge-stacked-bar-chart',
-  dataUrl
-);
+  // convert fetch (which returns a Promise) into a function that returns a Future
+  const fetchf = Future.encaseP(fetch);
 
-const fetchf = Future.encaseP(fetch);
+  fetchf(url)
+    .chain(res => {
+      const promise = d3.tsv(res.url);
+      return Future.tryP(_ => promise);
+    })
+    .map(rawData => rawData.map(rowFunction))
+    .fork(displayErrorBounded, drawBounded);
+};
 
-fetchf(dataUrl)
-  .chain(res => {
-    const promise = d3.tsv(res.url);
-    return Future.tryP(_ => promise);
-  })
-  .map(rawData => rawData.map(rowFunction))
-  .fork(displayErrorBounded, draw);
+export default fn;

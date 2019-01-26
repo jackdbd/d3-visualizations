@@ -1,0 +1,56 @@
+@import '../../css/main.css';
+
+.container {
+  padding-bottom: 2em;
+}
+
+.legendLinear {
+  fill: violet;
+}
+
+.moon {
+  opacity: 0.75;
+}
+
+.orbit {
+  stroke: var(--colors-orbit);
+}
+
+.orbit--highlighted {
+  stroke: var(--colors-orbit-highlighted);
+}
+
+.orbitCircle {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.orbitLabel {
+  fill: var(--colors-orbit-label);
+  text-anchor: middle;
+}
+
+.orbitPlanetarySystem {
+  opacity: 1;
+}
+
+.orbitTrajectory {
+  stroke: var(--colors-orbit-trajectory);
+}
+
+.planet {
+  opacity: 1;
+  stroke: none;
+}
+
+.planetLabel {
+  fill: black;
+}
+
+.solarSystem {
+  fill: transparent;
+}
+
+.sun {
+  fill: var(--colors-sun);
+}

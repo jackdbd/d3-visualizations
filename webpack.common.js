@@ -131,7 +131,7 @@ module.exports = mode => {
     entry: {
       about: path.join(__dirname, 'src', 'js', 'about.ts'),
       barchart: path.join(__dirname, 'src', 'js', 'barchart', 'index.js'),
-      challenge: path.join(__dirname, 'src', 'js', 'challenge.js'), // TODO
+      challenge: path.join(__dirname, 'src', 'js', 'challenge', 'index.js'),
       dolphins: path.join(__dirname, 'src', 'js', 'dolphins', 'index.js'),
       flags: path.join(__dirname, 'src', 'js', 'flags', 'index.js'),
       geomap: path.join(__dirname, 'src', 'js', 'geomap', 'index.js'),
@@ -144,8 +144,9 @@ module.exports = mode => {
         __dirname,
         'src',
         'js',
-        'solar-correlation.js'
-      ), // TODO
+        'solar-correlation',
+        'index.js'
+      ),
     },
     module: {
       rules,

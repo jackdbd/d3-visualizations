@@ -12,8 +12,8 @@ import { legendColor } from 'd3-svg-legend';
 import { transition } from 'd3-transition';
 import * as Future from 'fluture';
 import * as correlation from 'node-correlation';
-import { createComponent, displayError } from './utils';
-import '../css/solar-correlation.css';
+import { createComponent, displayError } from '../utils';
+import styles from './solar-correlation.module.css';
 
 // create a d3 object with only the subset of functions that we need
 const d3 = Object.assign(
@@ -231,10 +231,9 @@ d3.scaleLinear()
 
 chart
   .append('g')
-  .attr('class', 'legendLinear')
+  .attr('class', styles.legendLinear)
   .attr('transform', 'translate(20,20)');
 
-// colorLegend
 d3.legendColor()
   .title('Pearson Correlation')
   .shapeWidth(30)
@@ -246,6 +245,7 @@ d3.legendColor()
 // chart.select('.legendLinear').call(colorLegend);
 
 const mouseover = d => {
+  console.log('mouseover', d);
   tooltip
     .transition()
     .duration(200)
@@ -260,12 +260,12 @@ const mouseover = d => {
     html = `<span>${d.name}</span>`;
   }
 
-  d3.selectAll('.orbit__trajectory')
+  d3.selectAll(styles.orbitTrajectory)
     .filter(traj => traj === d.orbit)
     // .attr('orbit--highlighted', true)
     .style('stroke', 'black');
 
-  d3.selectAll('.orbit__label')
+  d3.selectAll(styles.orbitLabel)
     .filter(traj => traj === d.orbit)
     .style('fill', 'black');
 
@@ -278,13 +278,13 @@ const mouseover = d => {
 };
 
 const mouseout = d => {
-  // console.log(`Leaving ${d.name}`);
+  console.log(`Leaving ${d.name}`);
 
-  d3.selectAll('.orbit__trajectory')
+  d3.selectAll(styles.orbitTrajectory)
     .filter(traj => traj === d.orbit)
     .style('stroke', correlationLinearColorScale(d.orbit));
 
-  d3.selectAll('.orbit__label')
+  d3.selectAll(styles.orbitLabel)
     .filter(traj => traj === d.orbit)
     .style('fill', '#a9a9a9');
 
@@ -296,9 +296,9 @@ const mouseout = d => {
 
 header.select('.header > h1').text('Solar Correlation Map');
 
-const SolarSystemGroup = chart.append('g').attr('class', 'solar-system');
+const SolarSystemGroup = chart.append('g').attr('class', styles.solarSystem);
 
-const orbitsGroup = SolarSystemGroup.append('g').attr('class', 'orbits');
+const orbitsGroup = SolarSystemGroup.append('g').attr('class', styles.orbits);
 
 const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
   console.warn(
@@ -311,7 +311,7 @@ const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
   systemSelection
     .append('circle')
     .datum(dSystem.planet)
-    .attr('class', 'planet')
+    .attr('class', styles.planet)
     .attr('cx', d => getPlanetPosX(d.orbit, dSystem.radiansFromSun))
     .attr('cy', d => getPlanetPosY(d.orbit, dSystem.radiansFromSun))
     .attr('r', planetRadiusPx)
@@ -334,7 +334,7 @@ const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
     .data(dSystem.moons)
     .enter()
     .append('circle')
-    .attr('class', 'moon')
+    .attr('class', styles.moon)
     .attr('cx', (d, i) =>
       getMoonPosX(d.orbit, dSystem.radiansFromSun, radiansFromPlanet[i])
     )
@@ -354,6 +354,7 @@ const drawPlanetarySystem = (dSystem, iSystem, systemSelection, iOrbit) => {
     .data(bodies)
     .enter()
     .append('tspan')
+    .attr('class', styles.planetLabel)
     .attr('x', getPlanetPosX(dSystem.planet.orbit, dSystem.radiansFromSun))
     .attr('dy', (d, i) => (i === 0 ? '0' : '1em'))
     .text((d, i) => (i === 0 ? `${d.name}` : `- ${d.name}`));
@@ -368,9 +369,9 @@ const drawOrbit = (dOrbit, iOrbit, orbitSelection) => {
     .attr('cx', coords.width / 2)
     .attr('cy', coords.height / 2)
     .attr('r', d => orbitScale(d))
-    .attr('class', 'orbit__trajectory')
-    .style('stroke', correlationLinearColorScale(dOrbit.orbit));
-  // .on('mouseover', d => console.log(`Orbit ${d}`));
+    .attr('class', styles.orbitTrajectory)
+    .style('stroke', correlationLinearColorScale(dOrbit.orbit))
+    .on('mouseover', d => console.log(`Orbit ${d}`));
 
   orbitGroup
     .append('text')
@@ -378,14 +379,15 @@ const drawOrbit = (dOrbit, iOrbit, orbitSelection) => {
     .attr('x', coords.width / 2)
     .attr('y', coords.height / 2 - orbitScale(dOrbit.orbit))
     .text(dOrbit.orbit)
-    .attr('class', 'orbit__label');
+    .attr('class', styles.orbitLabel);
+  // .style('dominant-baseline', 'text-before-edge');
 
   const systems = orbitSelection
-    .selectAll('.orbit__planetary-system')
+    .selectAll(styles.orbitPlanetarySystem)
     .data(dOrbit.systems)
     .enter()
     .append('g')
-    .attr('class', 'orbit__planetary-system');
+    .attr('class', styles.orbitPlanetarySystem);
 
   systems.each((dSystem, iSystem, gSystems) => {
     const systemSelection = d3.select(gSystems[iSystem]);
@@ -398,7 +400,7 @@ const drawSun = (data, iSun) => {
   const targetVar = variables[iSun];
   const sun = SolarSystemGroup.append('g')
     .datum({ name: targetVar })
-    .attr('class', 'sun');
+    .attr('class', styles.sun);
 
   sun
     .append('circle')
@@ -415,24 +417,13 @@ const drawAllOrbits = data => {
     .data(data)
     .enter()
     .append('g')
-    .attr('class', 'orbit');
+    .attr('class', styles.orbit);
 
   orbits.each((dOrbit, iOrbit, gOrbits) => {
     const orbitSelection = d3.select(gOrbits[iOrbit]);
     return drawOrbit(dOrbit, iOrbit, orbitSelection);
   });
 };
-
-// jedi.csv found here: https://github.com/Zapf-Consulting/solar-correlation-map/blob/master/jedi.csv
-const jediUrl =
-  'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/jedi.csv';
-
-// create unary functions so they can be used in `.fork`
-const displayErrorBounded = displayError.bind(
-  this,
-  '#solar-correlation',
-  jediUrl
-);
 
 const draw = data => {
   const iSun = 0; // sun is the output variable
@@ -441,10 +432,20 @@ const draw = data => {
   drawAllOrbits(orbitsData);
 };
 
-const fn = url => {
-  const promise = d3.csv(url);
-  return promise;
-};
-const future = Future.encaseP(fn);
+const fn = async (selector, url) => {
+  // create unary functions so they can be used in `.fork`
+  const displayErrorBounded = displayError.bind(this, selector, url);
+  // const drawBounded = draw.bind(this, selector);
 
-future(jediUrl).fork(displayErrorBounded, draw);
+  let promise;
+  try {
+    // d3.csv fails if fetch is not available
+    promise = d3.csv(url);
+  } catch (err) {
+    throw err;
+  }
+  const future = Future.encaseP(() => promise);
+  future(url).fork(displayErrorBounded, draw);
+};
+
+export default fn;
