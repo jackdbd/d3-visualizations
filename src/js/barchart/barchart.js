@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 import { extent, max } from 'd3-array';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { format } from 'd3-format';
@@ -106,7 +107,7 @@ function draw(selector, dataset) {
     .text('Gross Domestic Product, USA ($ Billion)');
 
   svg
-    .selectAll('.bar')
+    .selectAll(styles.bar)
     .data(dataset.data)
     .enter()
     .append('rect')

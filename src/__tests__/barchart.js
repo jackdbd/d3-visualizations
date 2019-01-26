@@ -1,11 +1,20 @@
 import barchart, { selector, url } from '../js/barchart';
+import styles from '../js/barchart/barchart.module.css';
 
 describe('barchart', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     const body = document.querySelector('body');
     const node = document.createElement('div');
     node.setAttribute('id', 'barchart');
     body.appendChild(node);
+
+    // Create the barchart here to avoid repeating the code in each test (we
+    // don't save time).
+    try {
+      await barchart(selector, url);
+    } catch (err) {
+      throw err;
+    }
   });
   afterEach(() => {
     // Remove all body's children to make sure the tests are independent
@@ -19,13 +28,28 @@ describe('barchart', () => {
     const div = document.querySelector(selector);
     expect(div).toBeInTheDocument();
     expect(div).toBeVisible();
+    expect(div.getAttribute('id')).toBe('barchart');
   });
-  it('shows an error in #barchart (fetch not available)', () => {
-    barchart(selector, url);
-    const div = document.querySelector(selector).firstChild;
-    const h1Text = 'ReferenceError: fetch is not defined';
-    expect(div.firstChild).toHaveTextContent(h1Text);
-    const pText = `There was an error fetching the data at ${url}`;
-    expect(div.lastChild).toHaveTextContent(pText);
+  it('appends a <svg /> in the document', async () => {
+    const svg = document.querySelector('svg');
+    expect(svg).toBeInTheDocument();
+    expect(svg).toBeVisible();
+    expect(svg.children.length).toBeGreaterThan(0);
+  });
+  it('has the expectd Y Axis', () => {
+    const text = document.querySelector(`.${styles.axisY}`);
+    const axisYLabel = 'Gross Domestic Product, USA ($ Billion)';
+    expect(text).toHaveTextContent(axisYLabel);
+  });
+  it('has some <rect /> elements', () => {
+    const rects = document.querySelectorAll('rect');
+    expect(rects.length).toBeGreaterThan(0);
+    expect(rects[0]).toHaveClass(styles.bar);
+  });
+  it('has an empty, invisible tooltip', () => {
+    const tooltip = document.querySelector(`.${styles.tooltip}`);
+    expect(tooltip).toBeInTheDocument();
+    expect(tooltip).toBeEmpty();
+    expect(tooltip).not.toBeVisible();
   });
 });
