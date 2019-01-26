@@ -16,7 +16,7 @@ const config = {
     '^.+\\.module\\.(css)$': 'identity-obj-proxy',
   },
   modulePathIgnorePatterns: ['/build/', '/node_modules/'],
-  setupTestFrameworkScriptFile: '<rootDir>/src/setupJest.js',
+  setupFilesAfterEnv: ['<rootDir>/src/setupJest.js'],
   testEnvironment: 'jsdom',
   testRegex: 'src/__tests__/.*\\.(js|ts)$',
   testURL: 'http://localhost',

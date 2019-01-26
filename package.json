@@ -24,7 +24,7 @@
     "ncuu": "ncu --upgrade",
     "nuke": "rimraf node_modules && rm yarn.lock",
     "predeploy": "yarn clean && yarn build",
-    "test": "jest --verbose",
+    "test": "jest --verbose --passWithNoTests",
     "static": "chromium-browser build/index.html"
   },
   "dependencies": {
