@@ -1,8 +1,6 @@
 const path = require('path');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
@@ -24,17 +22,15 @@ const devServer = {
   },
 };
 
-const bundleAnalyzerPlugin = new BundleAnalyzerPlugin({
-  analyzerPort: 8888,
-  openAnalyzer: false,
-});
 const dashboardPlugin = new DashboardPlugin();
+
 const duplicatePackageCheckerPlugin = new DuplicatePackageCheckerPlugin({
   emitError: false,
   verbose: true,
   showHelp: true,
   strict: false,
 });
+
 const hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin();
 
 const config = (env, argv) => {
@@ -47,7 +43,6 @@ const config = (env, argv) => {
       hints: 'warning',
     },
     plugins: [
-      bundleAnalyzerPlugin,
       dashboardPlugin,
       duplicatePackageCheckerPlugin,
       hotModuleReplacementPlugin,

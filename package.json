@@ -9,6 +9,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "babel": "babel --plugins @babel/plugin-syntax-dynamic-import src/js/index.js",
     "build": "yarn lint && yarn format && tsc && webpack --config webpack.prod.js --progress",
     "ci": "yarn test && yarn coverage",
     "clean": "rimraf build",
@@ -25,8 +26,9 @@
     "ncuu": "ncu --upgrade",
     "nuke": "rimraf node_modules && rm yarn.lock",
     "predeploy": "yarn clean && yarn build",
-    "test": "jest --verbose --passWithNoTests",
-    "static": "chromium-browser build/index.html"
+    "static": "chromium-browser build/index.html",
+    "stats": "webpack-bundle-analyzer build/stats.json --port 8888",
+    "test": "jest --verbose --passWithNoTests"
   },
   "dependencies": {
     "cross-fetch": "3.0.0",
@@ -57,15 +59,19 @@
     "topojson": "3.0.2"
   },
   "devDependencies": {
+    "@babel/cli": "7.2.3",
+    "@babel/core": "7.3.4",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/plugin-transform-runtime": "7.2.0",
     "@babel/preset-env": "7.3.1",
     "@babel/runtime": "7.3.1",
+    "@packtracker/webpack-plugin": "^1.1.2",
     "@types/d3-array": "1.2.4",
     "@types/jest": "23.3.13",
     "@types/node": "10.12.18",
-    "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.0.0",
     "babel-loader": "8.0.5",
+    "babel-plugin-dynamic-import-webpack": "1.1.0",
     "clean-webpack-plugin": "1.0.1",
     "compression-webpack-plugin": "2.0.0",
     "css-loader": "2.1.0",
@@ -93,7 +99,7 @@
     "tslint": "5.12.1",
     "typescript": "3.2.4",
     "url-loader": "1.1.2",
-    "webpack": "4.29.0",
+    "webpack": "4.29.6",
     "webpack-bundle-analyzer": "3.0.3",
     "webpack-cli": "3.2.1",
     "webpack-dashboard": "2.0.0",

@@ -5,6 +5,7 @@
     "browser": true
   },
   "rules": {
+    "max-len": ["error", { "code": 130 }],
     "no-console": 1,
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
   }

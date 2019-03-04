@@ -1,9 +1,12 @@
 const fs = require('fs');
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PacktrackerPlugin = require('@packtracker/webpack-plugin');
 const paths = require('./paths');
 
 module.exports = mode => {
@@ -12,7 +15,7 @@ module.exports = mode => {
   const rules = [
     // rule for .js/.jsx files
     {
-      test: /\.(js|jsx)$/,
+      test: /\.(jsx?)$/,
       include: [path.join(__dirname, 'js', 'src')],
       exclude: [path.join(__dirname, 'node_modules')],
       use: {
@@ -94,6 +97,11 @@ module.exports = mode => {
     .filter(fileName => fileName.endsWith('.html'));
 
   const plugins = [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true,
+      statsFilename: 'stats.json',
+    }),
     new CleanWebpackPlugin(['build'], {
       root: __dirname,
       exclude: ['favicon.ico', 'Transparent.gif'],
@@ -103,6 +111,11 @@ module.exports = mode => {
       inject: true,
       logo: path.join(__dirname, 'src', 'images', 'logo.png'),
       title: 'd3-visualizations',
+    }),
+    new PacktrackerPlugin({
+      fail_build: true,
+      project_token: '00c60136-3fba-4ebc-8675-8c5fcb870228',
+      upload: true,
     }),
     new ExtractCssChunks({
       chunkFilename: '[id].css',
