@@ -113,7 +113,7 @@ module.exports = mode => {
       title: 'd3-visualizations',
     }),
     new PacktrackerPlugin({
-      cranch: process.env.TRAVIS_BRANCH, // https://docs.packtracker.io/faq#why-cant-the-plugin-determine-my-branch-name
+      branch: process.env.TRAVIS_BRANCH, // https://docs.packtracker.io/faq#why-cant-the-plugin-determine-my-branch-name
       fail_build: true,
       project_token: '00c60136-3fba-4ebc-8675-8c5fcb870228',
       upload: process.env.CI === 'true', // upload stats.json only in CI
