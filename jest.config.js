@@ -1,5 +1,7 @@
 const config = {
+  collectCoverage: true,
   collectCoverageFrom: ['src/js/*.{js,ts}'],
+  coverageDirectory: "./coverage/",
   moduleFileExtensions: [
     'web.js',
     'js',

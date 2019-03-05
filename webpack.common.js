@@ -115,7 +115,7 @@ module.exports = mode => {
     new PacktrackerPlugin({
       fail_build: true,
       project_token: '00c60136-3fba-4ebc-8675-8c5fcb870228',
-      upload: true,
+      upload: process.env.CI === 'true', // upload stats.json only in CI
     }),
     new ExtractCssChunks({
       chunkFilename: '[id].css',
