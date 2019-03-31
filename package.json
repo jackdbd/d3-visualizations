@@ -58,7 +58,7 @@
     "d3-zoom": "1.7.3",
     "fluture": "10.3.1",
     "node-correlation": "1.0.2",
-    "sanctuary": "0.15.0",
+    "ramda": "^0.26.1",
     "topojson": "3.0.2"
   },
   "devDependencies": {

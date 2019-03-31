@@ -45,6 +45,7 @@ const config = (env, argv) => {
   const mode = 'production';
   const commonConfig = common(mode);
   return merge(commonConfig, {
+    devtool: 'cheap-module-source-map',
     mode,
     optimization,
     plugins: [compressionPlugin],

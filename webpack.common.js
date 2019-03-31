@@ -1,5 +1,7 @@
-const fs = require('fs');
-const path = require('path');
+const { lstatSync, readdirSync } = require('fs');
+const { basename, join, resolve } = require('path');
+const R = require('ramda');
+
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -7,94 +9,135 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PacktrackerPlugin = require('@packtracker/webpack-plugin');
+
 const paths = require('./paths');
+
+// The HTML code for all visualizations is contained in this directory
+const VIZ_HTML_ROOT = resolve(__dirname, 'src', 'templates');
+
+const isHTMLPage = fileName => fileName.endsWith('.html');
+
+const getPages = rootDir => {
+  const files = readdirSync(rootDir);
+  const pages = R.filter(isHTMLPage, files);
+  return pages;
+};
+
+// The JS code for all visualizations is contained in this directory
+const VIZ_JS_ROOT = join(__dirname, 'src', 'js');
+
+const isDirectory = source => lstatSync(source).isDirectory();
+const getFullPath = filename => join(VIZ_JS_ROOT, filename);
+
+const getDirectories = rootDir => {
+  const files = readdirSync(rootDir);
+  const directories = R.pipe(
+    R.map(getFullPath),
+    R.filter(isDirectory)
+  )(files);
+  return directories;
+};
+
+// Each visualization has its own directory and it contains an index.js file
+const vizDirectories = getDirectories(VIZ_JS_ROOT);
+
+const makeEntry = (fullPathToDir, _) => ({
+  [basename(fullPathToDir)]: join(fullPathToDir, 'index.js'),
+});
+
+const vizEntries = R.map(makeEntry, vizDirectories);
+
+const initialEntry = {
+  index: join(VIZ_JS_ROOT, 'index.js'),
+  about: join(VIZ_JS_ROOT, 'about.ts'),
+};
+
+const entry = R.reduce(Object.assign, initialEntry, vizEntries);
+
+const rules = [
+  // rule for .js/.jsx files
+  {
+    test: /\.(jsx?)$/,
+    include: [join(__dirname, 'js', 'src')],
+    exclude: [join(__dirname, 'node_modules')],
+    use: {
+      loader: 'babel-loader',
+    },
+  },
+  // rule for standard (global) CSS files
+  {
+    test: /\.css$/,
+    include: [join(__dirname, 'src', 'css')],
+    use: [ExtractCssChunks.loader, 'css-loader'],
+  },
+  // rule for CSS modules
+  {
+    test: /\.module\.css$/,
+    include: [join(__dirname, 'src', 'js')],
+    loaders: [
+      ExtractCssChunks.loader,
+      {
+        loader: 'css-loader',
+        options: {
+          localIdentName: '[path]__[name]__[local]--[hash:base64:5]',
+          modules: true,
+        },
+      },
+    ],
+  },
+  // rule for .woff2 font files
+  {
+    test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    use: 'url-loader',
+  },
+  // rule for .ttf/.eot/.svg files
+  {
+    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    use: {
+      loader: 'file-loader',
+      options: {
+        name: './fonts/[name].[ext]',
+      },
+    },
+  },
+  // rule for images (add svg? How to distinguish a svg font from a svg image?)
+  {
+    test: /\.(gif|jpe?g|png)$/i,
+    include: join(__dirname, 'src', 'images'),
+    loaders: [
+      'file-loader',
+      {
+        loader: 'image-webpack-loader',
+        options: {
+          mozjpeg: {
+            progressive: true,
+            quality: 65,
+          },
+          // optipng.enabled: false will disable optipng
+          optipng: {
+            enabled: false,
+          },
+          pngquant: {
+            quality: '65-90',
+            speed: 4,
+          },
+          gifsicle: {
+            interlaced: false,
+          },
+          // the webp option will enable WEBP
+          webp: {
+            quality: 75,
+          },
+        },
+      },
+    ],
+  },
+];
 
 module.exports = mode => {
   const PUBLIC_URL = mode === 'production' ? paths.publicUrl : '';
 
-  const rules = [
-    // rule for .js/.jsx files
-    {
-      test: /\.(jsx?)$/,
-      include: [path.join(__dirname, 'js', 'src')],
-      exclude: [path.join(__dirname, 'node_modules')],
-      use: {
-        loader: 'babel-loader',
-      },
-    },
-    // rule for standard (global) CSS files
-    {
-      test: /\.css$/,
-      include: [path.join(__dirname, 'src', 'css')],
-      use: [ExtractCssChunks.loader, 'css-loader'],
-    },
-    // rule for CSS modules
-    {
-      test: /\.module\.css$/,
-      include: [path.join(__dirname, 'src', 'js')],
-      loaders: [
-        ExtractCssChunks.loader,
-        {
-          loader: 'css-loader',
-          options: {
-            localIdentName: '[path]__[name]__[local]--[hash:base64:5]',
-            modules: true,
-          },
-        },
-      ],
-    },
-    // rule for .woff2 font files
-    {
-      test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      use: 'url-loader',
-    },
-    // rule for .ttf/.eot/.svg files
-    {
-      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      use: {
-        loader: 'file-loader',
-        options: {
-          name: './fonts/[name].[ext]',
-        },
-      },
-    },
-    // rule for images (add svg? How to distinguish a svg font from a svg image?)
-    {
-      test: /\.(gif|jpe?g|png)$/i,
-      include: path.join(__dirname, 'src', 'images'),
-      loaders: [
-        'file-loader',
-        {
-          loader: 'image-webpack-loader',
-          options: {
-            mozjpeg: {
-              progressive: true,
-              quality: 65,
-            },
-            // optipng.enabled: false will disable optipng
-            optipng: {
-              enabled: false,
-            },
-            pngquant: {
-              quality: '65-90',
-              speed: 4,
-            },
-            gifsicle: {
-              interlaced: false,
-            },
-            // the webp option will enable WEBP
-            webp: {
-              quality: 75,
-            },
-          },
-        },
-      ],
-    },
-  ];
-
-  const pages = fs
-    .readdirSync(path.resolve(__dirname, 'src', 'templates'))
-    .filter(fileName => fileName.endsWith('.html'));
+  const pages = getPages(VIZ_HTML_ROOT);
 
   const plugins = [
     new BundleAnalyzerPlugin({
@@ -109,7 +152,7 @@ module.exports = mode => {
     }),
     new FaviconsWebpackPlugin({
       inject: true,
-      logo: path.join(__dirname, 'src', 'images', 'logo.png'),
+      logo: join(__dirname, 'src', 'images', 'logo.png'),
       title: 'd3-visualizations',
     }),
     new PacktrackerPlugin({
@@ -131,7 +174,7 @@ module.exports = mode => {
         chunks: [name],
         filename,
         hash: false,
-        template: path.join(__dirname, 'src', 'templates', filename),
+        template: join(__dirname, 'src', 'templates', filename),
         templateParameters: {
           PUBLIC_URL,
         },
@@ -140,37 +183,14 @@ module.exports = mode => {
     }),
   ];
 
-  // console.warn('PAGES', pages);
-
   const config = {
-    devtool: 'source-map',
-    entry: {
-      about: path.join(__dirname, 'src', 'js', 'about.ts'),
-      barchart: path.join(__dirname, 'src', 'js', 'barchart', 'index.js'),
-      challenge: path.join(__dirname, 'src', 'js', 'challenge', 'index.js'),
-      dolphins: path.join(__dirname, 'src', 'js', 'dolphins', 'index.js'),
-      flags: path.join(__dirname, 'src', 'js', 'flags', 'index.js'),
-      geomap: path.join(__dirname, 'src', 'js', 'geomap', 'index.js'),
-      heatmap: path.join(__dirname, 'src', 'js', 'heatmap', 'index.js'),
-      index: path.join(__dirname, 'src', 'js', 'index.js'),
-      horizon: path.join(__dirname, 'src', 'js', 'horizon', 'index.js'),
-      linechart: path.join(__dirname, 'src', 'js', 'linechart', 'index.js'),
-      scatterplot: path.join(__dirname, 'src', 'js', 'scatterplot', 'index.js'),
-      shapes: path.join(__dirname, 'src', 'js', 'shapes', 'index.js'),
-      'solar-correlation': path.join(
-        __dirname,
-        'src',
-        'js',
-        'solar-correlation',
-        'index.js'
-      ),
-    },
+    entry,
     module: {
       rules,
     },
     output: {
       filename: '[name].[hash].js',
-      path: path.resolve(__dirname, 'build'),
+      path: resolve(__dirname, 'build'),
       sourceMapFilename: '[file].map',
     },
     plugins,

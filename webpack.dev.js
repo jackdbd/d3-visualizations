@@ -38,6 +38,7 @@ const config = (env, argv) => {
   const commonConfig = common(mode);
   return merge(commonConfig, {
     devServer,
+    devtool: 'cheap-module-eval-source-map',
     mode,
     performance: {
       hints: 'warning',
