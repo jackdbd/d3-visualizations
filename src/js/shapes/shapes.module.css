@@ -1,0 +1,15 @@
+@import '../../css/main.css';
+
+.frame {
+  border: 1px solid gray;
+}
+
+.shapeGroup {
+  fill: none;
+  stroke-width: 10;
+  stroke-linejoin: round;
+}
+
+.shapePath {
+  mix-blend-mode: darken;
+}

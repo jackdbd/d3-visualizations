@@ -140,6 +140,8 @@ module.exports = mode => {
     }),
   ];
 
+  // console.warn('PAGES', pages);
+
   const config = {
     devtool: 'source-map',
     entry: {
@@ -154,6 +156,7 @@ module.exports = mode => {
       horizon: path.join(__dirname, 'src', 'js', 'horizon', 'index.js'),
       linechart: path.join(__dirname, 'src', 'js', 'linechart', 'index.js'),
       scatterplot: path.join(__dirname, 'src', 'js', 'scatterplot', 'index.js'),
+      shapes: path.join(__dirname, 'src', 'js', 'shapes', 'index.js'),
       'solar-correlation': path.join(
         __dirname,
         'src',
