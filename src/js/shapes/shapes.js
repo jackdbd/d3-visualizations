@@ -1,5 +1,8 @@
 // import * as d3 from 'd3';
 // We could require just the d3 modules we need with this trick.
+import chroma from 'chroma-js';
+import styles from './shapes.module.css';
+
 const d3 = Object.assign(
   {},
   require('d3-array'),
@@ -7,8 +10,6 @@ const d3 = Object.assign(
   require('d3-shape'),
   require('d3-timer')
 );
-import chroma from 'chroma-js';
-import styles from './shapes.module.css';
 
 const PHASE_DISPLACEMENT_DEGREES = 90;
 const ANGLES = d3.range(0, 2 * Math.PI, Math.PI / 200);
@@ -53,11 +54,9 @@ export const draw = selector => {
 
     const radiusAccessor = (d, _) => {
       const t = d3.now() / 1000;
-      const radius =
-        200 +
-        Math.cos(d * 8 - (iColor * 2 * Math.PI) / 3 + t) *
-          Math.pow((1 + Math.cos(d - t)) / 2, 3) *
-          32;
+      const cosineFunction = Math.cos(d * 8 - (iColor * 2 * Math.PI) / 3 + t);
+      const powerFunction = ((1 + Math.cos(d - t)) / 2) ** 3;
+      const radius = 200 + cosineFunction * powerFunction * 32;
       return radius;
     };
 
@@ -90,7 +89,7 @@ export const draw = selector => {
     selection.attr('d', dGenerator(ANGLES));
   };
 
-  const gameLoop = elapsed => {
+  const gameLoop = _ => {
     paths.each(updatePath);
   };
 
