@@ -1,0 +1,28 @@
+@import '../../css/main.css';
+
+.frame {
+  border: 1px solid gray;
+}
+
+.examplePath {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.exampleLine {
+  fill: none;
+  stroke: red;
+  stroke-width: 1.5px;
+}
+
+circle {
+  fill: red;
+}
+
+.overlay {
+  cursor: crosshair;
+  fill: steelblue;
+  opacity: 0.25;
+  pointer-events: all;
+}
