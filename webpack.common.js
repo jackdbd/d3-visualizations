@@ -1,6 +1,7 @@
 const { lstatSync, readdirSync } = require('fs');
 const { basename, join, resolve } = require('path');
 const R = require('ramda');
+const S = require('sanctuary');
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
@@ -19,7 +20,8 @@ const isHTMLPage = fileName => fileName.endsWith('.html');
 
 const getPages = rootDir => {
   const files = readdirSync(rootDir);
-  const pages = R.filter(isHTMLPage, files);
+  const pages = S.filter(isHTMLPage)(files);
+  // const pages = R.filter(isHTMLPage, files);
   return pages;
 };
 
@@ -31,10 +33,12 @@ const getFullPath = filename => join(VIZ_JS_ROOT, filename);
 
 const getDirectories = rootDir => {
   const files = readdirSync(rootDir);
-  const directories = R.pipe(
-    R.map(getFullPath),
-    R.filter(isDirectory)
-  )(files);
+  const pipe = S.pipe([S.map(getFullPath), S.filter(isDirectory)]);
+  const directories = pipe(files);
+  // const directories = R.pipe(
+  //   R.map(getFullPath),
+  //   R.filter(isDirectory)
+  // )(files);
   return directories;
 };
 
@@ -45,7 +49,8 @@ const makeEntry = (fullPathToDir, _) => ({
   [basename(fullPathToDir)]: join(fullPathToDir, 'index.js'),
 });
 
-const vizEntries = R.map(makeEntry, vizDirectories);
+const vizEntries = S.map(makeEntry)(vizDirectories);
+// const vizEntries = R.map(makeEntry, vizDirectories);
 
 const initialEntry = {
   index: join(VIZ_JS_ROOT, 'index.js'),

@@ -59,6 +59,7 @@
     "fluture": "10.3.1",
     "node-correlation": "1.0.2",
     "ramda": "^0.26.1",
+    "sanctuary": "^1.0.0",
     "topojson": "3.0.2"
   },
   "devDependencies": {
