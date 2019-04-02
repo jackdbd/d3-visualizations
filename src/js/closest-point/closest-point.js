@@ -1,5 +1,6 @@
-const d3 = Object.assign({}, require('d3-selection'), require('d3-shape'));
 import styles from './closest-point.module.css';
+
+const d3 = Object.assign({}, require('d3-selection'), require('d3-shape'));
 
 const points = [
   [474, 276],
@@ -13,6 +14,69 @@ const points = [
   [365, 108],
   [562, 62],
 ];
+
+const distance2 = (p0, p1) => {
+  const [x1, y1] = p1;
+  const dx = p0.x - x1;
+  const dy = p0.y - y1;
+  return dx * dx + dy * dy;
+};
+
+const closestPoint = (pathNode, eventPoint) => {
+  const pathLength = pathNode.getTotalLength();
+  let precision = 8;
+  let best;
+  let bestLength;
+  let bestDistance = Infinity;
+
+  // linear scan for coarse approximation
+  let scanPoint;
+  let scanLength;
+  let scanDistance;
+  for (
+    scanPoint = {}, scanLength = 0, scanDistance = 0;
+    scanLength <= pathLength;
+    scanLength += precision
+  ) {
+    // https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement/getPointAtLength#Browser_compatibility
+    scanPoint = pathNode.getPointAtLength(scanLength);
+    scanDistance = distance2(scanPoint, eventPoint);
+
+    if (scanDistance < bestDistance) {
+      best = scanPoint;
+      bestLength = scanLength;
+      bestDistance = scanDistance;
+    }
+  }
+
+  // binary search for precise estimate
+  precision /= 2;
+  while (precision > 0.5) {
+    const beforeLength = bestLength - precision;
+    const before = pathNode.getPointAtLength(beforeLength);
+    const beforeDistance = distance2(before, eventPoint);
+
+    const afterLength = bestLength + precision;
+    const after = pathNode.getPointAtLength(afterLength);
+    const afterDistance = distance2(after, eventPoint);
+
+    if (beforeLength >= 0 && beforeDistance < bestDistance) {
+      best = before;
+      bestLength = beforeLength;
+      bestDistance = beforeDistance;
+    } else if (afterLength <= pathLength && afterDistance < bestDistance) {
+      best = after;
+      bestLength = afterLength;
+      bestDistance = afterDistance;
+    } else {
+      precision /= 2;
+    }
+  }
+
+  best = [best.x, best.y];
+  best.distance = Math.sqrt(bestDistance);
+  return best;
+};
 
 export const draw = selector => {
   const margin = {
@@ -75,73 +139,3 @@ export const draw = selector => {
     .attr('height', height)
     .on('mousemove', handleMouseMove);
 };
-
-function closestPoint(pathNode, eventPoint) {
-  const pathLength = pathNode.getTotalLength();
-  let precision = 8;
-  let best;
-  let bestLength;
-  let bestDistance = Infinity;
-
-  // linear scan for coarse approximation
-  let scanPoint;
-  let scanLength;
-  let scanDistance;
-  for (
-    scanPoint = {}, scanLength = 0, scanDistance = 0;
-    scanLength <= pathLength;
-    scanLength += precision
-  ) {
-    // https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement/getPointAtLength#Browser_compatibility
-    scanPoint = pathNode.getPointAtLength(scanLength);
-    scanDistance = distance2(scanPoint, eventPoint);
-
-    if (scanDistance < bestDistance) {
-      best = scanPoint;
-      bestLength = scanLength;
-      bestDistance = scanDistance;
-    }
-  }
-
-  // binary search for precise estimate
-  precision /= 2;
-  while (precision > 0.5) {
-    let before;
-    let after;
-    let beforeLength;
-    let afterLength;
-    let beforeDistance;
-    let afterDistance;
-
-    beforeLength = bestLength - precision;
-    before = pathNode.getPointAtLength(beforeLength);
-    beforeDistance = distance2(before, eventPoint);
-
-    afterLength = bestLength + precision;
-    after = pathNode.getPointAtLength(afterLength);
-    afterDistance = distance2(after, eventPoint);
-
-    if (beforeLength >= 0 && beforeDistance < bestDistance) {
-      best = before;
-      bestLength = beforeLength;
-      bestDistance = beforeDistance;
-    } else if (afterLength <= pathLength && afterDistance < bestDistance) {
-      best = after;
-      bestLength = afterLength;
-      bestDistance = afterDistance;
-    } else {
-      precision /= 2;
-    }
-  }
-
-  best = [best.x, best.y];
-  best.distance = Math.sqrt(bestDistance);
-  return best;
-}
-
-function distance2(p0, p1) {
-  const [x1, y1] = p1;
-  const dx = p0.x - x1;
-  const dy = p0.y - y1;
-  return dx * dx + dy * dy;
-}
