@@ -1,0 +1,109 @@
+:root {
+  /* COLORS */
+  --colors-axis: #000;
+  --colors-backgound-primary: blue;
+  --colors-backgound-secondary: yellow;
+  --colors-bar-selected: #17bf3c;
+  --colors-bar-standard: #4682b4;
+  --colors-circle-fill: #e65100;
+  --colors-circle-stroke: #000;
+  --colors-footer-background: #e65100;
+  --colors-header-background: #ffc107;
+  --colors-line: #3f51b5;
+  --colors-link: #789;
+  --colors-orbit: #000;
+  --colors-orbit-highlighted: #f00;
+  --colors-orbit-label: #a9a9a9;
+  --colors-orbit-trajectory: #a9a9a9;
+  --colors-primary: red;
+  --colors-secondary: green;
+  --colors-sun: #ff0;
+  --colors-tooltip-background: #b0c4de;
+
+  /* TYPOGRAPHY */
+  --typography-font-family-primary: 'InknutAntiqua', sans-serif;
+  --typography-font-family-secondary: 'Lobster';
+  --typography-font-size: 20px;
+
+  /* GEOMETRY */
+  --geometry-footer-height: 150px;
+  --geometry-header-height: 4em;
+}
+
+/* Define font-face rules
+ * If you have multiple font formats, put most modern formats first.
+ * A single font-family can have multiple fonts (e.g. for bold, italic).
+ */
+
+@font-face {
+  font-family: InknutAntiqua;
+  font-style: normal;
+  font-weight: normal;
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-Regular.ttf)
+    format('truetype');
+}
+
+@font-face {
+  font-family: InknutAntiqua;
+  font-style: normal;
+  font-weight: bold;
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-ExtraBold.ttf)
+    format('truetype');
+}
+
+/* other cool fonts Syncopate, Quicksand, Aclonica */
+
+body {
+  background-color: var(--colors-background-primary);
+  font-family: var(--typography-font-family-primary);
+}
+
+header {
+  background-color: var(--colors-header-background);
+  height: var(--geometry-footer-height);
+}
+
+li {
+  font-family: var(--typography-font-family-primary);
+}
+
+footer {
+  background-color: var(--colors-footer-background);
+  color: var(--colors-primary);
+  font-family: var(--typography-font-family-secondary);
+  font-size: var(--typography-font-size);
+  height: var(--geometry-footer-height);
+  padding: 20px;
+}
+
+.src-js-closest-point-__closest-point-module__frame--d9cWu {
+  border: 1px solid gray;
+}
+
+.src-js-closest-point-__closest-point-module__examplePath--1YoeM {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.src-js-closest-point-__closest-point-module__exampleLine--2Qiro {
+  fill: none;
+  stroke: red;
+  stroke-width: 1.5px;
+}
+
+circle {
+  fill: red;
+}
+
+.src-js-closest-point-__closest-point-module__overlay--2-AgO {
+  cursor: crosshair;
+  fill: steelblue;
+  opacity: 0.25;
+  pointer-events: all;
+}
+
+
+/*# sourceMappingURL=closest-point.css.map*/
