@@ -26,3 +26,38 @@ circle {
   opacity: 0.25;
   pointer-events: all;
 }
+
+.voronoi {
+  pointer-events: all;
+}
+
+.voronoiCell {
+  fill: lightsalmon;
+  fill-opacity: 0.35;
+}
+
+/* .voronoiCircle {
+  fill: greenyellow;
+  stroke: red;
+} */
+
+/* .cellPath {
+  stroke: steelblue;
+} */
+
+/* .cellPath :hover {
+  stroke: blueviolet;
+} */
+
+/* .voronoi :hover circle {
+  display: inline;
+} */
+
+.voronoiCellBoundary {
+  stroke: darkgray;
+}
+
+.voronoiCellCentroid {
+  fill: red;
+  stroke: greenyellow;
+}
