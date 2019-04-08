@@ -1,5 +1,3 @@
-import { select } from 'd3-selection';
-import { version } from 'd3/package.json';
 import '../css/main.css';
 
 // const aboutModule = './about.ts';
@@ -73,7 +71,26 @@ import '../css/main.css';
 //   }
 // );
 
-select('footer')
-  .insert('p', ':last-child')
-  .classed('footer', true)
-  .html(`D3 version: ${version}`);
+const swapLowWithHigh = card_image => {
+  const hires_img_url = card_image.getAttribute('data-image-full');
+  // console.warn('image_url', hires_img_url);
+  const content_image = card_image.querySelector('img');
+  content_image.src = hires_img_url;
+
+  const listener = event => {
+    card_image.style.backgroundImage = `url(${hires_img_url})`;
+    const cn = card_image.className;
+    card_image.className = `${cn} ${cn}--is-loaded`;
+  };
+
+  content_image.addEventListener('load', listener);
+};
+
+const lazyLoad = () => {
+  const card_images = document.querySelectorAll('.grid__card__image');
+  card_images.forEach(swapLowWithHigh);
+};
+
+window.addEventListener('load', () => {
+  lazyLoad();
+});

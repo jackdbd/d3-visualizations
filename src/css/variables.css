@@ -7,6 +7,7 @@
   --colors-bar-standard: #4682b4;
   --colors-circle-fill: #e65100;
   --colors-circle-stroke: #000;
+  --colors-font-primary: #d3d3d3;
   --colors-footer-background: #e65100;
   --colors-header-background: #ffc107;
   --colors-line: #3f51b5;
@@ -23,7 +24,7 @@
   /* TYPOGRAPHY */
   --typography-font-family-primary: 'InknutAntiqua', sans-serif;
   --typography-font-family-secondary: 'Lobster';
-  --typography-font-size: 20px;
+  --typography-font-size: 1rem;
 
   /* GEOMETRY */
   --geometry-footer-height: 150px;

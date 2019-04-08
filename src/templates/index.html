@@ -28,7 +28,6 @@
     <!-- bundle.css is injected here by html-webpack-plugin -->
   </head>
   <body>
-    <header><h1>D3 Visualizations</h1></header>
     <ul>
       <li><a href="<%= PUBLIC_URL %>/about.html">About</a></li>
       <li><a href="<%= PUBLIC_URL %>/barchart.html">Bar Chart</a></li>
@@ -52,7 +51,55 @@
       </li>
       <li><a href="<%= PUBLIC_URL %>/horizon.html">Horizon Chart</a></li>
     </ul>
-    <footer>I am the footer.</footer>
+    <div class="grid">
+        <div class="grid__card">
+            <a
+              class="grid__card__image"
+              href="<%= PUBLIC_URL %>/barchart.html"
+              target="_blank"
+              style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-100.jpg);"
+              data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-500.jpg"
+            >
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-100.jpg"
+                alt="Barchart"
+              />
+            </a>
+            <div class="grid__card__wrapper">
+              <h2>Barchart</h2>
+              <p>A simple barchart</p>
+            </div>
+          </div>
+          <div class="grid__card">
+            <a class="grid__card__image" href="<%= PUBLIC_URL %>/geomap.html" target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/psychopomp-100.jpg);" data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/psychopomp-500.jpg">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/psychopomp-100.jpg" alt="Geomap"
+              />
+            </a>
+            <div class="grid__card__wrapper">
+              <h2>Geomap</h2>
+              <p>A Geomap</p>
+            </div>
+          </div>
+          <div class="grid__card">
+            <a
+              class="grid__card__image"
+              href="https://inlovewithaghost.bandcamp.com/album/lets-go"
+              target="_blank"
+              style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-100.jpg);"
+              data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-500.jpg"
+            >
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-100.jpg"
+                alt="let's go"
+              />
+            </a>
+            <div class="grid__card__wrapper">
+              <h2 style="font-family: Lobster, monospace;">Let's go</h2>
+              <p style="font-family: Lobster, monospace;">In Love With A Ghost</p>
+            </div>
+          </div>
+        </div>
+    </div>
     <!-- bundle.js is injected here by html-webpack-plugin -->
   </body>
 </html>
