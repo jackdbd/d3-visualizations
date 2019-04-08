@@ -8,6 +8,9 @@ const common = require('./webpack.common.js');
 const devServer = {
   compress: true,
   contentBase: path.join(__dirname, 'src'),
+  historyApiFallback: {
+    rewrites: [{ from: /./, to: '/templates/404.html' }],
+  },
   host: 'localhost',
   hot: true,
   inline: true,

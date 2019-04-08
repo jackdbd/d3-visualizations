@@ -175,6 +175,7 @@ module.exports = mode => {
         template: join(__dirname, 'src', 'templates', filename),
         templateParameters: {
           PUBLIC_URL,
+          TITLE: name,
         },
       });
       return htmlPlugin;
