@@ -7,6 +7,7 @@
   --colors-bar-standard: #4682b4;
   --colors-circle-fill: #e65100;
   --colors-circle-stroke: #000;
+  --colors-font-primary: #d3d3d3;
   --colors-footer-background: #e65100;
   --colors-header-background: #ffc107;
   --colors-line: #3f51b5;
@@ -23,10 +24,10 @@
   /* TYPOGRAPHY */
   --typography-font-family-primary: 'InknutAntiqua', sans-serif;
   --typography-font-family-secondary: 'Lobster';
-  --typography-font-size: 20px;
+  --typography-font-size: 1rem;
 
   /* GEOMETRY */
-  --geometry-footer-height: 150px;
+  --geometry-footer-height: 10rem;
   --geometry-header-height: 4em;
 }
 
@@ -60,22 +61,57 @@ body {
   font-family: var(--typography-font-family-primary);
 }
 
-header {
-  background-color: var(--colors-header-background);
-  height: var(--geometry-footer-height);
+.grid {
+  display: grid;
+  /* stylelint-disable-next-line unit-whitelist */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: repeat(1, 1fr);
 }
 
-li {
-  font-family: var(--typography-font-family-primary);
+.grid__card {
+  box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.5);
+  margin: 1rem;
+  position: relative;
+  transition: transform 0.3s ease-in-out, box-shadow 0.1s;
 }
 
-footer {
-  background-color: var(--colors-footer-background);
-  color: var(--colors-primary);
-  font-family: var(--typography-font-family-secondary);
-  font-size: var(--typography-font-size);
-  height: var(--geometry-footer-height);
-  padding: 20px;
+.grid__card:hover {
+  box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
+  transform: translateY(-0.5rem) scale(1.0125);
+}
+
+/* Lazy Load Styles */
+.grid__card__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  filter: blur(0.2rem); /* blur the lowres image */
+}
+
+.grid__card__image > img {
+  display: block;
+  opacity: 0; /* visually hide the img element */
+  width: 100%;
+}
+
+.grid__card__image--is-loaded {
+  filter: none; /* remove the blur on fullres image */
+  transition: filter 1s;
+}
+
+.grid__card__image--is-loaded > img {
+  max-width: 100%;
+}
+
+.grid__card__wrapper {
+  width: 100%;
+  z-index: 100;
+  position: absolute;
+  color: var(--colors-font-primary);
+  font-weight: bold;
+  text-align: center;
+  top: 50%;
 }
 
 
