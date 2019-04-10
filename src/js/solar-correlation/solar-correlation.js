@@ -12,7 +12,7 @@ import { legendColor } from 'd3-svg-legend';
 import { transition } from 'd3-transition';
 import * as Future from 'fluture';
 import * as correlation from 'node-correlation';
-import { createComponent, displayError } from '../utils';
+import { createComponent, displayError, ROOT_SELECTOR_ID } from '../utils';
 import styles from './solar-correlation.module.css';
 
 // create a d3 object with only the subset of functions that we need
@@ -158,7 +158,7 @@ const margin = {
   left: 50,
 };
 const solarCorrelationViz = createComponent(
-  '#solar-correlation',
+  ROOT_SELECTOR_ID,
   1200,
   800,
   margin
@@ -434,7 +434,7 @@ const draw = data => {
   drawAllOrbits(orbitsData);
 };
 
-const fn = async (selector, url) => {
+export const fn = async (selector, url) => {
   // create unary functions so they can be used in `.fork`
   const displayErrorBounded = displayError.bind(this, selector, url);
   // const drawBounded = draw.bind(this, selector);
@@ -449,5 +449,3 @@ const fn = async (selector, url) => {
   const future = Future.encaseP(() => promise);
   future(url).fork(displayErrorBounded, draw);
 };
-
-export default fn;

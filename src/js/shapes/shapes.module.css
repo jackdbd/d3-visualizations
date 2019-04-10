@@ -1,7 +1,7 @@
 @import '../../css/main.css';
 
 .frame {
-  border: 1px solid gray;
+  border: 0.1rem solid gray;
 }
 
 .shapeGroup {

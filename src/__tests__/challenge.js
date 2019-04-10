@@ -1,4 +1,5 @@
-import challenge, {
+import {
+  fn,
   selectorStackedBarChart,
   selectorBarChart,
   url,
@@ -32,7 +33,7 @@ describe('challenge', () => {
   });
   it('shows an error (fetch not available)', async () => {
     try {
-      await challenge(selectorStackedBarChart, selectorBarChart, url);
+      await fn(selectorStackedBarChart, selectorBarChart, url);
       throw new Error('should never happen');
     } catch (err) {
       expect(err.toString()).toContain('ReferenceError: fetch is not defined');

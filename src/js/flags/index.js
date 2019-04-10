@@ -1,11 +1,11 @@
-import flags from './flags';
+import { fn } from './flags';
 
-export const selector = '#flags';
+const selector = '#root';
 const blankImageUrl =
   'http://res.cloudinary.com/dbntyqfmz/image/upload/v1497704295/Transparent_k52dbx.gif';
 const countriesUrl =
   'https://raw.githubusercontent.com/DealPete/forceDirected/master/countries.json';
 
-flags(selector, [blankImageUrl, countriesUrl]);
+fn(selector, [blankImageUrl, countriesUrl]);
 
-export default flags;
+export { fn, selector };

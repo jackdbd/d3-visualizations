@@ -1,9 +1,9 @@
-import linechart from './linechart';
+import { ROOT_SELECTOR_ID } from '../utils';
+import { fn } from './linechart';
 
-export const selector = '#linechart';
-export const url =
+const url =
   'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/linedata_missing_samples.tsv';
 
-linechart(selector, url);
+fn(ROOT_SELECTOR_ID, url);
 
-export default linechart;
+export { fn, url };

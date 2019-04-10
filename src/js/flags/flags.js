@@ -151,7 +151,7 @@ const imageload = src => {
   return promise;
 };
 
-const fn = async (selector, urls) => {
+export const fn = async (selector, urls) => {
   const [imageUrl, countriesUrl] = urls;
   const p0 = imageload(imageUrl);
   const p1 = d3.json(countriesUrl);
@@ -170,5 +170,3 @@ const fn = async (selector, urls) => {
     draw(selector, ...values);
   }
 };
-
-export default fn;

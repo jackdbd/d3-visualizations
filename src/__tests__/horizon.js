@@ -1,10 +1,10 @@
-import { selector } from '../js/horizon';
+import { ROOT_SELECTOR_ID, ROOT_SELECTOR_NAME } from '../js/utils';
 
 describe('horizon', () => {
   beforeEach(() => {
     const body = document.querySelector('body');
     const node = document.createElement('div');
-    node.setAttribute('id', 'horizon');
+    node.setAttribute('id', ROOT_SELECTOR_NAME);
     body.appendChild(node);
   });
   afterEach(() => {
@@ -14,9 +14,9 @@ describe('horizon', () => {
       body.removeChild(body.firstChild);
     }
   });
-  it('starts with <div id="horizon" />', () => {
+  it('starts with <div id="root" />', () => {
     expect(document.querySelector('body')).not.toBeEmpty();
-    const div = document.querySelector(selector);
+    const div = document.querySelector(ROOT_SELECTOR_ID);
     expect(div).toBeInTheDocument();
     expect(div).toBeVisible();
   });

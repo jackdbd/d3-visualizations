@@ -12,17 +12,6 @@ const PacktrackerPlugin = require('@packtracker/webpack-plugin');
 
 const paths = require('./paths');
 
-// The HTML code for all visualizations is contained in this directory
-const VIZ_HTML_ROOT = resolve(__dirname, 'src', 'templates');
-
-const isHTMLPage = fileName => fileName.endsWith('.html');
-
-const getPages = rootDir => {
-  const files = readdirSync(rootDir);
-  const pages = S.filter(isHTMLPage)(files);
-  return pages;
-};
-
 // The JS code for all visualizations is contained in this directory
 const VIZ_JS_ROOT = join(__dirname, 'src', 'js');
 
@@ -38,6 +27,7 @@ const getDirectories = rootDir => {
 
 // Each visualization has its own directory and it contains an index.js file
 const vizDirectories = getDirectories(VIZ_JS_ROOT);
+const visualizations = S.map(basename)(vizDirectories);
 
 const makeEntry = (fullPathToDir, _) => ({
   [basename(fullPathToDir)]: join(fullPathToDir, 'index.js'),
@@ -46,8 +36,8 @@ const makeEntry = (fullPathToDir, _) => ({
 const vizEntries = S.map(makeEntry)(vizDirectories);
 
 const initialEntry = {
-  index: join(VIZ_JS_ROOT, 'index.js'),
   about: join(VIZ_JS_ROOT, 'about.ts'),
+  index: join(VIZ_JS_ROOT, 'index.js'),
 };
 
 const entry = S.reduce(S.concat)(initialEntry)(vizEntries);
@@ -135,12 +125,11 @@ const rules = [
 module.exports = mode => {
   const PUBLIC_URL = mode === 'production' ? paths.publicUrl : '';
 
-  const pages = getPages(VIZ_HTML_ROOT);
-
   const plugins = [
     new BundleAnalyzerPlugin({
       analyzerMode: 'disabled',
       generateStatsFile: true,
+      logLevel: 'info',
       statsFilename: 'stats.json',
     }),
     new CleanWebpackPlugin(['build'], {
@@ -166,19 +155,59 @@ module.exports = mode => {
       orderWarning: true,
       reloadAll: true,
     }),
-    ...pages.map(filename => {
-      const name = filename.split('.')[0];
+    // The Home page and the About page have their own HTML template
+    new HtmlWebpackPlugin({
+      // HtmlWebpackPlugin's title option does not seem to work
+      chunks: ['index'],
+      filename: 'index.html',
+      hash: true,
+      template: join(__dirname, 'src', 'templates', 'index.html'),
+      templateParameters: {
+        PUBLIC_URL,
+        TITLE: 'Visualizations',
+      },
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['about'],
+      filename: 'about.html',
+      hash: true,
+      template: join(__dirname, 'src', 'templates', 'about.html'),
+      templateParameters: {
+        PUBLIC_URL,
+        TITLE: 'About',
+      },
+    }),
+    // Each visualization shares the same HTML template
+    ...visualizations.map(vizName => {
+      const chunks = [vizName];
+      const filename = join(`${vizName}`, 'index.html');
       const htmlPlugin = new HtmlWebpackPlugin({
-        chunks: [name],
+        chunks,
         filename,
+        /**
+         * TODO: use hash: true
+         * hash: true causes Referrer Policy: no-referrer-when-downgrade with
+         * some visualizations (e.g. heatmap). Investigate.
+         */
         hash: false,
-        template: join(__dirname, 'src', 'templates', filename),
+        template: join(__dirname, 'src', 'templates', 'dataviz.html'),
         templateParameters: {
           PUBLIC_URL,
-          TITLE: name,
+          TITLE: vizName,
         },
       });
       return htmlPlugin;
+    }),
+    // Some complex visualization has its own HTML template
+    new HtmlWebpackPlugin({
+      chunks: ['challenge'],
+      filename: join('challenge', 'index.html'),
+      hash: true,
+      template: join(__dirname, 'src', 'templates', 'challenge.html'),
+      templateParameters: {
+        PUBLIC_URL,
+        TITLE: 'challenge',
+      },
     }),
   ];
 

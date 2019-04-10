@@ -138,7 +138,7 @@ const draw = (selector, data) => {
     .text(d => `${d}`);
 };
 
-const fn = async (selector, url) => {
+export const fn = async (selector, url) => {
   let res;
   try {
     res = await fetch(url);
@@ -161,5 +161,3 @@ const fn = async (selector, url) => {
   };
   draw(selector, reducedDataset);
 };
-
-export default fn;

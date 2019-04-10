@@ -71,24 +71,28 @@ import '../css/main.css';
 //   }
 // );
 
-const swapLowWithHigh = card_image => {
-  const hires_img_url = card_image.getAttribute('data-image-full');
+const swapLowWithHigh = cardImg => {
+  const hiResImgUrl = cardImg.getAttribute('data-image-full');
   // console.warn('image_url', hires_img_url);
-  const content_image = card_image.querySelector('img');
-  content_image.src = hires_img_url;
+  const contentImg = cardImg.querySelector('img');
+  contentImg.src = hiResImgUrl;
 
-  const listener = event => {
-    card_image.style.backgroundImage = `url(${hires_img_url})`;
-    const cn = card_image.className;
-    card_image.className = `${cn} ${cn}--is-loaded`;
+  const listener = () => {
+    // eslint-disable-next-line no-param-reassign
+    cardImg.style.backgroundImage = `url(${hiResImgUrl})`;
+
+    const cn = cardImg.className;
+
+    // eslint-disable-next-line no-param-reassign
+    cardImg.className = `${cn} ${cn}--is-loaded`;
   };
 
-  content_image.addEventListener('load', listener);
+  contentImg.addEventListener('load', listener);
 };
 
 const lazyLoad = () => {
-  const card_images = document.querySelectorAll('.grid__card__image');
-  card_images.forEach(swapLowWithHigh);
+  const cardImages = document.querySelectorAll('.grid__card__image');
+  cardImages.forEach(swapLowWithHigh);
 };
 
 window.addEventListener('load', () => {

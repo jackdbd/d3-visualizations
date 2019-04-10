@@ -27,6 +27,6 @@
   --typography-font-size: 1rem;
 
   /* GEOMETRY */
-  --geometry-footer-height: 150px;
+  --geometry-footer-height: 10rem;
   --geometry-header-height: 4em;
 }

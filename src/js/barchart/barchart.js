@@ -126,7 +126,7 @@ function draw(selector, dataset) {
     );
 }
 
-const fn = async (selector, url) => {
+export const fn = async (selector, url) => {
   // create unary functions
   const displayErrorBounded = displayError.bind(this, selector, url);
   const drawBounded = draw.bind(this, selector);
@@ -162,5 +162,3 @@ const fn = async (selector, url) => {
   }
   drawBounded(data);
 };
-
-export default fn;

@@ -1,9 +1,9 @@
-import dolphins from './dolphins';
+import { ROOT_SELECTOR_ID } from '../utils';
+import { fn } from './dolphins';
 
-export const selector = '#dolphins';
-export const url =
+const url =
   'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/dolphins.json';
 
-dolphins(selector, url);
+fn(ROOT_SELECTOR_ID, url);
 
-export default dolphins;
+export { fn, url };

@@ -327,7 +327,7 @@ const draw = (selectorStackedChart, selectorBarChart, dataset) => {
   );
 };
 
-const fn = async (selectorStackedBarChart, selectorBarChart, url) => {
+export const fn = async (selectorStackedBarChart, selectorBarChart, url) => {
   // create unary functions so they can be used in `.fork`
   const displayErrorBounded = displayError.bind(this, selectorBarChart, url);
   const drawBounded = draw.bind(
@@ -347,5 +347,3 @@ const fn = async (selectorStackedBarChart, selectorBarChart, url) => {
     .map(rawData => rawData.map(rowFunction))
     .fork(displayErrorBounded, drawBounded);
 };
-
-export default fn;

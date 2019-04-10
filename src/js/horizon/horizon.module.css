@@ -1,8 +1,8 @@
 @import '../../css/main.css';
 
 .horizon {
-  border-bottom: solid 1px #000;
-  border-top: solid 1px #000;
+  border-bottom: solid 0.1rem #000;
+  border-top: solid 0.1rem #000;
   overflow: hidden;
   position: relative;
 }
@@ -20,10 +20,13 @@ canvas {
 .horizon .value {
   bottom: 0;
   font-family: var(--typography-font-family-primary);
-  line-height: 30px;
-  margin: 0 6px;
+  line-height: 2rem;
+  margin-bottom: 0;
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+  margin-top: 0;
   position: absolute;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0.1rem 0 rgba(255, 255, 255, 0.5);
   white-space: nowrap;
 }
 

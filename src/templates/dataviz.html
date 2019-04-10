@@ -5,6 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title><%= TITLE %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Kite+One|Quicksand"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css"
+    />
     <!-- bundle.css is injected here by html-webpack-plugin -->
   </head>
   <body>
@@ -12,6 +20,8 @@
       <li><a href="<%= PUBLIC_URL %>/index.html">Home</a></li>
       <li><a href="<%= PUBLIC_URL %>/about.html">About</a></li>
     </ul>
+    <!-- Each visualization is rendered in this div -->
+    <div id="root"></div>
     <!-- bundle.js is injected here by html-webpack-plugin -->
   </body>
 </html>

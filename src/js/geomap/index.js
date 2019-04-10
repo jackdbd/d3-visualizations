@@ -1,13 +1,13 @@
-import geomap from './geomap';
+import { fn } from './geomap';
 
-export const selector = '#geo-map';
+const selector = '#root';
 
 const worldMapUrl = 'https://d3js.org/world-50m.v1.json';
 const meteoritesUrl =
   'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/meteorite-strike-data.json';
 
-export const urls = [worldMapUrl, meteoritesUrl];
+const urls = [worldMapUrl, meteoritesUrl];
 
-geomap(selector, urls);
+fn(selector, urls);
 
-export default geomap;
+export { fn, selector, urls };

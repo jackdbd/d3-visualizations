@@ -139,7 +139,7 @@ const draw = (selector, data) => {
     );
 };
 
-const fn = async (selector, url) => {
+export const fn = async (selector, url) => {
   let data;
   let error;
   try {
@@ -153,5 +153,3 @@ const fn = async (selector, url) => {
     draw(selector, data);
   }
 };
-
-export default fn;

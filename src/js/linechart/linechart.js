@@ -210,7 +210,7 @@ const draw = (selector, stocks) => {
     .on('mousemove', mousemove);
 };
 
-const fn = async (selector, url) => {
+export const fn = async (selector, url) => {
   // create a unary function so it can be used in `.fork`
   const displayErrorBounded = displayError.bind(this, selector, url);
   const drawBounded = draw.bind(this, selector);
@@ -238,5 +238,3 @@ const fn = async (selector, url) => {
   }
   drawBounded(data);
 };
-
-export default fn;

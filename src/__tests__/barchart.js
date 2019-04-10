@@ -1,17 +1,18 @@
-import barchart, { selector, url } from '../js/barchart';
+import { ROOT_SELECTOR_ID, ROOT_SELECTOR_NAME } from '../js/utils';
+import { fn, url } from '../js/barchart';
 import styles from '../js/barchart/barchart.module.css';
 
 describe('barchart', () => {
   beforeEach(async () => {
     const body = document.querySelector('body');
     const node = document.createElement('div');
-    node.setAttribute('id', 'barchart');
+    node.setAttribute('id', ROOT_SELECTOR_NAME);
     body.appendChild(node);
 
     // Create the barchart here to avoid repeating the code in each test (we
     // don't save time).
     try {
-      await barchart(selector, url);
+      await fn(ROOT_SELECTOR_ID, url);
     } catch (err) {
       throw err;
     }
@@ -23,12 +24,12 @@ describe('barchart', () => {
       body.removeChild(body.firstChild);
     }
   });
-  it('starts with <div id="barchart" />', () => {
+  it('starts with <div id="root" />', () => {
     expect(document.querySelector('body')).not.toBeEmpty();
-    const div = document.querySelector(selector);
+    const div = document.querySelector(ROOT_SELECTOR_ID);
     expect(div).toBeInTheDocument();
     expect(div).toBeVisible();
-    expect(div.getAttribute('id')).toBe('barchart');
+    expect(div.getAttribute('id')).toBe(ROOT_SELECTOR_NAME);
   });
   it('appends a <svg /> in the document', async () => {
     const svg = document.querySelector('svg');

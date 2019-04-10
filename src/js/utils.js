@@ -7,6 +7,11 @@ const defaultMargin = {
   top: 10,
 };
 
+// ID of the html element where to render the visualization (without #).
+export const ROOT_SELECTOR_NAME = 'root';
+// ID of the html element where to render the visualization (with #)
+export const ROOT_SELECTOR_ID = `#${ROOT_SELECTOR_NAME}`;
+
 export const displayError = (selector, url, error) => {
   const div = selectAll(selector).append('div');
   div.append('h1').text(error.toString());

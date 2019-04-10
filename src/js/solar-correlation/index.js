@@ -1,11 +1,10 @@
-import solar from './solar-correlation';
-
-export const selector = '#solar-correlation';
+import { ROOT_SELECTOR_ID } from '../utils';
+import { fn } from './solar-correlation';
 
 // jedi.csv found here: https://github.com/Zapf-Consulting/solar-correlation-map/blob/master/jedi.csv
-export const url =
+const url =
   'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/jedi.csv';
 
-solar(selector, url);
+fn(ROOT_SELECTOR_ID, url);
 
-export default solar;
+export { fn, url };

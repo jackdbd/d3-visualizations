@@ -1,12 +1,6 @@
-import {
-  draw as drawClosestPoint,
-  drawVoronoi as drawClosestPointVoronoi,
-} from './closest-point';
+import { ROOT_SELECTOR_ID } from '../utils';
+import { fn } from './closest-point';
 
-export const selector = '#closest-point';
-drawClosestPoint(selector);
+fn(ROOT_SELECTOR_ID);
 
-export const selectorVoronoi = '#closest-point-voronoi';
-drawClosestPointVoronoi(selectorVoronoi);
-
-export { drawClosestPoint, drawClosestPointVoronoi };
+export { fn };

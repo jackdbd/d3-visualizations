@@ -1,9 +1,9 @@
-import scatterplot from './scatterplot';
+import { fn } from './scatterplot';
 
-export const selector = '#scatterplot';
-export const url =
+const selector = '#root';
+const url =
   'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json';
 
-scatterplot(selector, url);
+fn(selector, url);
 
-export default scatterplot;
+export { fn, selector, url };

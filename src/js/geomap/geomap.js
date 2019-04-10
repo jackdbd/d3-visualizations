@@ -214,7 +214,7 @@ const draw = (selector, topologyWorld, meteorites) => {
     .on('mouseout', (d, i, group) => mouseout(d, i, group));
 };
 
-const fn = async (selector, urls) => {
+export const fn = async (selector, urls) => {
   const promise = Promise.all(urls.map(url => d3Json(url)));
 
   let datasets;
@@ -230,5 +230,3 @@ const fn = async (selector, urls) => {
     draw(selector, ...datasets);
   }
 };
-
-export default fn;

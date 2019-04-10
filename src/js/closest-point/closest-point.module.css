@@ -1,19 +1,19 @@
 @import '../../css/main.css';
 
 .frame {
-  border: 1px solid gray;
+  border: 0.1rem solid gray;
 }
 
 .examplePath {
   fill: none;
   stroke: #000;
-  stroke-width: 1.5px;
+  stroke-width: 0.1rem;
 }
 
 .exampleLine {
   fill: none;
   stroke: red;
-  stroke-width: 1.5px;
+  stroke-width: 0.1rem;
 }
 
 circle {

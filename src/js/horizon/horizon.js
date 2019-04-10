@@ -53,7 +53,7 @@ const loadStockData = async stock => {
   return promise;
 };
 
-const fn = async (selector, stocks) => {
+export const fn = async (selector, stocks) => {
   const promises = stocks.map(stock => loadStockData(stock));
   const promise = Promise.all(promises);
   let datasets;
@@ -65,5 +65,3 @@ const fn = async (selector, stocks) => {
   }
   draw(selector, datasets);
 };
-
-export default fn;

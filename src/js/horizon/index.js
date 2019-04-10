@@ -1,8 +1,8 @@
-import horizon from './horizon';
+import { fn } from './horizon';
 
-export const selector = '#horizon';
-export const stocks = ['AAPL', 'BIDU', 'SINA', 'GOOG', 'MSFT', 'YHOO'];
+const selector = '#root';
+const stocks = ['AAPL', 'BIDU', 'SINA', 'GOOG', 'MSFT', 'YHOO'];
 
-horizon(selector, stocks);
+fn(selector, stocks);
 
-export default horizon;
+export { fn, selector, stocks };

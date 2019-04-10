@@ -1,6 +1,6 @@
-import { draw as drawShapes } from './shapes';
+import { fn } from './shapes';
 
-export const selector = '#shapes';
-drawShapes(selector);
+const selector = '#root';
+fn(selector);
 
-export { drawShapes };
+export { fn, selector };

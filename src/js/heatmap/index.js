@@ -1,9 +1,9 @@
-import heatmap from './heatmap';
+import { ROOT_SELECTOR_ID } from '../utils';
+import { fn } from './heatmap';
 
-export const selector = '#heatmap';
-export const url =
+const url =
   'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json';
 
-heatmap(selector, url);
+fn(ROOT_SELECTOR_ID, url);
 
-export default heatmap;
+export { fn, url };

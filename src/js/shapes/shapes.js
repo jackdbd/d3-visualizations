@@ -27,7 +27,7 @@ const COLORS = chroma
 
 const degreesToRadians = degrees => (degrees * Math.PI) / 180;
 
-export const draw = selector => {
+export const fn = selector => {
   const margin = {
     top: 20,
     right: 20,

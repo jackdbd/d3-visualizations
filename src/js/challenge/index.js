@@ -1,10 +1,10 @@
-import challenge from './challenge';
+import { fn } from './challenge';
 
-export const selectorStackedBarChart = '#dataviz-challenge-stacked-bar-chart';
-export const selectorBarChart = '#dataviz-challenge-bar-chart';
-export const url =
+const selectorStackedBarChart = '#dataviz-challenge-stacked-bar-chart';
+const selectorBarChart = '#dataviz-challenge-bar-chart';
+const url =
   'https://raw.githubusercontent.com/jackdbd/d3-visualizations/master/src/data/book_genres.tsv';
 
-challenge(selectorStackedBarChart, selectorBarChart, url);
+fn(selectorStackedBarChart, selectorBarChart, url);
 
-export default challenge;
+export { fn, selectorBarChart, selectorStackedBarChart, url };

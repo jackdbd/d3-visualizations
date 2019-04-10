@@ -1,9 +1,9 @@
-import barchart from './barchart';
+import { ROOT_SELECTOR_ID } from '../utils';
+import { fn } from './barchart';
 
-export const selector = '#barchart';
-export const url =
+const url =
   'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json';
 
-barchart(selector, url);
+fn(ROOT_SELECTOR_ID, url);
 
-export default barchart;
+export { fn, url };

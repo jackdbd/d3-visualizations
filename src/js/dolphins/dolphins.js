@@ -129,7 +129,7 @@ const draw = (selector, graph) => {
   simulation.force('link').links(graph.links);
 };
 
-const fn = async (selector, url) => {
+export const fn = async (selector, url) => {
   let res;
   try {
     res = await fetch(url);
@@ -146,5 +146,3 @@ const fn = async (selector, url) => {
   }
   draw(selector, data);
 };
-
-export default fn;
