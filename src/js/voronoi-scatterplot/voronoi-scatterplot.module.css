@@ -1,0 +1,47 @@
+@import '../../css/main.css';
+
+.frame {
+  border: 1rem solid red;
+}
+
+.axis-label {
+  stroke: yellow;
+}
+
+.axis-x {
+  stroke: green;
+}
+
+.axis-y {
+  stroke: magenta;
+}
+
+.circles {
+  fill-opacity: 0.75;
+}
+
+.data-point {
+  stroke: blue;
+}
+
+.highlight-circle {
+  stroke: red;
+}
+
+.highlight-circle-hidden {
+  visibility: hidden;
+}
+
+.highlight-circle-visible {
+  fill: transparent;
+  stroke: red;
+  stroke-dasharray: '5 5';
+  visibility: visible;
+}
+
+.overlay {
+  cursor: crosshair;
+  fill: steelblue;
+  opacity: 0.25;
+  pointer-events: all;
+}
