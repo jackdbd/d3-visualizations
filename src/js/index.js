@@ -1,5 +1,6 @@
 import '../css/main.css';
 
+let VISUALIZATIONS;
 console.warn('VISUALIZATIONS', VISUALIZATIONS);
 
 // const aboutModule = './about.ts';
