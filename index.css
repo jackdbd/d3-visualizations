@@ -114,5 +114,13 @@ body {
   top: 50%;
 }
 
+.viz-list {
+  outline: 0.2rem solid green;
+}
+
+.viz-list-item {
+  color: red;
+}
+
 
 /*# sourceMappingURL=index.css.map*/

@@ -890,6 +890,14 @@ body {
   top: 50%;
 }
 
+.src-css-__main__viz-list--xgJH3 {
+  outline: 0.2rem solid green;
+}
+
+.src-css-__main__viz-list-item--1CURT {
+  color: red;
+}
+
 .src-js-dolphins-__dolphins-module__graphLink--10IYF {
   stroke: var(--colors-link);
   stroke-opacity: 0.6;

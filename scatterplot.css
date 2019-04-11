@@ -114,6 +114,14 @@ body {
   top: 50%;
 }
 
+.src-css-__main__viz-list--xgJH3 {
+  outline: 0.2rem solid green;
+}
+
+.src-css-__main__viz-list-item--1CURT {
+  color: red;
+}
+
 .src-js-scatterplot-__scatterplot-module__axisX--1ublX > path {
   display: none;
 }
