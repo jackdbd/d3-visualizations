@@ -1,5 +1,7 @@
 import '../css/main.css';
 
+console.warn('VISUALIZATIONS', VISUALIZATIONS);
+
 // const aboutModule = './about.ts';
 // import(/* webpackChunkName: "About" */ /* webpackPrefetch: true */ aboutModule).then(
 //   module => {

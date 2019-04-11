@@ -13,35 +13,18 @@
     />
     <!-- prefetch all other pages -->
     <link rel="prefetch" href="<%= PUBLIC_URL %>/about.html" />
-    <link rel="prefetch" href="<%= PUBLIC_URL %>/barchart/index.html" />
-    <link rel="prefetch" href="<%= PUBLIC_URL %>/dolphins/index.html" />
-    <link rel="prefetch" href="<%= PUBLIC_URL %>/linechart/index.html" />
+    <% _.forEach(VISUALIZATIONS, function(vizName) { %>
+      <link rel="prefetch" href="<%= PUBLIC_URL %>/<%- vizName %>/index.html" /> 
+    <% }); %>
     <!-- bundle.css is injected here by html-webpack-plugin -->
   </head>
   <body>
-    <!-- TODO: generate this <ul> and cards from JS, in index.js -->
-    <ul>
-      <li><a href="<%= PUBLIC_URL %>/about.html">About</a></li>
-      <li><a href="<%= PUBLIC_URL %>/barchart">Bar Chart</a></li>
-      <li><a href="<%= PUBLIC_URL %>/linechart">Line Chart</a></li>
-      <li><a href="<%= PUBLIC_URL %>/dolphins">Dolphins</a></li>
-      <li><a href="<%= PUBLIC_URL %>/flags">Flags</a></li>
-      <li><a href="<%= PUBLIC_URL %>/scatterplot">Scatterplot</a></li>
-      <li><a href="<%= PUBLIC_URL %>/shapes">Shapes</a></li>
-      <li>
-        <a href="<%= PUBLIC_URL %>/closest-point"
-          >Closet Point on a Path</a
-        >
-      </li>
-      <li><a href="<%= PUBLIC_URL %>/geomap">Geo Map</a></li>
-      <li><a href="<%= PUBLIC_URL %>/heatmap">Heat Map</a></li>
-      <li><a href="<%= PUBLIC_URL %>/challenge">Dataviz Challenge</a></li>
-      <li>
-        <a href="<%= PUBLIC_URL %>/solar-correlation"
-          >Solar correlation map</a
-        >
-      </li>
-      <li><a href="<%= PUBLIC_URL %>/horizon">Horizon Chart</a></li>
+    <ul class="viz-list">
+      <% _.forEach(VISUALIZATIONS, function(vizName) { %>
+        <li class="viz-list-item">
+          <a href="<%= PUBLIC_URL %>/<%- vizName %>/index.html"><%- vizName %></a>
+        </li>
+      <% }); %> 
     </ul>
     <div class="grid">
         <div class="grid__card">

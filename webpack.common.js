@@ -1,6 +1,7 @@
 const { lstatSync, readdirSync } = require('fs');
 const { basename, join, resolve } = require('path');
 const S = require('sanctuary');
+const webpack = require('webpack');
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
@@ -137,6 +138,9 @@ module.exports = mode => {
       exclude: ['favicon.ico', 'Transparent.gif'],
       verbose: true,
     }),
+    new webpack.DefinePlugin({
+      VISUALIZATIONS: JSON.stringify(visualizations),
+    }),
     new FaviconsWebpackPlugin({
       inject: true,
       logo: join(__dirname, 'src', 'images', 'logo.png'),
@@ -165,6 +169,7 @@ module.exports = mode => {
       templateParameters: {
         PUBLIC_URL,
         TITLE: 'Visualizations',
+        VISUALIZATIONS: visualizations,
       },
     }),
     new HtmlWebpackPlugin({
