@@ -85,3 +85,23 @@ export const createComponent = (
   };
   return viz;
 };
+
+/**
+ * Promise that resolves when all resources of the page have been loaded.
+ *
+ * @see https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events
+ */
+export const pageHasLoaded = () => {
+  const promise = new Promise((resolve, reject) => {
+    const onLoad = () => {
+      resolve();
+    };
+    const onError = event => {
+      console.error(event);
+      reject(new Error('Something went wrong'));
+    };
+    window.onload = onLoad;
+    window.onerror = onError;
+  });
+  return promise;
+};
