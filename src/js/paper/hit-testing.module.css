@@ -1,0 +1,10 @@
+@import '../../css/main.css';
+
+.paper-canvas-container {
+  border: 0.1rem solid blue;
+}
+
+.paper-canvas {
+  border: 0.1rem solid orange;
+  padding: 1rem;
+}

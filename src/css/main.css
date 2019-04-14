@@ -66,3 +66,12 @@ body {
 .viz-list-item {
   color: red;
 }
+
+.paper-canvas-container {
+  border: 0.1rem solid magenta;
+}
+
+.paper-canvas {
+  border: 0.1rem solid orange;
+  padding: 1rem;
+}

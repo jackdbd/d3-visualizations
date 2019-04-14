@@ -3248,7 +3248,7 @@ d3-transition@1.0.3:
     d3-selection "1"
     d3-timer "1"
 
-d3-voronoi@1:
+d3-voronoi@1, d3-voronoi@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/d3-voronoi/-/d3-voronoi-1.1.4.tgz#dd3c78d7653d2bb359284ae478645d95944c8297"
   integrity sha512-dArJ32hchFsrQ8uMiTBLq256MpnZjeuBtdHpaDlYuQyjU0CVzCJl/BVW+SkszaAeH95D/8gxqAhgx0ouAWAfRg==
@@ -8925,6 +8925,11 @@ pako@~1.0.5:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.10.tgz#4328badb5086a426aa90f541977d4955da5c9732"
   integrity sha512-0DTvPVU3ed8+HNXOu5Bs+o//Mbdj9VNQMUOe9oKCwh8l0GNwpTDMKCWbRjgtD291AWnkAgkqA/LOnQS8AmS1tw==
+
+paper@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/paper/-/paper-0.12.0.tgz#37397312fda5d0aca057a5735e5eeb631ff5baa4"
+  integrity sha512-J4IgSo9g5hdwqEWJOIrl5l0wu2D4JgJmQ/8c/SO7rLKB5POrT5yxWJmXJJ13s2aIQf/Mx9mlCa866BEpvN+gKw==
 
 parallel-transform@^1.1.0:
   version "1.1.0"
