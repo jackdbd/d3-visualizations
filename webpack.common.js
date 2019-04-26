@@ -53,6 +53,17 @@ const rules = [
       loader: 'babel-loader',
     },
   },
+  // rule for .ts/.tsx files
+  {
+    test: /\.tsx?$/,
+    exclude: [join(__dirname, "node_modules")],
+    use: {
+      loader: "ts-loader",
+      options: {
+        transpileOnly: false,
+      },
+    },
+  },
   // rule for standard (global) CSS files
   {
     test: /\.css$/,
