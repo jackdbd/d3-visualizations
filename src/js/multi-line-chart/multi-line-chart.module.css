@@ -1,9 +1,66 @@
 @import '../../css/main.css';
 
-body {
-  background-color: red;
+.label {
+  position: absolute;
+  top: 2rem;
+  right: 4rem;
 }
 
-div {
-  background-color: green;
+.axis line {
+  stroke: var(--colors-line);
+}
+
+.axis--y path {
+  display: none;
+}
+
+.cities {
+  fill: none;
+}
+
+.city {
+  stroke: #aaa;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 0.1rem;
+}
+
+/* We don't assign the .city--hover class when hovering exacty on an element of
+ * class .city (for that, a .city:hover selector would have been better).
+ * Instead, we detect the closest SVG path to the Voronoi Site identified by our
+ * mouseover event, and we add the .city--hover class to that SVG path. Then,
+ * when we move away from that SVG path, the Voronoi Site identified by our
+ * mouseout event could find that its closest SVG path is a different one. If
+ * that's the case, we remove the .city:hover class from the older SVG path.
+ */
+.city--hover {
+  stroke: steelblue;
+  stroke-width: 0.2rem;
+}
+
+.focus text {
+  fill: steelblue;
+  stroke: steelblue;
+  text-anchor: middle;
+}
+
+.voronoi {
+  fill: transparent;
+}
+
+.voronoi path {
+  fill: none;
+
+  /* We set pointer-events to all because we don't want the SVG properties of
+   * fill, stroke, and visibility to affect event processing. The default
+   * behavior would result in a different event processing when the Voronoi
+   * diagram is hidden/shown, and we don't want that.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events
+   */
+  pointer-events: all;
+}
+
+.voronoi--show path {
+  stroke: red;
+  stroke-opacity: 0.2;
 }
