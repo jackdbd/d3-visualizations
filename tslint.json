@@ -1,9 +1,13 @@
 {
-  "extends": ["tslint:recommended", "tslint:latest", "tslint-config-prettier"],
+  "extends": [
+    "tslint:recommended",
+    "tslint:latest",
+    "tslint-eslint-rules",
+    "tslint-config-prettier"
+  ],
   "rules": {
     "no-console": {
       "options": ["debug", "log"]
-    },
-    "quotemark": [true, "single"]
+    }
   }
 }
