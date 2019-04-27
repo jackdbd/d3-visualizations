@@ -2,12 +2,14 @@
   "recommendations": [
     "christian-kohler.npm-intellisense",
     "davidanson.vscode-markdownlint",
+    "donjayamanne.githistory",
     "EditorConfig.EditorConfig",
     "eg2.vscode-npm-script",
     "esbenp.prettier-vscode",
     "jpoissonnier.vscode-styled-components",
     "mgmcdermott.vscode-language-babel",
     "ms-vscode.vscode-typescript-tslint-plugin",
-    "shinnn.stylelint"
+    "shinnn.stylelint",
+    "vscode-icons-team.vscode-icons"
   ]
 }

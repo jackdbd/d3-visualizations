@@ -2,9 +2,18 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": true
   },
+  "editor.fontSize": 16,
   "editor.formatOnSave": true,
   "editor.rulers": [80, 120],
   "files.exclude": {
     "node_modules/": true
-  }
+  },
+  "editor.renderWhitespace": "all",
+  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.iconTheme": "vscode-icons",
+  "css.lint.boxModel": "warning",
+  "css.lint.important": "warning",
+  "css.lint.universalSelector": "warning",
+  "tslint.jsEnable": true,
+  "prettier.tslintIntegration": true
 }
