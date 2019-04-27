@@ -1,6 +1,6 @@
 # d3-visualizations
 
-[![Build Status](https://travis-ci.com/jackdbd/d3-visualizations.svg?branch=master)](https://travis-ci.com/jackdbd/d3-visualizations) [![codecov](https://codecov.io/gh/jackdbd/d3-visualizations/branch/master/graph/badge.svg)](https://codecov.io/gh/jackdbd/d3-visualizations) [![Known Vulnerabilities](https://snyk.io/test/github/jackdbd/d3-visualizations/badge.svg)](https://snyk.io/test/github/jackdbd/d3-visualizations) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovateapp.com/)
+[![Build Status](https://travis-ci.com/jackdbd/d3-visualizations.svg?branch=master)](https://travis-ci.com/jackdbd/d3-visualizations) [![codecov](https://codecov.io/gh/jackdbd/d3-visualizations/branch/master/graph/badge.svg)](https://codecov.io/gh/jackdbd/d3-visualizations) [![Known Vulnerabilities](https://snyk.io/test/github/jackdbd/d3-visualizations/badge.svg)](https://snyk.io/test/github/jackdbd/d3-visualizations) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovateapp.com/) [![DeepScan grade](https://deepscan.io/api/teams/3517/projects/5191/branches/40359/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=3517&pid=5191&bid=40359)
 
 Experiments and visualizations, mostly with D3 v5.
 
