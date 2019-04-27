@@ -56,9 +56,9 @@ const rules = [
   // rule for .ts/.tsx files
   {
     test: /\.tsx?$/,
-    exclude: [join(__dirname, "node_modules")],
+    exclude: [join(__dirname, 'node_modules')],
     use: {
-      loader: "ts-loader",
+      loader: 'ts-loader',
       options: {
         transpileOnly: false,
       },
@@ -144,10 +144,8 @@ module.exports = mode => {
       logLevel: 'info',
       statsFilename: 'stats.json',
     }),
-    new CleanWebpackPlugin(['build'], {
-      root: __dirname,
-      exclude: ['favicon.ico', 'Transparent.gif'],
-      verbose: true,
+    new CleanWebpackPlugin({
+      verbose: false,
     }),
     new webpack.DefinePlugin({
       VISUALIZATIONS: JSON.stringify(visualizations),
