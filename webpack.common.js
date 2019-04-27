@@ -138,6 +138,7 @@ module.exports = mode => {
   const PUBLIC_URL = mode === 'production' ? paths.publicUrl : '';
 
   const plugins = [
+    new webpack.ProgressPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: 'disabled',
       generateStatsFile: true,
