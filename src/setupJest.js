@@ -1,3 +1,6 @@
+// include a fetch polyfill, otherwise fetch would not be available in jest-dom
+import 'cross-fetch/polyfill';
+
 import {
   toBeEmpty,
   toBeInTheDocument,

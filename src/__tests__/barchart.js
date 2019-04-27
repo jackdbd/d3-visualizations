@@ -9,8 +9,9 @@ describe('barchart', () => {
     node.setAttribute('id', ROOT_SELECTOR_NAME);
     body.appendChild(node);
 
-    // Create the barchart here to avoid repeating the code in each test (we
-    // don't save time).
+    // Create the barchart here. We don't save time because we are in
+    // the beforeEach function, but at least we avoid repeating the same code
+    // for each test case.
     try {
       await fn(ROOT_SELECTOR_ID, url);
     } catch (err) {
