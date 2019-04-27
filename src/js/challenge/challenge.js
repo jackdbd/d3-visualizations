@@ -3,7 +3,7 @@ import * as Future from 'fluture';
 import { createComponent, displayError } from '../utils';
 import styles from './challenge.module.css';
 
-const rowFunction = d => {
+const rowFunction = (d) => {
   /* there is no releationship between the number of books of a given genre,
   and the number of books of other genres (e.g. a single person could buy 1
   Satire book and: 10 Science Fiction books + 2 Drama books, etc...) */
@@ -13,7 +13,7 @@ const rowFunction = d => {
   };
   const entries = Object.entries(d).filter(e => e[0] !== '');
   let total = 0;
-  entries.forEach(e => {
+  entries.forEach((e) => {
     const otherGenre = e[0];
     const numBooks = +e[1];
     obj[otherGenre] = numBooks;
@@ -37,9 +37,9 @@ const updateBarChart = (
   header1,
   footer1,
   tooltip,
-  tooltip1
+  tooltip1,
 ) => {
-  const mouseover = d => {
+  const mouseover = (d) => {
     const html = `<span>${d.genre}</span><br><span>${d.books}</span>`;
     tooltip
       .html(html)
@@ -63,10 +63,10 @@ const updateBarChart = (
   footer1.select('p').html(htmlFooter1);
 
   const entries = Object.entries(dataset).filter(
-    e => e[0] !== 'genre' && e[0] !== 'total'
+    e => e[0] !== 'genre' && e[0] !== 'total',
   );
   const arrData = [];
-  entries.forEach(e => {
+  entries.forEach((e) => {
     const genre = e[0];
     const books = +e[1];
     const obj = {
@@ -111,12 +111,10 @@ const updateBarChart = (
     .attr('height', yScale1.bandwidth())
     .style('fill', d => zScale(d.genre))
     .on('mouseover', mouseover)
-    .on('mouseout', () =>
-      tooltip1
-        .transition()
-        .duration(500)
-        .style('opacity', 0)
-    );
+    .on('mouseout', () => tooltip1
+      .transition()
+      .duration(500)
+      .style('opacity', 0));
 };
 
 const draw = (selectorStackedChart, selectorBarChart, dataset) => {
@@ -126,7 +124,9 @@ const draw = (selectorStackedChart, selectorBarChart, dataset) => {
 
   const stackedBarChartViz = createComponent(selectorStackedChart);
   const stackedBarChart = stackedBarChartViz.chart;
-  const { coords, footer, header, tooltip } = stackedBarChartViz;
+  const {
+    coords, footer, header, tooltip,
+  } = stackedBarChartViz;
   header.select('.header > h1').text('Data Visualization Challenge');
 
   const barChartViz = createComponent(selectorBarChart);
@@ -175,7 +175,7 @@ const draw = (selectorStackedChart, selectorBarChart, dataset) => {
 
   const yAxis = d3.axisLeft().scale(yScale);
 
-  const mouseover = d => {
+  const mouseover = (d) => {
     tooltip
       .transition()
       .duration(200)
@@ -210,7 +210,7 @@ const draw = (selectorStackedChart, selectorBarChart, dataset) => {
       header1,
       footer1,
       tooltip,
-      tooltip1
+      tooltip1,
     );
   };
 
@@ -248,12 +248,10 @@ const draw = (selectorStackedChart, selectorBarChart, dataset) => {
     .attr('width', d => xScale(d[1]) - xScale(d[0]))
     .attr('height', yScale.bandwidth())
     .on('mouseover', mouseover)
-    .on('mouseout', () =>
-      tooltip
-        .transition()
-        .duration(500)
-        .style('opacity', 0)
-    );
+    .on('mouseout', () => tooltip
+      .transition()
+      .duration(500)
+      .style('opacity', 0));
 
   const legend = stackedBarChart
     .append('g')
@@ -278,7 +276,7 @@ const draw = (selectorStackedChart, selectorBarChart, dataset) => {
     .attr('y', 9.5)
     .attr('dy', '0.32em')
     .text(d => d)
-    .on('mouseover', d => {
+    .on('mouseover', (d) => {
       selectedGenre = d;
       updateBarChart(
         selectedGenre,
@@ -290,14 +288,14 @@ const draw = (selectorStackedChart, selectorBarChart, dataset) => {
         header1,
         footer1,
         tooltip,
-        tooltip1
+        tooltip1,
       );
     });
 
   stackedBarChart
     .select('.axis--y')
     .selectAll('text')
-    .on('mouseover', d => {
+    .on('mouseover', (d) => {
       selectedGenre = d;
       updateBarChart(
         selectedGenre,
@@ -309,7 +307,7 @@ const draw = (selectorStackedChart, selectorBarChart, dataset) => {
         header1,
         footer1,
         tooltip,
-        tooltip1
+        tooltip1,
       );
     });
 
@@ -323,7 +321,7 @@ const draw = (selectorStackedChart, selectorBarChart, dataset) => {
     header1,
     footer1,
     tooltip,
-    tooltip1
+    tooltip1,
   );
 };
 
@@ -333,14 +331,14 @@ export const fn = async (selectorStackedBarChart, selectorBarChart, url) => {
   const drawBounded = draw.bind(
     this,
     selectorStackedBarChart,
-    selectorBarChart
+    selectorBarChart,
   );
 
   // convert fetch (which returns a Promise) into a function that returns a Future
   const fetchf = Future.encaseP(fetch);
 
   fetchf(url)
-    .chain(res => {
+    .chain((res) => {
       const promise = d3.tsv(res.url);
       return Future.tryP(_ => promise);
     })

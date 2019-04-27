@@ -25,7 +25,7 @@ const draw = (selector, img, graph) => {
     .attr('class', styles.tooltip)
     .style('opacity', 0);
 
-  const dragstarted = d => {
+  const dragstarted = (d) => {
     // console.warn('dragstarted', d);
     tooltip
       .transition()
@@ -47,7 +47,7 @@ const draw = (selector, img, graph) => {
     fx: d3.event.x,
     fy: d3.event.y,
   });
-  const dragended = d => {
+  const dragended = (d) => {
     // console.warn('dragended', d);
     tooltip.style('visibility', 'visible');
     if (!d3.event.active) {
@@ -82,7 +82,7 @@ const draw = (selector, img, graph) => {
     .append('line')
     .attr('stroke-width', '1px');
 
-  const mouseover = d => {
+  const mouseover = (d) => {
     // the flags have an absolute position, so we need to use d3.event.pageY
     const coordX = d3.event.pageX;
     const coordY = d3.event.pageY;
@@ -137,7 +137,7 @@ const draw = (selector, img, graph) => {
   simulation.force('link').links(graph.links);
 };
 
-const imageload = src => {
+const imageload = (src) => {
   const promise = new Promise((resolve, reject) => {
     const image = new Image();
     image.src = src;

@@ -8,7 +8,7 @@ import styles from './linechart.module.css';
 // create a d3 Object that includes the d3 library and additional plugins
 const d3 = Object.assign(d3Base, { lineChunked });
 
-const rowFunction = d => {
+const rowFunction = (d) => {
   const obj = {
     date: d.date,
     close: +d.close,

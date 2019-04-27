@@ -56,7 +56,7 @@ function draw(selector, dataset) {
     .attr('class', styles.tooltip)
     .style('opacity', 0);
 
-  const mouseover = d => {
+  const mouseover = (d) => {
     tooltip
       .transition()
       .duration(200)
@@ -118,12 +118,10 @@ function draw(selector, dataset) {
     .attr('y', d => yScale(d[1]))
     .attr('height', d => height - yScale(d[1]))
     .on('mouseover', mouseover)
-    .on('mouseout', () =>
-      tooltip
-        .transition()
-        .duration(500)
-        .style('opacity', 0)
-    );
+    .on('mouseout', () => tooltip
+      .transition()
+      .duration(500)
+      .style('opacity', 0));
 }
 
 export const fn = async (selector, url) => {

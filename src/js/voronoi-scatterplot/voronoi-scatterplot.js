@@ -22,10 +22,10 @@ const d3 = Object.assign(
     select,
     selectAll,
     voronoi,
-  }
+  },
 );
 
-export const fn = selector => {
+export const fn = (selector) => {
   const data = d3.range(50).map((d, i) => ({
     x: Math.random(),
     y: Math.random(),
@@ -92,7 +92,7 @@ export const fn = selector => {
   g.append('text')
     .attr(
       'transform',
-      `translate(${plotAreaWidth / 2} ${plotAreaHeight + padding.bottom})`
+      `translate(${plotAreaWidth / 2} ${plotAreaHeight + padding.bottom})`,
     )
     .attr('dy', -4) // adjust distance from the bottom edge
     .attr('class', styles['axis-label'])
@@ -108,7 +108,7 @@ export const fn = selector => {
   g.append('text')
     .attr(
       'transform',
-      `rotate(270) translate(${-plotAreaHeight / 2} ${-padding.left})`
+      `rotate(270) translate(${-plotAreaHeight / 2} ${-padding.left})`,
     )
     .attr('dy', 12) // adjust distance from the left edge
     .attr('class', styles['axis-label'])

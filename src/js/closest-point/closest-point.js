@@ -12,7 +12,7 @@ const d3 = Object.assign(
     line,
     mouse,
     selectAll,
-  }
+  },
 );
 
 const points = [
@@ -91,7 +91,7 @@ const closestPoint = (pathNode, eventPoint) => {
   return best;
 };
 
-export const fn = selector => {
+export const fn = (selector) => {
   const margin = {
     top: 20,
     right: 20,

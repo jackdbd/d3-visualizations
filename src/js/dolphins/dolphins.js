@@ -25,7 +25,7 @@ const draw = (selector, graph) => {
    * I think that for the drag behavior we have to reassign. Returning a new
    * object will NOT work.
    */
-  const dragstarted = d => {
+  const dragstarted = (d) => {
     if (!d3.event.active) {
       simulation.alphaTarget(0.3).restart();
     }
@@ -35,14 +35,14 @@ const draw = (selector, graph) => {
     d.fy = d.y;
   };
 
-  const dragged = d => {
+  const dragged = (d) => {
     // eslint-disable-next-line no-param-reassign
     d.fx = d3.event.x;
     // eslint-disable-next-line no-param-reassign
     d.fy = d3.event.y;
   };
 
-  const dragended = d => {
+  const dragended = (d) => {
     if (!d3.event.active) {
       simulation.alphaTarget(0);
     }
@@ -86,7 +86,7 @@ const draw = (selector, graph) => {
     .attr('class', styles.graphNode)
     .attr('r', '8px')
     .style('fill', d => zScale(d.id))
-    .on('mouseover', d => {
+    .on('mouseover', (d) => {
       const coordX = d3.event.layerX;
       const coordY = d3.event.layerY;
       // console.log(d.label);
@@ -99,18 +99,16 @@ const draw = (selector, graph) => {
         .style('left', `${coordX}px`)
         .style('top', `${coordY}px`);
     })
-    .on('mouseout', () =>
-      tooltip
-        .transition()
-        .duration(500)
-        .style('opacity', 0)
-    )
+    .on('mouseout', () => tooltip
+      .transition()
+      .duration(500)
+      .style('opacity', 0))
     .call(
       d3
         .drag()
         .on('start', dragstarted)
         .on('drag', dragged)
-        .on('end', dragended)
+        .on('end', dragended),
     );
 
   const ticked = () => {

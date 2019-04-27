@@ -4,7 +4,9 @@ import { json as d3Json } from 'd3-fetch';
 import { format } from 'd3-format';
 import { geoMercator, geoPath as d3GeoPath } from 'd3-geo';
 import { interpolateCubehelix } from 'd3-interpolate';
-import { scaleLinear, scaleOrdinal, scaleSqrt, scaleThreshold } from 'd3-scale';
+import {
+  scaleLinear, scaleOrdinal, scaleSqrt, scaleThreshold,
+} from 'd3-scale';
 import { schemeCategory10 } from 'd3-scale-chromatic';
 import { event, select, selectAll } from 'd3-selection';
 import { timeFormat } from 'd3-time-format';
@@ -71,7 +73,7 @@ const draw = (selector, topologyWorld, meteorites) => {
 
   const featureCollection = feature(
     topologyWorld,
-    topologyWorld.objects.countries
+    topologyWorld.objects.countries,
   );
   const featuresWorld = featureCollection.features;
 
@@ -91,7 +93,7 @@ const draw = (selector, topologyWorld, meteorites) => {
    * @param {Object} f - Feature.
    * @return {Object} d - The meteorite.
    */
-  const createDataSample = f => {
+  const createDataSample = (f) => {
     const props = f.properties;
     const mass = +props.mass; // string -> number
     const d = {

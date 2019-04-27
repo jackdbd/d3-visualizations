@@ -74,7 +74,7 @@ console.warn('VISUALIZATIONS', VISUALIZATIONS);
 //   }
 // );
 
-const swapLowWithHigh = cardImg => {
+const swapLowWithHigh = (cardImg) => {
   const hiResImgUrl = cardImg.getAttribute('data-image-full');
   // console.warn('image_url', hires_img_url);
   const contentImg = cardImg.querySelector('img');

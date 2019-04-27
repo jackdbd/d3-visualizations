@@ -8,7 +8,7 @@ const d3 = Object.assign(
   require('d3-array'),
   require('d3-selection'),
   require('d3-shape'),
-  require('d3-timer')
+  require('d3-timer'),
 );
 
 const PHASE_DISPLACEMENT_DEGREES = 90;
@@ -27,7 +27,7 @@ const COLORS = chroma
 
 const degreesToRadians = degrees => (degrees * Math.PI) / 180;
 
-export const fn = selector => {
+export const fn = (selector) => {
   const margin = {
     top: 20,
     right: 20,
@@ -89,7 +89,7 @@ export const fn = selector => {
     selection.attr('d', dGenerator(ANGLES));
   };
 
-  const gameLoop = _ => {
+  const gameLoop = (_) => {
     paths.each(updatePath);
   };
 

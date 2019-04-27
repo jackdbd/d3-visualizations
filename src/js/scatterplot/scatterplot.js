@@ -22,14 +22,14 @@ const draw = (selector, data) => {
   const bestTimeDate = d3.timeSecond.offset(epoch, bestTimeSec);
   const worstTimeDate = d3.timeSecond.offset(epoch, worstTimeSec);
 
-  const hasDopingAllegation = d => {
+  const hasDopingAllegation = (d) => {
     if (d.Doping === '') {
       return false;
     }
     return true;
   };
 
-  const formatRelativeToBest = d => {
+  const formatRelativeToBest = (d) => {
     const offset = d - bestTimeDate;
     return d3.timeFormat('+%M:%S')(offset);
   };
@@ -68,7 +68,7 @@ const draw = (selector, data) => {
     .attr('class', styles.tooltip)
     .style('opacity', 0);
 
-  const htmlStr = d => {
+  const htmlStr = (d) => {
     const firstStr = `<span>${d.Place}: ${d.Name} (${
       d.Nationality
     })</span><br>`;
@@ -121,7 +121,7 @@ const draw = (selector, data) => {
     .attr('cy', d => yScale(d.Place))
     .attr('r', 10)
     .style('fill', d => zScale(hasDopingAllegation(d)))
-    .on('mouseover', d => {
+    .on('mouseover', (d) => {
       tooltip
         .transition()
         .duration(500)
@@ -131,12 +131,10 @@ const draw = (selector, data) => {
         .style('left', `${d3.event.layerX}px`)
         .style('top', `${d3.event.layerY - 28}px`);
     })
-    .on('mouseout', () =>
-      tooltip
-        .transition()
-        .duration(500)
-        .style('opacity', 0)
-    );
+    .on('mouseout', () => tooltip
+      .transition()
+      .duration(500)
+      .style('opacity', 0));
 };
 
 export const fn = async (selector, url) => {

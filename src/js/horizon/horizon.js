@@ -28,19 +28,19 @@ const draw = (selector, stocks) => {
 
 const rowFunction = d => [d3.timeParse(d.Date), +d.Open];
 
-const loadStockData = async stock => {
+const loadStockData = async (stock) => {
   const csvFile = `https://bost.ocks.org/mike/cubism/intro/stocks/${stock}.csv`;
   const requestInit = {};
   const promise = d3
     .csv(csvFile, requestInit, rowFunction)
-    .catch(error => {
+    .catch((error) => {
       throw error;
     })
-    .then(data => {
+    .then((data) => {
       const rows = data.filter(d => d[1]).reverse();
       // const date = rows[0][0];
       const compare = rows[400][1];
-      const values = rows.map(d => {
+      const values = rows.map((d) => {
         const value = (d[1] - compare) / compare;
         return value;
       });

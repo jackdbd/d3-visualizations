@@ -49,7 +49,9 @@ const addClosedPath = (centerPoint, maxRadius, numPoints, debug) => {
 };
 
 const addPaths = (option, debug) => {
-  const { maxPoints, maxRadius, minPoints, minRadius, numPaths } = option;
+  const {
+    maxPoints, maxRadius, minPoints, minRadius, numPaths,
+  } = option;
   const rDelta = maxRadius - minRadius;
   const pDelta = maxPoints - minPoints;
 
@@ -62,7 +64,7 @@ const addPaths = (option, debug) => {
 
     if (debug) {
       const debugMsg = `Create path ${i + 1}/${numPaths} (x=${formatNum(
-        center.x
+        center.x,
       )}, y=${formatNum(center.y)}, radius=${formatNum(r)}, numPoints=${n})`;
       console.log(debugMsg);
     }
@@ -71,7 +73,7 @@ const addPaths = (option, debug) => {
   }
 };
 
-export const fn = async canvasName => {
+export const fn = async (canvasName) => {
   // Paper.js code is tipically found within a window.onload event handler.
   // But I am not sure if this is really needed.
   await pageHasLoaded();
@@ -118,7 +120,7 @@ export const fn = async canvasName => {
    */
   const tool = new paper.Tool();
 
-  const onMouseDown = event => {
+  const onMouseDown = (event) => {
     const hitResult = paper.project.hitTest(event.point, hitOptions);
 
     if (!hitResult) {
@@ -145,7 +147,7 @@ export const fn = async canvasName => {
     }
   };
 
-  const onMouseMove = event => {
+  const onMouseMove = (event) => {
     paper.project.activeLayer.selected = false;
     if (event.item) {
       // eslint-disable-next-line no-param-reassign

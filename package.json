@@ -10,7 +10,7 @@
   "private": true,
   "scripts": {
     "babel": "babel --plugins @babel/plugin-syntax-dynamic-import src/js/index.js",
-    "build": "yarn lint && yarn format && tsc && webpack --config webpack.prod.js --progress",
+    "build": "yarn lint && tsc && webpack --config webpack.prod.js --progress",
     "ci": "yarn test && yarn coverage && yarn build",
     "clean": "rimraf build",
     "coverage": "codecov",

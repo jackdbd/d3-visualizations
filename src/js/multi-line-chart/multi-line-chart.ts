@@ -33,7 +33,7 @@ interface IParsedDatum {
 }
 
 interface ICityDatumWithIndex extends ICityDatum {
-  cityIndex: number
+  cityIndex: number;
 }
 
 const margin = {
@@ -63,11 +63,9 @@ const prepareDOM = (selector: string) => {
     .attr('class', styles.viz)
     .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-  const xScale = scaleTime()
-    .range([0, width]);
+  const xScale = scaleTime().range([0, width]);
 
-  const yScale = scaleLinear()
-    .range([height, 0]);
+  const yScale = scaleLinear().range([height, 0]);
 
   const axisX = chart
     .append('g')
@@ -78,21 +76,18 @@ const prepareDOM = (selector: string) => {
     .append('g')
     .attr('class', `${styles.axis} ${styles['axis--y']}`);
 
-  const cities = chart.append('g')
-    .attr('class', styles.cities);
+  const cities = chart.append('g').attr('class', styles.cities);
 
-  const focus = chart.append('g')
+  const focus = chart
+    .append('g')
     .attr('transform', 'translate(-100,-100)')
     .attr('class', styles.focus);
 
-  focus.append('circle')
-    .attr('r', 3.5);
+  focus.append('circle').attr('r', 3.5);
 
-  focus.append('text')
-    .attr('y', -10);
+  focus.append('text').attr('y', -10);
 
-  const voronoiGroup = chart.append('g')
-    .attr('class', styles.voronoi);
+  const voronoiGroup = chart.append('g').attr('class', styles.voronoi);
 
   const input = container
     .append('label')
@@ -104,10 +99,9 @@ const prepareDOM = (selector: string) => {
     .attr('id', 'show-voronoi');
 
   // toggle the checkbox to show/hide the Voronoi diagram
-  input
-    .on('change', function () {
-      voronoiGroup.classed(styles['voronoi--show'], this.checked);
-    });
+  input.on('change', function() {
+    voronoiGroup.classed(styles['voronoi--show'], this.checked);
+  });
 
   const scales = {
     x: xScale,
@@ -163,7 +157,7 @@ const init = (r: DSVRowString<string>, iRow: number, columns: string[]) => {
 export const fn = async (selector: string, url: string) => {
   const { scales, selections } = prepareDOM(selector);
 
-  const draw: ResolveFunction<DSVParsedArray<IParsedDatum>> = (rows) => {
+  const draw: ResolveFunction<DSVParsedArray<IParsedDatum>> = rows => {
     // console.log(' --- ALL DATA --- ', rows);
 
     // All data rows should contain the same months (I am not 100% sure though)
@@ -181,8 +175,7 @@ export const fn = async (selector: string, url: string) => {
 
     const { axisX, axisY, chart, cities, focus, voronoiGroup } = selections;
 
-    axisX
-      .call(axisBottom(scales.x));
+    axisX.call(axisBottom(scales.x));
 
     axisY
       .call(axisLeft(scales.y).ticks(10, '%'))
@@ -196,30 +189,31 @@ export const fn = async (selector: string, url: string) => {
       .text('Unemployment Rate');
 
     const makeCity = (d: IParsedDatum, i: number) => {
-      const city = d.values.map((cityDatum) => {
+      const city = d.values.map(cityDatum => {
         return {
           city: cityDatum.city,
           cityIndex: i,
           date: cityDatum.date,
           value: cityDatum.value,
-        }
-      })
+        };
+      });
       return city;
     };
     const cityData = rows.map(makeCity);
     const mergedData = merge<ICityDatumWithIndex>(cityData);
 
     const lineGenerator = line<ICityDatumWithIndex>()
-      .x((d) => scales.x(d.date))
-      .y((d) => scales.y(d.value));
+      .x(d => scales.x(d.date))
+      .y(d => scales.y(d.value));
 
-    cities.selectAll('path')
+    cities
+      .selectAll('path')
       .data(cityData)
       .enter()
       .append('path')
       .attr('class', styles.city)
-      .attr('d', (d) => {
-        const lineData = d.map((datum) => {
+      .attr('d', d => {
+        const lineData = d.map(datum => {
           return {
             city: datum.city,
             cityIndex: datum.cityIndex,
@@ -239,19 +233,20 @@ export const fn = async (selector: string, url: string) => {
     ] as [[number, number], [number, number]];
 
     const voronoiLayout = voronoi<ICityDatumWithIndex>()
-      .x((d) => scales.x(d.date))
-      .y((d) => scales.y(d.value))
+      .x(d => scales.x(d.date))
+      .y(d => scales.y(d.value))
       .extent(voronoiExtent);
 
     const voronoiDiagram = voronoiLayout(mergedData);
 
     const polygons = voronoiDiagram.polygons();
 
-    voronoiGroup.selectAll('path')
+    voronoiGroup
+      .selectAll('path')
       .data(polygons)
       .enter()
       .append('path')
-      .attr('d', (d) => {
+      .attr('d', d => {
         const pathD = d ? `M${d.join('L')}Z` : null;
         return pathD;
       });
@@ -262,7 +257,7 @@ export const fn = async (selector: string, url: string) => {
 
     /**
      * Handle mouseover on a Voronoi site.
-     * 
+     *
      * We don't attach this function to a SVG element as an event listener.
      * We simply call it in the mouseover event handler.
      */
@@ -273,15 +268,15 @@ export const fn = async (selector: string, url: string) => {
         const y = scales.y(d.data.value);
         const i = d.data.cityIndex;
         const sel = `.${styles.city}:nth-child(${i + 1})`;
-        select(sel).classed(styles['city--hover'], true)
+        select(sel).classed(styles['city--hover'], true);
         focus.attr('transform', `translate(${x},${y})`);
         focus.select('text').text(d.data.city);
       }
-    }
+    };
 
     /**
      * Handle mouseout on a Voronoi site.
-     * 
+     *
      * We don't attach this function to a SVG element as an event listener.
      * We simply call it in the mouseover event handler.
      */
@@ -290,21 +285,21 @@ export const fn = async (selector: string, url: string) => {
       if (d) {
         const i = d.data.cityIndex;
         const sel = `.${styles.city}:nth-child(${i + 1})`;
-        select(sel).classed(styles['city--hover'], false)
+        select(sel).classed(styles['city--hover'], false);
         focus.attr('transform', 'translate(-100,-100)');
       }
-    }
+    };
 
     /**
      * Handle mouseover on the entire chart.
-     * 
+     *
      * There is no data binding for the `chart`, which is a SVG `<g>` element.
      * This means that in the event handler `d` is `undefined`, `i` is `0`, and
      * nodes is `[g]`.
      * We also avoid using an arrow function because we want `this` to be the
      * `<g>` element.
      */
-    chart.on('mousemove', function () {
+    chart.on('mousemove', function() {
       const [x, y] = mouse(this);
       const newsite = voronoiDiagram.find(x, y, RADIUS);
       if (newsite !== site) {
@@ -324,6 +319,5 @@ export const fn = async (selector: string, url: string) => {
   // convert a promise-returning function to a future-returning function
   const tsvf = encaseP(() => tsv(url, init));
 
-  tsvf(url)
-    .fork(console.error, draw);
+  tsvf(url).fork(console.error, draw);
 };
