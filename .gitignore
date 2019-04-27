@@ -1,5 +1,6 @@
 build/
 coverage/
+hint-report/
 node_modules/
 
 yarn-error.log
