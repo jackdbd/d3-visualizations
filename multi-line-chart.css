@@ -1,0 +1,191 @@
+:root {
+  /* COLORS */
+  --colors-axis: #000;
+  --colors-backgound-primary: blue;
+  --colors-backgound-secondary: yellow;
+  --colors-bar-selected: #17bf3c;
+  --colors-bar-standard: #4682b4;
+  --colors-circle-fill: #e65100;
+  --colors-circle-stroke: #000;
+  --colors-font-primary: #d3d3d3;
+  --colors-footer-background: #e65100;
+  --colors-header-background: #ffc107;
+  --colors-line: #3f51b5;
+  --colors-link: #789;
+  --colors-orbit: #000;
+  --colors-orbit-highlighted: #f00;
+  --colors-orbit-label: #a9a9a9;
+  --colors-orbit-trajectory: #a9a9a9;
+  --colors-primary: red;
+  --colors-secondary: green;
+  --colors-sun: #ff0;
+  --colors-tooltip-background: #b0c4de;
+
+  /* TYPOGRAPHY */
+  --typography-font-family-primary: 'InknutAntiqua', sans-serif;
+  --typography-font-family-secondary: 'Lobster';
+  --typography-font-size: 1rem;
+
+  /* GEOMETRY */
+  --geometry-footer-height: 10rem;
+  --geometry-header-height: 4em;
+}
+
+/* Define font-face rules
+ * If you have multiple font formats, put most modern formats first.
+ * A single font-family can have multiple fonts (e.g. for bold, italic).
+ */
+
+@font-face {
+  font-family: InknutAntiqua;
+  font-style: normal;
+  font-weight: normal;
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-Regular.ttf)
+    format('truetype');
+}
+
+@font-face {
+  font-family: InknutAntiqua;
+  font-style: normal;
+  font-weight: bold;
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  src: url(./fonts/InknutAntiqua-ExtraBold.ttf)
+    format('truetype');
+}
+
+/* other cool fonts Syncopate, Quicksand, Aclonica */
+
+body {
+  background-color: var(--colors-background-primary);
+  font-family: var(--typography-font-family-primary);
+}
+
+.src-css-__main__grid--3dd0W {
+  display: grid;
+  /* stylelint-disable-next-line unit-whitelist */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: repeat(1, 1fr);
+}
+
+.src-css-__main__grid__card--11aRf {
+  box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.5);
+  margin: 1rem;
+  position: relative;
+  transition: transform 0.3s ease-in-out, box-shadow 0.1s;
+}
+
+.src-css-__main__grid__card--11aRf:hover {
+  box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
+  transform: translateY(-0.5rem) scale(1.0125);
+}
+
+/* Lazy Load Styles */
+.src-css-__main__grid__card__image--1o_Ck {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  filter: blur(0.2rem); /* blur the lowres image */
+}
+
+.src-css-__main__grid__card__image--1o_Ck > img {
+  display: block;
+  opacity: 0; /* visually hide the img element */
+  width: 100%;
+}
+
+.src-css-__main__grid__card__image--is-loaded--3Lc_h {
+  filter: none; /* remove the blur on fullres image */
+  transition: filter 1s;
+}
+
+.src-css-__main__grid__card__image--is-loaded--3Lc_h > img {
+  max-width: 100%;
+}
+
+.src-css-__main__grid__card__wrapper--2r8y9 {
+  width: 100%;
+  z-index: 100;
+  position: absolute;
+  color: var(--colors-font-primary);
+  font-weight: bold;
+  text-align: center;
+  top: 50%;
+}
+
+.src-css-__main__viz-list--xgJH3 {
+  outline: 0.2rem solid green;
+}
+
+.src-css-__main__viz-list-item--1CURT {
+  color: red;
+}
+
+.src-js-multi-line-chart-__multi-line-chart-module__label--1QZ4r {
+  position: absolute;
+  top: 2rem;
+  right: 4rem;
+}
+
+.src-js-multi-line-chart-__multi-line-chart-module__axis--2yCn6 line {
+  stroke: var(--colors-line);
+}
+
+.src-js-multi-line-chart-__multi-line-chart-module__axis--y--owd9W path {
+  display: none;
+}
+
+.src-js-multi-line-chart-__multi-line-chart-module__cities--39FgN {
+  fill: none;
+}
+
+.src-js-multi-line-chart-__multi-line-chart-module__city--28I7f {
+  stroke: #aaa;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 0.1rem;
+}
+
+/* We don't assign the .city--hover class when hovering exacty on an element of
+ * class .city (for that, a .city:hover selector would have been better).
+ * Instead, we detect the closest SVG path to the Voronoi Site identified by our
+ * mouseover event, and we add the .city--hover class to that SVG path. Then,
+ * when we move away from that SVG path, the Voronoi Site identified by our
+ * mouseout event could find that its closest SVG path is a different one. If
+ * that's the case, we remove the .city:hover class from the older SVG path.
+ */
+.src-js-multi-line-chart-__multi-line-chart-module__city--hover--21QO4 {
+  stroke: steelblue;
+  stroke-width: 0.2rem;
+}
+
+.src-js-multi-line-chart-__multi-line-chart-module__focus--36VFG text {
+  fill: steelblue;
+  stroke: steelblue;
+  text-anchor: middle;
+}
+
+.src-js-multi-line-chart-__multi-line-chart-module__voronoi--2P45g {
+  fill: transparent;
+}
+
+.src-js-multi-line-chart-__multi-line-chart-module__voronoi--2P45g path {
+  fill: none;
+
+  /* We set pointer-events to all because we don't want the SVG properties of
+   * fill, stroke, and visibility to affect event processing. The default
+   * behavior would result in a different event processing when the Voronoi
+   * diagram is hidden/shown, and we don't want that.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events
+   */
+  pointer-events: all;
+}
+
+.src-js-multi-line-chart-__multi-line-chart-module__voronoi--show--2BXbO path {
+  stroke: red;
+  stroke-opacity: 0.2;
+}
+
+
+/*# sourceMappingURL=multi-line-chart.css.map*/
