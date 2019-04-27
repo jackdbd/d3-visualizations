@@ -1,15 +1,22 @@
 {
   "recommendations": [
     "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "coenraads.bracket-pair-colorizer",
     "davidanson.vscode-markdownlint",
     "donjayamanne.githistory",
     "EditorConfig.EditorConfig",
     "eg2.vscode-npm-script",
     "esbenp.prettier-vscode",
     "jpoissonnier.vscode-styled-components",
+    "mechatroner.rainbow-csv",
     "mgmcdermott.vscode-language-babel",
     "ms-vscode.vscode-typescript-tslint-plugin",
+    "pranaygp.vscode-css-peek",
+    "runtfuggly.todo-tree",
     "shinnn.stylelint",
-    "vscode-icons-team.vscode-icons"
+    "vscode-icons-team.vscode-icons",
+    "wix.vscode-import-cost",
+    "zignd.html-css-class-completion"
   ]
 }

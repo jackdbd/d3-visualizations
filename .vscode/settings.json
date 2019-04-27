@@ -15,5 +15,6 @@
   "css.lint.important": "warning",
   "css.lint.universalSelector": "warning",
   "tslint.jsEnable": true,
-  "prettier.tslintIntegration": true
+  "prettier.tslintIntegration": true,
+  "todo-tree.showCountsInTree": true
 }
