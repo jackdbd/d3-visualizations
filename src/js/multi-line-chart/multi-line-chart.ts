@@ -99,7 +99,7 @@ const prepareDOM = (selector: string) => {
     .attr('id', 'show-voronoi');
 
   // toggle the checkbox to show/hide the Voronoi diagram
-  input.on('change', function() {
+  input.on('change', function () {
     voronoiGroup.classed(styles['voronoi--show'], this.checked);
   });
 
@@ -163,6 +163,7 @@ export const fn = async (selector: string, url: string) => {
     // All data rows should contain the same months (I am not 100% sure though)
     const extrema = extent(rows[0].months) as [Date, Date];
     // D3's scales are mutable (while D3's selections are immutable)
+    // https://github.com/d3/d3-scale/issues/121
     scales.x.domain(extrema);
 
     const accessorY = (d: IParsedDatum) => {
@@ -299,7 +300,7 @@ export const fn = async (selector: string, url: string) => {
      * We also avoid using an arrow function because we want `this` to be the
      * `<g>` element.
      */
-    chart.on('mousemove', function() {
+    chart.on('mousemove', function () {
       const [x, y] = mouse(this);
       const newsite = voronoiDiagram.find(x, y, RADIUS);
       if (newsite !== site) {
