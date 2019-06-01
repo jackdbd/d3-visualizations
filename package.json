@@ -87,7 +87,7 @@
     "babel-jest": "24.7.1",
     "babel-loader": "8.0.5",
     "babel-plugin-dynamic-import-webpack": "1.1.0",
-    "clean-webpack-plugin": "2.0.1",
+    "clean-webpack-plugin": "2.0.2",
     "compression-webpack-plugin": "2.0.0",
     "constyble": "1.1.0",
     "css-loader": "2.1.1",
