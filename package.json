@@ -36,7 +36,7 @@
     "webhint:report": "python -m webbrowser ~/repos/d3-visualizations/hint-report/https-jackdbd-github-io-d3-visualizations/index.html"
   },
   "dependencies": {
-    "chroma-js": "2.0.4",
+    "chroma-js": "2.0.6",
     "cross-fetch": "3.0.4",
     "d3": "5.9.2",
     "d3-array": "2.0.3",
