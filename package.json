@@ -38,7 +38,7 @@
   "dependencies": {
     "chroma-js": "2.0.6",
     "cross-fetch": "3.0.4",
-    "d3": "5.9.2",
+    "d3": "5.11.0",
     "d3-array": "2.0.3",
     "d3-axis": "1.0.12",
     "d3-color": "1.2.3",
