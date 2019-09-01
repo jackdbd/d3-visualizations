@@ -78,7 +78,7 @@
     "@babel/preset-env": "7.5.5",
     "@babel/runtime": "7.5.5",
     "@hint/configuration-web-recommended": "6.2.2",
-    "@packtracker/webpack-plugin": "2.1.0",
+    "@packtracker/webpack-plugin": "2.2.0",
     "@types/d3": "5.7.2",
     "@types/d3-array": "2.0.0",
     "@types/d3-axis": "1.0.12",
