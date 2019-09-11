@@ -3,9 +3,8 @@ const { basename, join, resolve } = require('path');
 const S = require('sanctuary');
 const webpack = require('webpack');
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -79,8 +78,9 @@ const rules = [
       {
         loader: 'css-loader',
         options: {
-          localIdentName: '[path]__[name]__[local]--[hash:base64:5]',
-          modules: true,
+          modules: {
+            localIdentName: '[path]__[name]__[local]--[hash:base64:5]',
+          },
         },
       },
     ],
@@ -118,7 +118,7 @@ const rules = [
             enabled: false,
           },
           pngquant: {
-            quality: '65-90',
+            quality: [0.65, 0.90],
             speed: 4,
           },
           gifsicle: {
