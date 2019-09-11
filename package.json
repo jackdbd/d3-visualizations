@@ -32,6 +32,7 @@
     "stats": "webpack-bundle-analyzer build/stats.json --port 8888",
     "test": "jest --verbose",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
+    "updtr": "updtr --use yarn --test-stdout",
     "webhint": "hint https://jackdbd.github.io/d3-visualizations/",
     "webhint:report": "python -m webbrowser ~/repos/d3-visualizations/hint-report/https-jackdbd-github-io-d3-visualizations/index.html"
   },
@@ -118,6 +119,7 @@
     "tslint-config-prettier": "1.18.0",
     "tslint-eslint-rules": "5.4.0",
     "typescript": "3.4.5",
+    "updtr": "^3.1.0",
     "url-loader": "1.1.2",
     "webpack": "4.30.0",
     "webpack-bundle-analyzer": "3.3.2",
