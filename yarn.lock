@@ -5302,17 +5302,16 @@ d3-shape@1.0.4:
   dependencies:
     d3-path "1"
 
-d3-svg-annotation@2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/d3-svg-annotation/-/d3-svg-annotation-2.5.0.tgz#ffdd832c7023e9d3f6dcf4d71769abb59f422148"
-  integrity sha512-zXog4Yfo/RUmd3OBK2QvWuoojZ6YKaxV3fIFzpDNfsgjUKCVLUlLNUBKtqzTzgxEYEhsOuJ4nlBdsCQ+Cy217g==
+d3-svg-annotation@2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/d3-svg-annotation/-/d3-svg-annotation-2.5.1.tgz#4771d4a2f0c7911442505d763795fecc725d8ce0"
+  integrity sha512-PXW39bunDsn2K6uiCUlZ919fnC29o8oIDzNJtKvz6xOMeNv53LyNkucn40YjLherNCrlx5JGsyEtw/DZcjAa4Q==
   dependencies:
     d3-dispatch "1.0.2"
     d3-drag "1.2.3"
     d3-selection "1.4.0"
     d3-shape "1.0.4"
     d3-transition "1.0.3"
-    marked "0.3.9"
 
 d3-svg-legend@2.25.6:
   version "2.25.6"
@@ -10204,11 +10203,6 @@ markdown-table@^1.1.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.2.tgz#c78db948fa879903a41bce522e3b96f801c63786"
   integrity sha512-NcWuJFHDA8V3wkDgR/j4+gZx+YQwstPgfQDV8ndUeWWzta3dnDTBxpVzqS9lkmJAuV5YX35lmyojl6HO5JXAgw==
-
-marked@0.3.9:
-  version "0.3.9"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.9.tgz#54ce6a57e720c3ac6098374ec625fcbcc97ff290"
-  integrity sha512-nW5u0dxpXxHfkHzzrveY45gCbi+R4PaO4WRZYqZNl+vB0hVGeqlFn0aOg1c8AKL63TrNFn9Bm2UP4AdiZ9TPLw==
 
 mathml-tag-names@^2.1.0:
   version "2.1.0"
