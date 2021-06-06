@@ -119,7 +119,7 @@
     "tslint-config-prettier": "1.18.0",
     "tslint-eslint-rules": "5.4.0",
     "typescript": "3.6.3",
-    "updtr": "^3.1.0",
+    "updtr": "3.1.0",
     "url-loader": "2.1.0",
     "webpack": "4.39.3",
     "webpack-bundle-analyzer": "3.4.1",
