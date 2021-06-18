@@ -78,7 +78,7 @@
     "@babel/plugin-transform-runtime": "7.14.3",
     "@babel/preset-env": "7.14.4",
     "@babel/runtime": "7.14.0",
-    "@hint/configuration-web-recommended": "7.1.0",
+    "@hint/configuration-web-recommended": "7.2.7",
     "@packtracker/webpack-plugin": "2.2.0",
     "@types/d3": "5.7.2",
     "@types/d3-array": "2.12.2",
