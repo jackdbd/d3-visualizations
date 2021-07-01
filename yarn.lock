@@ -3209,10 +3209,10 @@
   resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-2.0.0.tgz#a0d63a296a2d8435a9ec59393dcac746c6174a96"
   integrity sha512-rGqfPVowNDTszSFvwoZIXvrPG7s/qKzm9piCRIH6xwTTRu7pPZ3ootULFnPkTt74B6i5lN0FpLQL24qGOw1uZA==
 
-"@types/d3-array@2.12.2":
-  version "2.12.2"
-  resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-2.12.2.tgz#e381839b7cbfdb247ec1e608a8ffc73b5eb4d1f3"
-  integrity sha512-lAm2UUZaAUDnaRYwsS1z9LjDNSvDlgoNBatFGmc2Gn46dWkDkaH4G8Dx9gaB4ISVv8HKv2OZ6RhyvGoW7viZJg==
+"@types/d3-array@2.12.3":
+  version "2.12.3"
+  resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-2.12.3.tgz#8d16d51fb04ad5a5a8ebe14eb8263a579f1efdd1"
+  integrity sha512-hN879HLPTVqZV3FQEXy7ptt083UXwguNbnxdTGzVW4y4KjX5uyNKljrQixZcSJfLyFirbpUokxpXtvR+N5+KIg==
 
 "@types/d3-array@^1":
   version "1.2.7"
