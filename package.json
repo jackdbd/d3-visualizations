@@ -68,7 +68,7 @@
     "node-correlation": "1.0.2",
     "paper": "0.12.15",
     "ramda": "0.26.1",
-    "sanctuary": "2.0.0",
+    "sanctuary": "2.0.2",
     "topojson": "3.0.2"
   },
   "devDependencies": {
