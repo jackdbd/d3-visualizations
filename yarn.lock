@@ -3532,10 +3532,10 @@
     "@types/node" "*"
     "@types/responselike" "*"
 
-"@types/d3-array@2.12.3":
-  version "2.12.3"
-  resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-2.12.3.tgz#8d16d51fb04ad5a5a8ebe14eb8263a579f1efdd1"
-  integrity sha512-hN879HLPTVqZV3FQEXy7ptt083UXwguNbnxdTGzVW4y4KjX5uyNKljrQixZcSJfLyFirbpUokxpXtvR+N5+KIg==
+"@types/d3-array@2.12.4":
+  version "2.12.4"
+  resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-2.12.4.tgz#a8f4e8483d8c1bb9ac12c28803be1cda18ff2999"
+  integrity sha512-w8eN6MT6R4si/C7XCr/No07PoYp2KZmewfznKPvZLbB1yWMASCZyU6rd0zhtiuhJGaQeRiQj5ucKRvOjFsCOUw==
 
 "@types/d3-array@^1":
   version "1.2.7"
