@@ -3624,10 +3624,10 @@
     "@types/node" "*"
     "@types/responselike" "*"
 
-"@types/d3-array@2.12.4":
-  version "2.12.4"
-  resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-2.12.4.tgz#a8f4e8483d8c1bb9ac12c28803be1cda18ff2999"
-  integrity sha512-w8eN6MT6R4si/C7XCr/No07PoYp2KZmewfznKPvZLbB1yWMASCZyU6rd0zhtiuhJGaQeRiQj5ucKRvOjFsCOUw==
+"@types/d3-array@2.12.6":
+  version "2.12.6"
+  resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-2.12.6.tgz#30d940dde8e22b46f45687058c4f9543626e0af2"
+  integrity sha512-IRkkMuUakYwWxp0WqZrlFZR1Kv/PF2deFYTRLfVI7RwljEH5aq3M2ZAqcNfm3EHQ2AXhE/yIznJRSy3x8wM/Pg==
 
 "@types/d3-array@^1":
   version "1.2.7"
