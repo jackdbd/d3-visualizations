@@ -3634,7 +3634,14 @@
   resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-1.2.7.tgz#34dc654d34fc058c41c31dbca1ed68071a8fcc17"
   integrity sha512-51vHWuUyDOi+8XuwPrTw3cFqyh2Slg9y8COYkRfjCPG9TfYqY0hoNPzv/8BrcAy0FeQBzqEo/D/8Nk2caOQJnA==
 
-"@types/d3-axis@1.0.16", "@types/d3-axis@^1":
+"@types/d3-axis@1.0.19":
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/@types/d3-axis/-/d3-axis-1.0.19.tgz#13210428e510b7646ae89d9b2d6ad9ee801973f4"
+  integrity sha512-rXxE2jJYv6kar/6YWS8rM0weY+jjvnJvBxHKrIUqt3Yzomrfbf5tncpKG6jq6Aaw6TZyBcb1bxEWc0zGzcmbiw==
+  dependencies:
+    "@types/d3-selection" "^1"
+
+"@types/d3-axis@^1":
   version "1.0.16"
   resolved "https://registry.yarnpkg.com/@types/d3-axis/-/d3-axis-1.0.16.tgz#93d7a28795c2f8b0e2fd550fcc4d29b7f174e693"
   integrity sha512-p7085weOmo4W+DzlRRVC/7OI/jugaKbVa6WMQGCQscaMylcbuaVEGk7abJLNyGVFLeCBNrHTdDiqRGnzvL0nXQ==
